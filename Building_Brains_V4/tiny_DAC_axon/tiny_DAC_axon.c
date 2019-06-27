@@ -10,9 +10,10 @@
 #include "ISR_timer_counter/ISR_timer_counter.h"
 #include <math.h>
 #include "Potential_to_RGB/Potential_to_RGB.h"
+#include "tiny_DAC_axon/tiny_DAC_axon.h"
 
 
-#define axon_delay 100//dendrite delay in ms
+#define AXON_DELAY 100//dendrite delay in ms
 
 /*
 Initiates variables for neuron type, axon firing constants etc.
@@ -20,7 +21,7 @@ Initiates variables for neuron type, axon firing constants etc.
 _Bool tiny_DAC_axon_prev = false;
 _Bool tiny_DAC_axon_fire = false;
 
-_Bool this_neurons_type = true;
+_Bool this_neurons_type = EXCITATORY_NEURON;
 uint8_t pulses_in_queue = 0;//variable to determine how many pulses are in queue.
 
 uint32_t axon_pulse_time_queue [4] = {0};
@@ -29,12 +30,10 @@ uint32_t axon_pulse_time_queue [4] = {0};
 sets neuron type, should probably be accessible from the master function
 of the entire neuron, maybe I'm wrong though.
 */
-void tiny_DAC_set_neur_type(_Bool neur_Type)
+void tiny_DAC_set_neuron_type(enum NeuronType neuron_type) // Make into enum
 {
-	this_neurons_type = neur_Type;
+	this_neurons_type = neuron_type;
 }
-
-
 
 /*
 Pulse send function.
@@ -42,11 +41,11 @@ sends a pulse dependent on the neurons type.
 */
 static void tiny_DAC_axon_send_pulse(void)
 {
-	if (this_neurons_type)
+	if (this_neurons_type == EXCITATORY_NEURON)
 	{
 		DAC_set_output(255);
 	}
-	else
+	else if(this_neurons_type == INHIBITORY_NEURON)
 	{
 		DAC_set_output(128);
 	}
@@ -93,8 +92,8 @@ static void tiny_DAC_axon_set_fire()
 
 
 /*
-solution to remove future firing if a inhibitoric signal is received
-shortly after a exhitatoric signal.
+solution to remove future firing if a inhibitory signal is received
+shortly after a excitatory signal.
 */
 bool tiny_DAC_axon_neg_pulse_queue_check(void)
 {

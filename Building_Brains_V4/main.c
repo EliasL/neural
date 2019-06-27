@@ -17,9 +17,11 @@ int main(void)
 	atmel_start_init();
 	VREF.CTRLA = 0x33;//sets reference voltage to 4.32 Volts. This is done to ensure relatively low interference from
 	//nearby induced magnetic fields from high voltage AC-signals, such as outlets or transformers.
-	uint32_t this_update_time = 1;
+	//Setting this value will mean that the ADC (Analog to Digital Converter) will read 4.32v as 255, and 0v as 0.
+	
+	uint32_t this_update_time = 0;
 	uint32_t previous_update_time = 0;
-	tiny_DAC_set_neur_type(false);
+	tiny_DAC_set_neuron_type(EXCITATORY_NEURON);
 	while (1)
 	{
 		if(tiny_timed_ISR_getflag())

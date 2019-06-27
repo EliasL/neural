@@ -17,7 +17,7 @@ be timed in parallel.
 
 
 //timer_counter initialization.
-static uint32_t timer_counter_integer = 0;
+static uint32_t timer_counter_integer = 0; //Will overflow after 49 days. Is that a problem?
 
 /*
 This function increments the timer.

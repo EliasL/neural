@@ -11,8 +11,8 @@
 
 
 //Initiating constants and allocating memory for color-variables.
-#define tinyCCLRGB_ledCount 6
-static struct tinyCCLRGB_color tinyCCLRGB_colors[tinyCCLRGB_ledCount];
+#define TINYCCLRGB_LEDCOUNT 6
+static struct tinyCCLRGB_color tinyCCLRGB_colors[TINYCCLRGB_LEDCOUNT];
 
 
 /*
@@ -50,7 +50,7 @@ effectively update the values stored in the LEDs to the values stored in the MCU
 */
 void tinyCCLRGB_uploadColorsToLeds(void)
 {
-	for (uint8_t i = 0; i < tinyCCLRGB_ledCount; i++)
+	for (uint8_t i = 0; i < TINYCCLRGB_LEDCOUNT; i++)
 	{
 		//For some reason unknown to the writer the data-bus to the LEDs is serialized as GRB
 		//which means the 24-bit data-bus will look like [Green[0:7], Red[0:7], Blue[0:7]]

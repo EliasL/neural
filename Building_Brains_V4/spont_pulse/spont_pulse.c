@@ -12,7 +12,7 @@
 static uint32_t spont_pulse_timer_counter = 0;
 
 static _Bool spont_pulse_out = false;
-#define spont_pulse_period 500//period for the spontaneous pulse cycle
+#define SPONT_PULSE_PERIOD 500//period for the spontaneous pulse cycle
 
 
 /*
@@ -20,7 +20,7 @@ Function to check if a second has passed since last pulse out.
 */
 static void spont_pulse_time_check(void)
 {
-	if ((ISR_timer_count() - spont_pulse_timer_counter) > spont_pulse_period)
+	if ((ISR_timer_count() - spont_pulse_timer_counter) > SPONT_PULSE_PERIOD)
 	{
 		spont_pulse_timer_counter = ISR_timer_count();
 		spont_pulse_out = true;
@@ -50,7 +50,7 @@ should increase the membrane potensial or not.
 */
 static _Bool spont_pulse(void)
 {
-	if ((ISR_timer_count() - spont_pulse_timer_counter) > spont_pulse_period*2)
+	if ((ISR_timer_count() - spont_pulse_timer_counter) > SPONT_PULSE_PERIOD*2)
 	{
 		spont_pulse_start();
 	}

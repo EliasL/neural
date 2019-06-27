@@ -1,11 +1,11 @@
 /*
- * pullup_pushbutton.c
+ * tiny_button.c
  *
  * Created: 19.06.2018 14:01:18
- *  Author: Bendik
+ *  Authors: Bendik Bogfjellmo, Elias Lundheim 
  */ 
 #include <atmel_start.h>
-#include "pullup_pushbutton/pullup_pushbutton.h"
+#include "tiny_button/tiny_button.h"
 #include <stdbool.h>
 #include "tiny_potential/tiny_potential.h"
 #include "ISR_timer_counter/ISR_timer_counter.h"
@@ -13,31 +13,24 @@
 
 static _Bool button_was_pushed_down = false;
 
-static uint32_t pullup_pushbutton_start_time = 0;
+static uint32_t tiny_button_start_time = 0;
 
-static _Bool pullup_pushbutton_spont_pulse = false;
+static _Bool tiny_button_spont_pulse = false;
 
 /*
-pullup_pushbutton_change_holddown changes the state of the boolean value determining
+tiny_button_toggle_spont_pulse changes the state of the boolean value determining
 if the neuron is in spontaneous fire-mode or not.
 */
-static void pullup_pushbutton_change_holddown(void)
+static void tiny_button_toggle_spont_pulse(void)
 {
-	if (pullup_pushbutton_spont_pulse)
-	{
-		pullup_pushbutton_spont_pulse = false;
-	}
-	else if (!pullup_pushbutton_spont_pulse)
-	{
-		pullup_pushbutton_spont_pulse = true;
-	}
+	tiny_button_spont_pulse = !tiny_button_spont_pulse;
 }
 
 /*
 function returns true if the button has been pushed and then subsequently released.
 function changes state of button_spont_pulse, if button has been held down for 2 secs.
 */
-static _Bool pullup_pushbutton_check(void)
+static _Bool tiny_button_check(void)
 {
 	_Bool re_var = false;
 	_Bool button_is_pushed_down = !Button_get_level();//the digital port will be read as low if the button is pushed down.
@@ -47,15 +40,15 @@ static _Bool pullup_pushbutton_check(void)
 	}
 	if (button_is_pushed_down && !button_was_pushed_down)
 	{
-		pullup_pushbutton_start_time = ISR_timer_count();
+		tiny_button_start_time = ISR_timer_count();
 		re_var = false;
 	}
 	if (button_is_pushed_down && button_was_pushed_down)
 	{
-		if ((ISR_timer_count() - pullup_pushbutton_start_time) > 2000)
+		if ((ISR_timer_count() - tiny_button_start_time) > 2000)
 		{
-			pullup_pushbutton_change_holddown();
-			pullup_pushbutton_start_time = ISR_timer_count();
+			tiny_button_toggle_spont_pulse();
+			tiny_button_start_time = ISR_timer_count();
 		}
 		re_var = false;
 	}
@@ -76,13 +69,13 @@ Master-function for button-checking, returns 2 if the neuron should spontaneousl
 Returns 1 if the system has received a button push shorter than two seconds.
 Returns 0 if the button is still pushed in, or it has not yet received a button push.
 */
-_Bool pullup_pushbutton_get_state(void)
+_Bool tiny_button_get_state(void)
 {
-	return pullup_pushbutton_check();
+	return tiny_button_check();
 }
 
-_Bool pullup_pushbutton_is_spont_pulse_on(void)
+_Bool tiny_button_is_spont_pulse_on(void)
 {
-	return pullup_pushbutton_spont_pulse;
+	return tiny_button_spont_pulse;
 }
 

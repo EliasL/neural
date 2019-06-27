@@ -4,10 +4,6 @@
 
 atmel_start.c
 
-colorman\rainbows.c
-
-driver_isr.c
-
 examples\src\adc_basic_example.c
 
 examples\src\dac_basic_example.c
@@ -18,7 +14,7 @@ main.c
 
 Potential_to_RGB\Potential_to_RGB.c
 
-pullup_pushbutton\pullup_pushbutton.c
+tiny_button\tiny_button.c
 
 spont_pulse\spont_pulse.c
 

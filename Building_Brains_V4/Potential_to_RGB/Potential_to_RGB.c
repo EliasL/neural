@@ -12,9 +12,9 @@
 #include "ISR_timer_counter/ISR_timer_counter.h"
 
 
-#define number_of_leds 6
-#define max_brightness  0x30
-#define fire_flash_time 100
+#define NUMBER_OF_LEDS 6
+#define MAX_BRIGHTNESS  0x30
+#define FIRE_FLASH_TIME 100
 
 
 uint32_t fire_flash_time_counter = 0;
@@ -30,19 +30,19 @@ LEDs are numbered right way on top of PCB, but opposite way on bottom of PCB.
 */
 static void potential_to_RGB_set_color(double potential)
 {
-	for (int i = 0; i < number_of_leds; i++)
+	for (int i = 0; i < NUMBER_OF_LEDS; i++)
 	{
 		tinyCCLRGB_setColor(i, 0x0, 0x0, 0x0);//Clear all LED stored values on the MCU before writing again.
 	}
 	double absolute_potential = abs(potential);//setting variable for absolute potential so it won't have to be calculated more than once.
 	if (absolute_potential < 1)//set the middle lights as white both top side and bottom side.
 	{
-		tinyCCLRGB_setColor(2, max_brightness/3, max_brightness/3, max_brightness/3);
+		tinyCCLRGB_setColor(2, MAX_BRIGHTNESS/3, MAX_BRIGHTNESS/3, MAX_BRIGHTNESS/3);
 		//tinyCCLRGB_setColor(4, max_brightness/3, max_brightness/3, max_brightness/3);
 	}
 	else
 	{
-		uint8_t brightness_intensity = round((absolute_potential/25)*max_brightness);//brightness intensity for the LED that shows potential.
+		uint8_t brightness_intensity = round((absolute_potential/25)*MAX_BRIGHTNESS);//brightness intensity for the LED that shows potential.
 		if (potential < 0)
 		{
 			tinyCCLRGB_setColor(0, brightness_intensity, 0x0, 0x0);
@@ -62,9 +62,9 @@ static void potential_to_RGB_set_color(double potential)
 void set_LED_fire(void)
 {
 	fire_flash_time_counter = ISR_timer_count();
-	for (int i = 0; i < number_of_leds; i++)
+	for (int i = 0; i < NUMBER_OF_LEDS; i++)
 	{
-		tinyCCLRGB_setColor(i, max_brightness, max_brightness, max_brightness);//As per the specs, all LEDs should be blue while firing.
+		tinyCCLRGB_setColor(i, MAX_BRIGHTNESS, MAX_BRIGHTNESS, MAX_BRIGHTNESS);//As per the specs, all LEDs should be blue while firing.
 	}
 }
 
@@ -72,11 +72,11 @@ void set_LED_fire(void)
 
 void potential_to_RGB_update_LEDs(double potential)
 {
-	if ((ISR_timer_count() - fire_flash_time_counter) < fire_flash_time)
+	if ((ISR_timer_count() - fire_flash_time_counter) < FIRE_FLASH_TIME)
 	{
-		for (int i = 0; i < number_of_leds; i++)
+		for (int i = 0; i < NUMBER_OF_LEDS; i++)
 		{
-			tinyCCLRGB_setColor(i, max_brightness, max_brightness, max_brightness);
+			tinyCCLRGB_setColor(i, MAX_BRIGHTNESS, MAX_BRIGHTNESS, MAX_BRIGHTNESS);
 		}
 	}
 	else
