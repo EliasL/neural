@@ -34,7 +34,7 @@ static void spont_pulse_time_check(void)
 
 
 /*
-Function to initiate spontanious pulse mode.
+Function to initiate spontaneous pulse mode.
 */
 static void spont_pulse_start(void)
 {
@@ -46,7 +46,7 @@ static void spont_pulse_start(void)
 
 /*
 Function to determine whether a spontaneous pulse
-should increase the membrane potensial or not.
+should increase the membrane potential or not.
 */
 static _Bool spont_pulse(void)
 {

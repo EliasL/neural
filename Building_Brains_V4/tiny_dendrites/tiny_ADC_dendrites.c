@@ -8,7 +8,7 @@
 #include <math.h>
 #include "tiny_dendrites/tiny_ADC_dendrites.h"
 
-#define TINY_ADC_DENDRITE_NUMBER 5//number of dendrites
+#define TINY_ADC_DENDRITE_COUNT 5//number of dendrites
 
 //enum type for signal.
 enum DendriteSignalType
@@ -27,7 +27,7 @@ This function updates the vector containing 8-bit ADC conversions
 */
 static void tiny_ADC_dendrites_update_values(void)
 {
-	for (int i = 0; i < TINY_ADC_DENDRITE_NUMBER; i++)
+	for (int i = 0; i < TINY_ADC_DENDRITE_COUNT; i++)
 	{
 		tiny_ADC_values[i] = ADC_get_conversion(dendrite_ports[i]);
 	}
@@ -45,7 +45,7 @@ if the same reading has been received twice in a row it should be no_signal.
 */
 static void tiny_ADC_update_signal(void)
 {
-	for (uint8_t i = 0; i < 5; i++)
+	for (uint8_t i = 0; i < TINY_ADC_DENDRITE_COUNT; i++)
 	{
 		tiny_ADC_dendrite_prev_signals[i] = tiny_ADC_dendrite_cur_signals[i];
 		if (tiny_ADC_values[i] > 213)
@@ -87,17 +87,17 @@ static void tiny_ADC_update_signal(void)
 
 /*
 This is the master function of the module that is callable from
-outside. It uses the previously declared functions to return
-the change in potential which is the only thing any
-outside libraries will have to use.
-It's not exactly elegant to use a switch and a for-loop, but it works.
+outside. It uses the previously declared functions to return the potential.
 */
-int8_t tiny_ADC_dendrite_delta_potential()
+int8_t tiny_ADC_dendrite_potential()
 {
+	//Read the analog voltage values on each of the dendrites
 	tiny_ADC_dendrites_update_values();
+	//Convert the digital value to the various signals defined in DendriteSignalType
 	tiny_ADC_update_signal();
+	
 	int16_t return_potential_val = 0;
-	for (int i = 0; i < TINY_ADC_DENDRITE_NUMBER; i++)
+	for (int i = 0; i < TINY_ADC_DENDRITE_COUNT; i++)
 	{
 		switch(tiny_ADC_dendrite_cur_signals[i])
 		{

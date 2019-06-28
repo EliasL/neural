@@ -10,7 +10,7 @@
 #define TINY_ADC_DENDRITES_H_
 
 
-int8_t tiny_ADC_dendrite_delta_potential();
+int8_t tiny_ADC_dendrite_potential();
 
 
 #endif /* TINYADCDENDRITES_H_ */

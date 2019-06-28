@@ -21,6 +21,7 @@
 #include <stdbool.h>
 
 static double tiny_potential = 0;
+double tiny_potential_change = 0;
 static _Bool spontaneous_pulse_mode = false;
 
 #define TINY_POTENTIAL_TIME_CONST 100 //Tau should be equal to 100ms as per the specifications. This constant determines how fast the potential will decay over time.
@@ -57,7 +58,7 @@ static void tiny_potential_time_update(double time_since_last_update)//time sinc
 Function to update potential and set spontaneous pulse mode
 by using the master update function in the button module.
 */
-static void tiny_potential_tiny_button_update()
+static void tiny_potential_button_update()
 {
 	if (tiny_button_get_state()) // If the button is pressed, we want the neuron to fire
 	{
@@ -72,29 +73,43 @@ This function will run on interrupts by the RTC module.
 */
 void tiny_potential_master_update(double time_since_last_update)
 {
+	//Some of the potential in the neuron has decayed away
+	tiny_potential_time_update(time_since_last_update);//set the potential in accordance with the time since last update.
 	
-	//Update potential with values from dendrites, button and spontaneous pulse.
-	tiny_potential_increase_by(tiny_ADC_dendrite_delta_potential());
-	tiny_potential_tiny_button_update();
+	//Update potential with values from dendrites
+	tiny_potential_change = tiny_ADC_dendrite_potential();
+	tiny_potential_increase_by(tiny_potential_change);
+	
+	//Update potential with values from button
+	tiny_potential_button_update();
+	
+	//Update potential with values from spontaneous pulse.
 	if (spontaneous_pulse_mode)
 	{
 		tiny_potential_increase_by(spont_pulse_delta_potential());
 	}
+	
+	//Check to see if the axon should fire
 	if (tiny_potential > 50)
 	{
+		//The neurons potential is very high, so we fire twice
 		tiny_DAC_axon_master_update(true, true);//DAC is used to write pulse signal.
 		tiny_potential_set(POST_FIRE_POTENTIAL);//post-pulse potential is set.
 	}
 	else if (tiny_potential > 25)
 	{
+		//The neurons potential is high enough to fire
 		tiny_DAC_axon_master_update(true, false);
 		tiny_potential_set(POST_FIRE_POTENTIAL);
 	}
 	else
 	{
+		//The neurons potential is not high enough to fire
 		tiny_DAC_axon_master_update(false, false);//DAC needs to be updated so that the timed pulses can be written later on.
+		
 		if(tiny_potential < -25)
 		{
+			//The neurons potential is low enough to remove a queued fire (Fire less)
 			if(tiny_DAC_axon_neg_pulse_queue_check())
 			{
 				tiny_potential_set(0);
@@ -102,6 +117,6 @@ void tiny_potential_master_update(double time_since_last_update)
 		}
 	}
 	
-	potential_to_RGB_update_LEDs(tiny_potential);//write potential to LEDs in case the potential is not at the threshold potential.
-	tiny_potential_time_update(time_since_last_update);//set the potential in accordance with the time since last update.
+	//Update the led
+	potential_to_RGB_update_LEDs(tiny_potential);
 }

@@ -25,6 +25,7 @@ _Bool this_neurons_type = EXCITATORY_NEURON;
 uint8_t pulses_in_queue = 0;//variable to determine how many pulses are in queue.
 
 uint32_t axon_pulse_time_queue [4] = {0};
+uint8_t axonOutputValue = 0;
 
 /*
 sets neuron type, should probably be accessible from the master function
@@ -44,10 +45,12 @@ static void tiny_DAC_axon_send_pulse(void)
 	if (this_neurons_type == EXCITATORY_NEURON)
 	{
 		DAC_set_output(255);
+		axonOutputValue=225;
 	}
 	else if(this_neurons_type == INHIBITORY_NEURON)
 	{
 		DAC_set_output(128);
+		axonOutputValue=128;
 	}
 }
 
@@ -72,6 +75,7 @@ static void tiny_DAC_update_axon(void)
 	else if (!tiny_DAC_axon_prev && !tiny_DAC_axon_fire)
 	{
 		DAC_set_output(0);
+		axonOutputValue=0;
 	}
 }
 
