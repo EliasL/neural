@@ -7,9 +7,9 @@
 
 #include <atmel_start.h>
 #include <math.h>
-#include "tinyCCLRGB/tinyCCLRGB.h"
 #include <stdbool.h>
-#include "ISR_timer_counter/ISR_timer_counter.h"
+#include "tinyCCLRGB/tinyCCLRGB.h"
+#include "tinyTime/tinyTime.h"
 
 
 #define NUMBER_OF_LEDS 6
@@ -61,7 +61,7 @@ static void potential_to_RGB_set_color(double potential)
 //function to be called upon when firing flag has been raised.
 void set_LED_fire(void)
 {
-	fire_flash_time_counter = ISR_timer_count();
+	fire_flash_time_counter = tinyTime_now();
 	for (int i = 0; i < NUMBER_OF_LEDS; i++)
 	{
 		tinyCCLRGB_setColor(i, MAX_BRIGHTNESS, MAX_BRIGHTNESS, MAX_BRIGHTNESS);//As per the specs, all LEDs should be blue while firing.
@@ -72,7 +72,7 @@ void set_LED_fire(void)
 
 void potential_to_RGB_update_LEDs(double potential)
 {
-	if ((ISR_timer_count() - fire_flash_time_counter) < FIRE_FLASH_TIME)
+	if ((tinyTime_now() - fire_flash_time_counter) < FIRE_FLASH_TIME)
 	{
 		for (int i = 0; i < NUMBER_OF_LEDS; i++)
 		{

@@ -237,15 +237,15 @@
     <Folder Include="examples\include\" />
     <Folder Include="examples\src\" />
     <Folder Include="include\" />
-    <Folder Include="ISR_timer_counter" />
-    <Folder Include="spont_pulse" />
-    <Folder Include="tiny_button" />
     <Folder Include="src\" />
-    <Folder Include="tiny_timed_ISR" />
+    <Folder Include="tinyTime" />
+    <Folder Include="spont_pulse" />
+    <Folder Include="tinyButton" />
+    <Folder Include="tinyISR" />
     <Folder Include="Potential_to_RGB" />
-    <Folder Include="tiny_potential" />
-    <Folder Include="tiny_DAC_axon" />
-    <Folder Include="tiny_dendrites" />
+    <Folder Include="tinyPotential" />
+    <Folder Include="tinyAxon" />
+    <Folder Include="tinyDendrite" />
     <Folder Include="tinyCCLRGB" />
     <Folder Include="utils\" />
     <Folder Include="utils\assembler\" />
@@ -308,6 +308,9 @@
     <Compile Include="include\protected_io.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="include\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="include\rstctrl.h">
       <SubType>compile</SubType>
     </Compile>
@@ -324,33 +327,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\tca.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ISR_timer_counter\ISR_timer_counter.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ISR_timer_counter\ISR_timer_counter.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Potential_to_RGB\Potential_to_RGB.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Potential_to_RGB\Potential_to_RGB.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tiny_button\tiny_button.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="tiny_button\tiny_button.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="spont_pulse\spont_pulse.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="spont_pulse\spont_pulse.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\adc_basic.c">
@@ -377,6 +353,9 @@
     <Compile Include="src\protected_io.S">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\rtc.c">
       <SubType>compile</SubType>
     </Compile>
@@ -389,34 +368,64 @@
     <Compile Include="src\tca.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="tinyTime\tinyTime.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tinyTime\tinyTime.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Potential_to_RGB\Potential_to_RGB.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Potential_to_RGB\Potential_to_RGB.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="settings.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tinyButton\tinyButton.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tinyButton\tinyButton.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spont_pulse\spont_pulse.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="spont_pulse\spont_pulse.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="tinyCCLRGB\tinyCCLRGB.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="tinyCCLRGB\tinyCCLRGB.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_DAC_axon\tiny_DAC_axon.c">
+    <Compile Include="tinyAxon\tinyAxon.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_DAC_axon\tiny_DAC_axon.h">
+    <Compile Include="tinyAxon\tinyAxon.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_dendrites\tiny_ADC_dendrites.h">
+    <Compile Include="tinyDendrite\tinyDendrite.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_dendrites\tiny_ADC_dendrites.c">
+    <Compile Include="tinyDendrite\tinyDendrite.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_timed_ISR\tiny_timed_ISR.c">
+    <Compile Include="tinyISR\tinyISR.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_potential\tiny_potential.c">
+    <Compile Include="tinyPotential\tinyPotential.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_potential\tiny_potential.h">
+    <Compile Include="tinyPotential\tinyPotential.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tiny_timed_ISR\tiny_timed_ISR.h">
+    <Compile Include="tinyISR\tinyISR.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="utils\assembler.h">

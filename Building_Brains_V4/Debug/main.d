@@ -26,11 +26,10 @@ main.d main.o: .././main.c ../atmel_start.h ../include/driver_init.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././tinyCCLRGB/tinyCCLRGB.h .././tiny_dendrites/tiny_ADC_dendrites.h \
- .././tiny_DAC_axon/tiny_DAC_axon.h .././tiny_potential/tiny_potential.h \
- .././Potential_to_RGB/Potential_to_RGB.h \
- .././tiny_timed_ISR/tiny_timed_ISR.h \
- .././ISR_timer_counter/ISR_timer_counter.h
+ .././tinyCCLRGB/tinyCCLRGB.h .././tinyDendrite/tinyDendrite.h \
+ .././tinyAxon/tinyAxon.h .././tinyPotential/tinyPotential.h \
+ .././Potential_to_RGB/Potential_to_RGB.h .././tinyISR/tinyISR.h \
+ .././tinyTime/tinyTime.h .././settings.h
 
 ../atmel_start.h:
 
@@ -112,14 +111,16 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 
 .././tinyCCLRGB/tinyCCLRGB.h:
 
-.././tiny_dendrites/tiny_ADC_dendrites.h:
+.././tinyDendrite/tinyDendrite.h:
 
-.././tiny_DAC_axon/tiny_DAC_axon.h:
+.././tinyAxon/tinyAxon.h:
 
-.././tiny_potential/tiny_potential.h:
+.././tinyPotential/tinyPotential.h:
 
 .././Potential_to_RGB/Potential_to_RGB.h:
 
-.././tiny_timed_ISR/tiny_timed_ISR.h:
+.././tinyISR/tinyISR.h:
 
-.././ISR_timer_counter/ISR_timer_counter.h:
+.././tinyTime/tinyTime.h:
+
+.././settings.h:

@@ -1,5 +1,4 @@
-Potential_to_RGB/Potential_to_RGB.d Potential_to_RGB/Potential_to_RGB.o: \
- ../Potential_to_RGB/Potential_to_RGB.c ../atmel_start.h \
+tinyISR/tinyISR.d tinyISR/tinyISR.o: ../tinyISR/tinyISR.c \
  ../include/driver_init.h ../utils/compiler.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -23,11 +22,8 @@ Potential_to_RGB/Potential_to_RGB.d Potential_to_RGB/Potential_to_RGB.o: \
  ../include/clkctrl.h ../include/rtc.h ../utils/utils_assert.h \
  ../include/adc_basic.h ../include/tca.h ../include/ccl.h \
  ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
- ../include/slpctrl.h ../include/bod.h ../include/atmel_start_pins.h \
- d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../tinyCCLRGB/tinyCCLRGB.h ../tinyTime/tinyTime.h
-
-../atmel_start.h:
+ ../include/slpctrl.h ../include/bod.h ../tinyISR/tinyISR.h \
+ ../tinyTime/tinyTime.h
 
 ../include/driver_init.h:
 
@@ -97,10 +93,6 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 
 ../include/bod.h:
 
-../include/atmel_start_pins.h:
-
-d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-../tinyCCLRGB/tinyCCLRGB.h:
+../tinyISR/tinyISR.h:
 
 ../tinyTime/tinyTime.h:

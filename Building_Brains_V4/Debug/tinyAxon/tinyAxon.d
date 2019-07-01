@@ -1,6 +1,5 @@
-Potential_to_RGB/Potential_to_RGB.d Potential_to_RGB/Potential_to_RGB.o: \
- ../Potential_to_RGB/Potential_to_RGB.c ../atmel_start.h \
- ../include/driver_init.h ../utils/compiler.h \
+tinyAxon/tinyAxon.d tinyAxon/tinyAxon.o: ../tinyAxon/tinyAxon.c \
+ ../atmel_start.h ../include/driver_init.h ../utils/compiler.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -25,7 +24,8 @@ Potential_to_RGB/Potential_to_RGB.d Potential_to_RGB/Potential_to_RGB.o: \
  ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
  ../include/slpctrl.h ../include/bod.h ../include/atmel_start_pins.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../tinyCCLRGB/tinyCCLRGB.h ../tinyTime/tinyTime.h
+ ../tinyTime/tinyTime.h ../Potential_to_RGB/Potential_to_RGB.h \
+ ../tinyAxon/tinyAxon.h ../include/queue.h
 
 ../atmel_start.h:
 
@@ -101,6 +101,10 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 
 d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-../tinyCCLRGB/tinyCCLRGB.h:
-
 ../tinyTime/tinyTime.h:
+
+../Potential_to_RGB/Potential_to_RGB.h:
+
+../tinyAxon/tinyAxon.h:
+
+../include/queue.h:

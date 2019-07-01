@@ -1,5 +1,5 @@
-Potential_to_RGB/Potential_to_RGB.d Potential_to_RGB/Potential_to_RGB.o: \
- ../Potential_to_RGB/Potential_to_RGB.c ../atmel_start.h \
+tinyPotential/tinyPotential.d tinyPotential/tinyPotential.o: \
+ ../tinyPotential/tinyPotential.c ../atmel_start.h \
  ../include/driver_init.h ../utils/compiler.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -25,7 +25,10 @@ Potential_to_RGB/Potential_to_RGB.d Potential_to_RGB/Potential_to_RGB.o: \
  ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
  ../include/slpctrl.h ../include/bod.h ../include/atmel_start_pins.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../tinyCCLRGB/tinyCCLRGB.h ../tinyTime/tinyTime.h
+ ../tinyPotential/tinyPotential.h ../tinyDendrite/tinyDendrite.h \
+ ../tinyAxon/tinyAxon.h ../Potential_to_RGB/Potential_to_RGB.h \
+ ../tinyTime/tinyTime.h ../tinyButton/tinyButton.h \
+ ../spont_pulse/spont_pulse.h ../settings.h
 
 ../atmel_start.h:
 
@@ -101,6 +104,18 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 
 d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-../tinyCCLRGB/tinyCCLRGB.h:
+../tinyPotential/tinyPotential.h:
+
+../tinyDendrite/tinyDendrite.h:
+
+../tinyAxon/tinyAxon.h:
+
+../Potential_to_RGB/Potential_to_RGB.h:
 
 ../tinyTime/tinyTime.h:
+
+../tinyButton/tinyButton.h:
+
+../spont_pulse/spont_pulse.h:
+
+../settings.h:
