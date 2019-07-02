@@ -2,12 +2,12 @@ format_version: '2'
 name: My Project
 versions:
   api: '1.0'
-  backend: 1.2.62
-  commit: ef3c1854b213e6aa6e0248cc11ff619cc7b22278
-  content: 1.0.964
+  backend: 1.5.122
+  commit: 820baecf7dd115d94b0d42ee3b0b9d6ba2da7113
+  content: 1.0.1507
   content_pack_name: acme-packs-all
   format: '2'
-  frontend: 1.2.1708
+  frontend: 1.5.1877
 board:
   identifier: ATtiny817XplainedPro
   device: ATtiny817-MFR
@@ -56,6 +56,8 @@ drivers:
         nodes:
         - name: CPU
           input: CPU
+          external: false
+          external_frequency: 0
         configuration: {}
   RTC:
     user_label: RTC
@@ -86,6 +88,8 @@ drivers:
         nodes:
         - name: RTC
           input: RTC Clock (CLK_RTC)
+          external: false
+          external_frequency: 0
         configuration:
           rtc_clock_source: RTC Clock (CLK_RTC)
   ADC:
@@ -158,6 +162,8 @@ drivers:
         nodes:
         - name: ADC
           input: Main Clock (CLK_MAIN)
+          external: false
+          external_frequency: 0
         configuration:
           adc_clock_source: Main Clock (CLK_MAIN)
   TIMER_0:
@@ -166,6 +172,7 @@ drivers:
     functionality: Timer
     api: Drivers:TCA:Init
     configuration:
+      inc_isr_harness: false
       tca_cmp0: 0
       tca_cmp1: 0
       tca_cmp2: 4
@@ -202,6 +209,8 @@ drivers:
         nodes:
         - name: TCA
           input: Main Clock (CLK_MAIN)
+          external: false
+          external_frequency: 0
         configuration:
           tca_clock_source: Main Clock (CLK_MAIN)
   DIGGSIGG:
@@ -253,6 +262,8 @@ drivers:
         nodes:
         - name: CCL
           input: Main Clock (CLK_MAIN)
+          external: false
+          external_frequency: 0
         configuration:
           ccl_clock_source: Main Clock (CLK_MAIN)
   SPI_0:
@@ -297,6 +308,8 @@ drivers:
         nodes:
         - name: SPI
           input: Main Clock (CLK_MAIN)
+          external: false
+          external_frequency: 0
         configuration:
           spi_clock_source: Main Clock (CLK_MAIN)
   DAC:
@@ -309,13 +322,22 @@ drivers:
       dac_ctrla_outen: true
       dac_ctrla_runstdby: false
       dac_data: 0
-    optional_signals: []
+    optional_signals:
+    - identifier: DAC:OUT/0
+      pad: PA6
+      mode: Enabled
+      configuration: null
+      definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::optional_signal_definition::DAC0.OUT.0
+      name: DAC0/OUT/0
+      label: OUT/0
     variant: null
     clocks:
       domain_group:
         nodes:
         - name: DAC
           input: Main Clock (CLK_MAIN)
+          external: false
+          external_frequency: 0
         configuration:
           dac_clock_source: Main Clock (CLK_MAIN)
   CPUINT:
@@ -365,6 +387,8 @@ drivers:
         nodes:
         - name: BOD
           input: 32KHz divided by 32
+          external: false
+          external_frequency: 0
         configuration:
           bod_clock_source: 32KHz divided by 32
 pads:
@@ -386,53 +410,59 @@ pads:
     mode: Digital output
     user_label: PA4
     configuration: null
-  Dendr_1:
+  Dendrite_2:
     name: PA5
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA5
     mode: Analog
-    user_label: Dendr_1
+    user_label: Dendrite_2
     configuration: null
-  Dendr_2:
+  Axon:
+    name: PA6
+    definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA6
+    mode: Analog
+    user_label: Axon
+    configuration: null
+  Dendrite_1:
     name: PA7
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA7
     mode: Analog
-    user_label: Dendr_2
+    user_label: Dendrite_1
     configuration: null
-  DOUT:
+  ChartingStatus:
     name: PB7
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB7
-    mode: Digital output
-    user_label: DOUT
+    mode: Digital input
+    user_label: ChartingStatus
     configuration: null
   PB5:
     name: PB5
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB5
-    mode: Digital output
+    mode: ''
     user_label: PB5
     configuration: null
-  Dendr_3:
+  Dendrite_3:
     name: PB4
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB4
     mode: Analog
-    user_label: Dendr_3
+    user_label: Dendrite_3
     configuration: null
-  Dendr_4:
+  Dendrite_5:
     name: PB1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB1
     mode: Analog
-    user_label: Dendr_4
+    user_label: Dendrite_5
     configuration: null
-  Dendr_5:
+  Dendrite_4:
     name: PB0
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB0
     mode: Analog
-    user_label: Dendr_5
+    user_label: Dendrite_4
     configuration: null
-  PC1:
+  Led:
     name: PC1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PC1
     mode: Digital output
-    user_label: PC1
+    user_label: Led
     configuration: null
   Button:
     name: PC2
@@ -441,10 +471,23 @@ pads:
     user_label: Button
     configuration:
       pad_pull_config: Pull-up
+  ChargeMode:
+    name: PC5
+    definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PC5
+    mode: Digital output
+    user_label: ChargeMode
+    configuration: null
   PA1:
     name: PA1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA1
     mode: Digital output
     user_label: PA1
     configuration: null
-toolchain_options: []
+toolchain_options:
+- definition:
+    identifier: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::environment_definition::All:Atmel.Studio:7.0.0
+  configuration:
+    compiler_config:
+      avrgcc_compiler_miscellaneous_OtherFlags: -std=gnu99
+    linker_config:
+      avrgcc_linker_miscellaneous_LinkerFlags: ''

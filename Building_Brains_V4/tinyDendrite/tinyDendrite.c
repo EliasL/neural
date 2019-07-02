@@ -12,7 +12,7 @@
 // Signal types
 enum DendriteSignal
 {
-	NO_SIGNAL, LOW_INHIB, NORMAL_INHIB, HIGH_INHIB, LOW_EXCITE, NORMAL_EXCITE, HIGH_EXCITE
+	NO_SIGNAL, LOW_INHIB, NORMAL_INHIB, HIGH_INHIB, LOW_EXCITE, NORMAL_EXCITE, HIGH_EXCITE, CHARGING
 };
 
 uint16_t tinyDendrite_values[TINYDENDRITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
@@ -42,7 +42,11 @@ static void tinyDendrite_update_signals(void)
 	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
 		tinyDendrite_previous_signals[i] = tinyDendrite_current_signals[i];
-		if (tinyDendrite_values[i] > NORMAL_EXCITE_THRESHOLD)
+		if (tinyDendrite_values[i] > CHARGING_THRESHOLD)
+		{
+			tinyDendrite_current_signals[i] = CHARGING;
+		}
+		else if (tinyDendrite_values[i] > NORMAL_EXCITE_THRESHOLD)
 		{
 			tinyDendrite_current_signals[i] = NORMAL_EXCITE;
 		}
@@ -116,9 +120,19 @@ int16_t tinyDendrite_get_potential()
 			case LOW_INHIB:
 				return_potential_val += LOW_INHIB_REACTION;
 				break;
+			case CHARGING:
+				// NOT YET IMPLEMENTED
+				break;
 			default:
 				break;
 		}
 	}
 	return return_potential_val;
+}
+
+double tinyDendrite_update_potential(double potential){
+	
+	uint16_t potential_change = tinyDendrite_get_potential();
+	potential += potential_change;
+	return potential;
 }

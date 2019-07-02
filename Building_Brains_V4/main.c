@@ -9,6 +9,7 @@
 #include "Potential_to_RGB/Potential_to_RGB.h"
 #include "tinyISR/tinyISR.h"
 #include "tinyTime/tinyTime.h"
+#include "tinyButton/tinyButton.h"
 #include "settings.h"
 
 
@@ -40,8 +41,14 @@ int main(void)
 		{
 			current_cycle_time = tinyTime_now();
 			
+			
+			
+			tinyButton_update();
+			
 			time_passed = current_cycle_time - previous_cycle_time;
 			tinyPotential_update(time_passed);
+			
+			
 			
 			previous_cycle_time = current_cycle_time;
 			cycles++;

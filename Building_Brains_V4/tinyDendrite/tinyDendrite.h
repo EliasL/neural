@@ -10,7 +10,7 @@
 #define TINYDENDRITE_H_
 
 
-int16_t tinyDendrite_get_potential();
+double tinyDendrite_update_potential(double potential);
 
 
 #endif /* TINYADCDENDRITES_H_ */

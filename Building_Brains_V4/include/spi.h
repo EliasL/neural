@@ -27,7 +27,6 @@
 
 #ifndef SPI_H_INCLUDED
 #define SPI_H_INCLUDED
-
 #include <compiler.h>
 #include <stdbool.h>
 
