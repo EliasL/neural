@@ -15,7 +15,7 @@
 #include "Potential_to_RGB/Potential_to_RGB.h"
 #include "tinyTime/tinyTime.h"
 #include "tinyButton/tinyButton.h"
-#include "spont_pulse/spont_pulse.h"
+#include "tinyPulse/tinyPulse.h"
 #include "settings.h"
 
 static double tinyPotential_potential = 0;
@@ -38,7 +38,7 @@ void tinyPotential_update(double time_since_last_update)
 	tinyPotential_decay(time_since_last_update);
 	
 	// Update potential with values from dendrites
-	tinyPotential_potential = tinyDendrite_update_potential((tinyPotential_potential);
+	tinyPotential_potential = tinyDendrite_update_potential(tinyPotential_potential);
 	
 	// Update potential from button press
 	tinyPotential_potential = tinyButton_update_potential(tinyPotential_potential);

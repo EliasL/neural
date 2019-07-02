@@ -6,6 +6,7 @@
  */ 
 
 #include <stdbool.h>
+#include <stdint.h>
 #include "tinyTime/tinyTime.h"
 #include "settings.h"
 

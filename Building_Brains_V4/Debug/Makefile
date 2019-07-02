@@ -61,9 +61,9 @@ SUBDIRS :=  \
 ../modules/spi/doc/ \
 ../modules/timer/ \
 ../modules/timer/doc/ \
+../tinyPulse \
 ../src/ \
 ../tinyTime \
-../spont_pulse \
 ../tinyButton \
 ../tinyISR \
 ../Potential_to_RGB \
@@ -92,11 +92,11 @@ C_SRCS +=  \
 ../src/slpctrl.c \
 ../src/spi.c \
 ../src/tca.c \
+../tinyPulse/tinyPulse.c \
 ../tinyTime/tinyTime.c \
 ../main.c \
 ../Potential_to_RGB/Potential_to_RGB.c \
 ../tinyButton/tinyButton.c \
-../spont_pulse/spont_pulse.c \
 ../tinyCCLRGB/tinyCCLRGB.c \
 ../tinyAxon/tinyAxon.c \
 ../tinyDendrite/tinyDendrite.c \
@@ -128,11 +128,11 @@ src/rtc.o \
 src/slpctrl.o \
 src/spi.o \
 src/tca.o \
+tinyPulse/tinyPulse.o \
 tinyTime/tinyTime.o \
 main.o \
 Potential_to_RGB/Potential_to_RGB.o \
 tinyButton/tinyButton.o \
-spont_pulse/spont_pulse.o \
 tinyCCLRGB/tinyCCLRGB.o \
 tinyAxon/tinyAxon.o \
 tinyDendrite/tinyDendrite.o \
@@ -156,11 +156,11 @@ src/rtc.o \
 src/slpctrl.o \
 src/spi.o \
 src/tca.o \
+tinyPulse/tinyPulse.o \
 tinyTime/tinyTime.o \
 main.o \
 Potential_to_RGB/Potential_to_RGB.o \
 tinyButton/tinyButton.o \
-spont_pulse/spont_pulse.o \
 tinyCCLRGB/tinyCCLRGB.o \
 tinyAxon/tinyAxon.o \
 tinyDendrite/tinyDendrite.o \
@@ -184,11 +184,11 @@ src/rtc.d \
 src/slpctrl.d \
 src/spi.d \
 src/tca.d \
+tinyPulse/tinyPulse.d \
 tinyTime/tinyTime.d \
 main.d \
 Potential_to_RGB/Potential_to_RGB.d \
 tinyButton/tinyButton.d \
-spont_pulse/spont_pulse.d \
 tinyCCLRGB/tinyCCLRGB.d \
 tinyAxon/tinyAxon.d \
 tinyDendrite/tinyDendrite.d \
@@ -212,11 +212,11 @@ src/rtc.d \
 src/slpctrl.d \
 src/spi.d \
 src/tca.d \
+tinyPulse/tinyPulse.d \
 tinyTime/tinyTime.d \
 main.d \
 Potential_to_RGB/Potential_to_RGB.d \
 tinyButton/tinyButton.d \
-spont_pulse/spont_pulse.d \
 tinyCCLRGB/tinyCCLRGB.d \
 tinyAxon/tinyAxon.d \
 tinyDendrite/tinyDendrite.d \
@@ -342,6 +342,13 @@ src/tca.o: ../src/tca.c
 	@echo Finished building: $<
 	
 
+tinyPulse/tinyPulse.o: ../tinyPulse/tinyPulse.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 tinyTime/tinyTime.o: ../tinyTime/tinyTime.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -364,13 +371,6 @@ Potential_to_RGB/Potential_to_RGB.o: ../Potential_to_RGB/Potential_to_RGB.c
 	
 
 tinyButton/tinyButton.o: ../tinyButton/tinyButton.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-spont_pulse/spont_pulse.o: ../spont_pulse/spont_pulse.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -34,6 +34,8 @@ src\spi.c
 
 src\tca.c
 
+tinyPulse\tinyPulse.c
+
 tinyTime\tinyTime.c
 
 main.c
@@ -41,8 +43,6 @@ main.c
 Potential_to_RGB\Potential_to_RGB.c
 
 tinyButton\tinyButton.c
-
-spont_pulse\spont_pulse.c
 
 tinyCCLRGB\tinyCCLRGB.c
 

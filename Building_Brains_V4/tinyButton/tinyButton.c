@@ -10,6 +10,7 @@
 #include "tinyPotential/tinyPotential.h"
 #include "tinyTime/tinyTime.h"
 #include "tinyPulse/tinyPulse.h"
+#include "settings.h"
 
 
 static _Bool button_was_pushed_down = false;
