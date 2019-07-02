@@ -1,16 +1,18 @@
 /*
- * tinyADCdendrites.h
+ * tinyADCDendriteites.h
  *
  * Created: 18.06.2018 13:50:42
  * Authors: Bendik Bogfjellmo, Elias Lundheim
  */ 
 
 
-#ifndef TINYDENDRITE_H_
-#define TINYDENDRITE_H_
+#ifndef TINYDendriteITE_H_
+#define TINYDendriteITE_H_
 
 
-double tinyDendrite_update_potential(double potential);
+double tinyDendriteite_update_potential(double potential);
+
+void tinyDendriteite_update_signals(void);
 
 
-#endif /* TINYADCDENDRITES_H_ */
+#endif /* TINYADCDendriteITES_H_ */

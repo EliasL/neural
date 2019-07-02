@@ -437,7 +437,7 @@ pads:
   PB5:
     name: PB5
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB5
-    mode: ''
+    mode: Digital output
     user_label: PB5
     configuration: null
   Dendrite_3:
@@ -476,7 +476,8 @@ pads:
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PC5
     mode: Digital output
     user_label: ChargeMode
-    configuration: null
+    configuration:
+      pad_initial_level: High
   PA1:
     name: PA1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA1

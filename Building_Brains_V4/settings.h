@@ -38,7 +38,7 @@
 // I want to test reducing the potential by -30 instead of -25 to simulate the hyperpolarization
 #define POSTFIRE_POTENTIAL_REACTION -30
 
-// Time for pulse to travel from dendrites to axon
+// Time for pulse to travel from Dendriteites to axon
 #define TRAVLE_DELAY 100
 
 // Minimum time between pulses
@@ -57,7 +57,7 @@
 
 /*
 Signal threshold definitions
-When a dendrite reads the ADC, what values (between 0 and 255) correspond to the different signals?
+When a Dendriteite reads the ADC, what values (between 0 and 255) correspond to the different signals?
 
 See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Software
 */
@@ -71,7 +71,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 /*
 Signal reaction definitions
-When a dendrite receives a signal, how does the potential in the neuron change?
+When a Dendriteite receives a signal, how does the potential in the neuron change?
 */
 #define NO_SIGNAL_REACTION 0
 #define HIGH_EXCITE_REACTION 52
@@ -96,19 +96,19 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 			TENCHINCAL DEFINITIONS
 */
 
-// Number of dendrites
-// NB! Chancing this will also require you to change "dendrite_ports" in tinyDendrite.c
-#define TINYDENDRITE_COUNT 5
+// Number of Dendriteites
+// NB! Chancing this will also require you to change "Dendriteite_ports" in tinyDendriteite.c
+#define TINYDendriteITE_COUNT 5
 
 /*
-Dendrite SW component signals
+Dendriteite SW component signals
 See PINMUX CONFIGURATOR in Atmel Start. (You can find this by right-clicking the 
 project file "Building_Brains_V4" in the Solution Explorer, and selecting Re-Configure Atmel Start Project)
 */
-#define DENDRITE_PORT_1 7
-#define DENDRITE_PORT_2 5
-#define DENDRITE_PORT_3 9
-#define DENDRITE_PORT_4 11
-#define DENDRITE_PORT_5 10
+#define DendriteITE_PORT_1 7
+#define DendriteITE_PORT_2 5
+#define DendriteITE_PORT_3 9
+#define DendriteITE_PORT_4 11
+#define DendriteITE_PORT_5 10
 
 #endif /* SETTINGS_H_ */

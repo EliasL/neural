@@ -4,6 +4,8 @@
 
 atmel_start.c
 
+driver_isr.c
+
 examples\src\adc_basic_example.c
 
 examples\src\dac_basic_example.c
@@ -33,6 +35,8 @@ src\slpctrl.c
 src\spi.c
 
 src\tca.c
+
+tinyCharge\tinyCharge.c
 
 tinyPulse\tinyPulse.c
 

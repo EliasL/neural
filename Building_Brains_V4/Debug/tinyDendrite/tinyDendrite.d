@@ -25,7 +25,7 @@ tinyDendrite/tinyDendrite.d tinyDendrite/tinyDendrite.o: \
  ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
  ../include/slpctrl.h ../include/bod.h ../include/atmel_start_pins.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../tinyDendrite/tinyDendrite.h ../settings.h
+ ../tinyDendrite/tinyDendrite.h ../settings.h ../tinyCharge/tinyCharge.h
 
 ../atmel_start.h:
 
@@ -104,3 +104,5 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 ../tinyDendrite/tinyDendrite.h:
 
 ../settings.h:
+
+../tinyCharge/tinyCharge.h:

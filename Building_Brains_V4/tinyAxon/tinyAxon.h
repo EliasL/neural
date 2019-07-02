@@ -15,7 +15,7 @@ enum NeuronType
 	EXCITATORY_NEURON, INHIBITORY_NEURON
 };
 
-void tinyDendrite_set_neuron_type(enum NeuronType neuron_type);
+void tinyDendriteite_set_neuron_type(enum NeuronType neuron_type);
 double tinyAxon_update_potential(double potential);
 
 

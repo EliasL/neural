@@ -76,4 +76,8 @@ extern void protected_write_io(void *addr, uint8_t magic, uint8_t value);
 
 /** @} */
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* PROTECTED_IO_H */
