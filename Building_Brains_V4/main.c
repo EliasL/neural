@@ -34,7 +34,7 @@ int main(void)
 	A plausible explanation is that the microchip does not up the voltage, so that if the microchip is only ever 
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
-	VREF.CTRLB = VREF_ADC0REFSEL_4V34_gc;
+	VREF.CTRLA = VREF_ADC0REFSEL_4V34_gc;
 	
 	
 	uint32_t current_cycle_time = 1;
