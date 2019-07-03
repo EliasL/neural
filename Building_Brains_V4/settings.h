@@ -19,11 +19,18 @@
 #define PULSEMODE_FREQUENCY 2
 
 // Amount of time in ms the button needs to be held down before switching to or from pulse mode.
-#define PULSEMODE_BUTTON_PRESS_TIME 2000 //(ms)
+// Note that this value is adjusted with the TIMESCALE, so that one second is constant regardless of TIMESCALE
+#define PULSEMODE_BUTTON_PRESS_TIME 2000 * TIMESCALE //(ms)
 
 // TINYPOTENTIAL_TIME_CONST determines how fast the potential will decay over time.
 #define TINYPOTENTIAL_TIME_CONST 100 //(ms)
 
+// TIMESCALE adjusts the speed of the RTC (Real Time Clock). The crystal oscillator that the RTC uses runs at 32KHz, and so
+// the usual RTC period is 32 ticks (0x20 in hex), making the clock tick once every ms. When we set the TIMESCALE to two
+// the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
+// slower.
+#define TIMESCALE 1
+RTC.PER = 0x20 / TIMESCALE; /* Period: 0x20 */
 
 
 /*
@@ -32,6 +39,7 @@
 // If the potential is above this value, the neuron fires
 #define THRESHOLD_POTENTIAL 25
 
+// This is how much the potential changes when we press the button
 #define BUTTON_PRESS_REACTION 26
 
 // After the axon has fired, the potential changes by this amount
@@ -57,7 +65,7 @@
 
 /*
 Signal threshold definitions
-When a Dendriteite reads the ADC, what values (between 0 and 255) correspond to the different signals?
+When a Dendriteite reads the ADC, these values (between 0 and 255) decide what correspond to the different signals.
 
 See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Software
 */
@@ -71,7 +79,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 /*
 Signal reaction definitions
-When a Dendriteite receives a signal, how does the potential in the neuron change?
+When a Dendriteite receives a signal, these values describe how the potential in the neuron changes.
 */
 #define NO_SIGNAL_REACTION 0
 #define HIGH_EXCITE_REACTION 52
@@ -97,18 +105,18 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 */
 
 // Number of Dendriteites
-// NB! Chancing this will also require you to change "Dendriteite_ports" in tinyDendriteite.c
-#define TINYDendriteITE_COUNT 5
+// NB! Chancing this will also require you to change the "Dendriteite_ports" array in tinyDendriteite.c
+#define TINYDENDRITEITE_COUNT 5
 
 /*
 Dendriteite SW component signals
 See PINMUX CONFIGURATOR in Atmel Start. (You can find this by right-clicking the 
 project file "Building_Brains_V4" in the Solution Explorer, and selecting Re-Configure Atmel Start Project)
 */
-#define DendriteITE_PORT_1 7
-#define DendriteITE_PORT_2 5
-#define DendriteITE_PORT_3 9
-#define DendriteITE_PORT_4 11
-#define DendriteITE_PORT_5 10
+#define DENDRITEITE_PORT_1 7
+#define DENDRITEITE_PORT_2 5
+#define DENDRITEITE_PORT_3 9
+#define DENDRITEITE_PORT_4 11
+#define DENDRITEITE_PORT_5 10
 
 #endif /* SETTINGS_H_ */

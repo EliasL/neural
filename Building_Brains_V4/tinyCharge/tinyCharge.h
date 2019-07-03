@@ -15,4 +15,6 @@ _Bool tinyCharge_is_charging();
 
 void tinyCharge_set_charging(_Bool charging_status);
 
+void tinyCharge_set_transistors();
+
 #endif /* TINYCHARGE_H_ */

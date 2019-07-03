@@ -15,6 +15,10 @@ Notes for future development
 
 If you ever need to re-create or re-configure the project with the atmel start thing, and you overwrite all the files
 you need to comment out, or remove the code in driver_isr.c in order to avoid creating multiple definitions of __vector_6
+
+The user labels for the dendrites (DENn_PIN) are shortened from DENDRITEn_PIN. Having the longer name resulted in a segmentation error,
+probably due to a lac of memory in the MC (Micro Chip). Keep this in mind if you get a segmentation error. 
+
 */
 
 
@@ -38,10 +42,9 @@ int main(void)
 	uint16_t time_passed = 0;
 	uint16_t volatile cycles=0;
 	
-	tinyDendriteite_set_neuron_type(NEURONTYPE);
-	
 	while (1)
 	{
+		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
 		if(tinyISR_getflag())
 		{
 			// update cycle time
@@ -56,12 +59,10 @@ int main(void)
 				
 				// Update led
 				
-				// Switch transistors
 				
 			}
 			else{
-				// Main loop
-				
+				// Main loop				
 				tinyButton_update();
 				
 				time_passed = current_cycle_time - previous_cycle_time;
@@ -70,6 +71,10 @@ int main(void)
 			
 			
 			
+			// Switch transistors
+			tinyCharge_set_transistors();
+			
+			// Prepare for next cycle
 			previous_cycle_time = current_cycle_time;
 			cycles++;
 			tinyISR_setflag(false);

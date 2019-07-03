@@ -20,7 +20,6 @@ Initiates variables for neuron type, axon firing constants etc.
 _Bool tinyAxon_has_fired = false;
 _Bool tinyAxon_should_fire = false;
 
-_Bool this_neurons_type = EXCITATORY_NEURON;
 uint8_t pulses_in_queue = 0; //variable to determine how many pulses are in queue.
 
 /*
@@ -35,24 +34,18 @@ uint32_t next_pulse;
 uint8_t axonOutputValue = 0; // This variable is only used for debugging
 
 
-//sets neuron type
-void tinyDendriteite_set_neuron_type(enum NeuronType neuron_type)
-{
-	this_neurons_type = neuron_type;
-}
-
 /*
 Pulse send function.
 sends a pulse dependent on the neurons type.
 */
 static void tinyAxon_start_sending_pulse()
 {
-	if (this_neurons_type == EXCITATORY_NEURON)
+	if (NEURONTYPE == EXCITATORY_NEURON)
 	{
 		DAC_set_output(EXCITATORY_NEURON_OUTPUT);
 		axonOutputValue=EXCITATORY_NEURON_OUTPUT;
 	}
-	else if(this_neurons_type == INHIBITORY_NEURON)
+	else if(NEURONTYPE == INHIBITORY_NEURON)
 	{
 		DAC_set_output(INHIBITORY_NEURON_OUTPUT);
 		axonOutputValue=INHIBITORY_NEURON_OUTPUT;

@@ -410,29 +410,29 @@ pads:
     mode: Digital output
     user_label: PA4
     configuration: null
-  Dendrite_2:
+  DEN2_PIN:
     name: PA5
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA5
     mode: Analog
-    user_label: Dendrite_2
+    user_label: DEN2_PIN
     configuration: null
-  Axon:
+  AXON_PIN:
     name: PA6
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA6
     mode: Analog
-    user_label: Axon
+    user_label: AXON_PIN
     configuration: null
-  Dendrite_1:
+  DEN1_PIN:
     name: PA7
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PA7
     mode: Analog
-    user_label: Dendrite_1
+    user_label: DEN1_PIN
     configuration: null
-  ChartingStatus:
+  CHARGING_STATUS_PIN:
     name: PB7
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB7
     mode: Digital input
-    user_label: ChartingStatus
+    user_label: CHARGING_STATUS_PIN
     configuration: null
   PB5:
     name: PB5
@@ -440,42 +440,42 @@ pads:
     mode: Digital output
     user_label: PB5
     configuration: null
-  Dendrite_3:
+  DEN3_PIN:
     name: PB4
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB4
     mode: Analog
-    user_label: Dendrite_3
+    user_label: DEN3_PIN
     configuration: null
-  Dendrite_5:
+  DEN5_PIN:
     name: PB1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB1
     mode: Analog
-    user_label: Dendrite_5
+    user_label: DEN5_PIN
     configuration: null
-  Dendrite_4:
+  DEN4_PIN:
     name: PB0
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB0
     mode: Analog
-    user_label: Dendrite_4
+    user_label: DEN4_PIN
     configuration: null
-  Led:
+  LED_PIN:
     name: PC1
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PC1
     mode: Digital output
-    user_label: Led
+    user_label: LED_PIN
     configuration: null
-  Button:
+  BUTTON_PIN:
     name: PC2
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PC2
     mode: Digital input
-    user_label: Button
+    user_label: BUTTON_PIN
     configuration:
       pad_pull_config: Pull-up
-  ChargeMode:
+  CHARGING_SWITCHES_PIN:
     name: PC5
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PC5
     mode: Digital output
-    user_label: ChargeMode
+    user_label: CHARGING_SWITCHES_PIN
     configuration:
       pad_initial_level: High
   PA1:

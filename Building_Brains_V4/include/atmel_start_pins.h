@@ -383,20 +383,20 @@ static inline bool PA4_get_level()
 }
 
 /**
- * \brief Set Dendrite_2 pull mode
+ * \brief Set DEN2_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Dendrite_2_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void DEN2_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTA_set_pin_pull_mode(5, pull_mode);
 }
 
 /**
- * \brief Set Dendrite_2 data direction
+ * \brief Set DEN2_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -406,15 +406,15 @@ static inline void Dendrite_2_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Dendrite_2_set_dir(const enum port_dir dir)
+static inline void DEN2_PIN_set_dir(const enum port_dir dir)
 {
 	PORTA_set_pin_dir(5, dir);
 }
 
 /**
- * \brief Set Dendrite_2 input/sense configuration
+ * \brief Set DEN2_PIN input/sense configuration
  *
- * Enable/disable Dendrite_2 digital input buffer and pin change interrupt,
+ * Enable/disable DEN2_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -424,72 +424,72 @@ static inline void Dendrite_2_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Dendrite_2_set_isc(const PORT_ISC_t isc)
+static inline void DEN2_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTA_pin_set_isc(5, isc);
 }
 
 /**
- * \brief Set Dendrite_2 inverted mode
+ * \brief Set DEN2_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Dendrite_2 is inverted
- *                     false = I/O on Dendrite_2 is not inverted
+ * \param[in] inverted true  = I/O on DEN2_PIN is inverted
+ *                     false = I/O on DEN2_PIN is not inverted
  */
-static inline void Dendrite_2_set_inverted(const bool inverted)
+static inline void DEN2_PIN_set_inverted(const bool inverted)
 {
 	PORTA_pin_set_inverted(5, inverted);
 }
 
 /**
- * \brief Set Dendrite_2 level
+ * \brief Set DEN2_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Dendrite_2_set_level(const bool level)
+static inline void DEN2_PIN_set_level(const bool level)
 {
 	PORTA_set_pin_level(5, level);
 }
 
 /**
- * \brief Toggle output level on Dendrite_2
+ * \brief Toggle output level on DEN2_PIN
  *
  * Toggle the pin level
  */
-static inline void Dendrite_2_toggle_level()
+static inline void DEN2_PIN_toggle_level()
 {
 	PORTA_toggle_pin_level(5);
 }
 
 /**
- * \brief Get level on Dendrite_2
+ * \brief Get level on DEN2_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Dendrite_2_get_level()
+static inline bool DEN2_PIN_get_level()
 {
 	return PORTA_get_pin_level(5);
 }
 
 /**
- * \brief Set Axon pull mode
+ * \brief Set AXON_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Axon_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void AXON_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTA_set_pin_pull_mode(6, pull_mode);
 }
 
 /**
- * \brief Set Axon data direction
+ * \brief Set AXON_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -499,15 +499,15 @@ static inline void Axon_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Axon_set_dir(const enum port_dir dir)
+static inline void AXON_PIN_set_dir(const enum port_dir dir)
 {
 	PORTA_set_pin_dir(6, dir);
 }
 
 /**
- * \brief Set Axon input/sense configuration
+ * \brief Set AXON_PIN input/sense configuration
  *
- * Enable/disable Axon digital input buffer and pin change interrupt,
+ * Enable/disable AXON_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -517,72 +517,72 @@ static inline void Axon_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Axon_set_isc(const PORT_ISC_t isc)
+static inline void AXON_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTA_pin_set_isc(6, isc);
 }
 
 /**
- * \brief Set Axon inverted mode
+ * \brief Set AXON_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Axon is inverted
- *                     false = I/O on Axon is not inverted
+ * \param[in] inverted true  = I/O on AXON_PIN is inverted
+ *                     false = I/O on AXON_PIN is not inverted
  */
-static inline void Axon_set_inverted(const bool inverted)
+static inline void AXON_PIN_set_inverted(const bool inverted)
 {
 	PORTA_pin_set_inverted(6, inverted);
 }
 
 /**
- * \brief Set Axon level
+ * \brief Set AXON_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Axon_set_level(const bool level)
+static inline void AXON_PIN_set_level(const bool level)
 {
 	PORTA_set_pin_level(6, level);
 }
 
 /**
- * \brief Toggle output level on Axon
+ * \brief Toggle output level on AXON_PIN
  *
  * Toggle the pin level
  */
-static inline void Axon_toggle_level()
+static inline void AXON_PIN_toggle_level()
 {
 	PORTA_toggle_pin_level(6);
 }
 
 /**
- * \brief Get level on Axon
+ * \brief Get level on AXON_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Axon_get_level()
+static inline bool AXON_PIN_get_level()
 {
 	return PORTA_get_pin_level(6);
 }
 
 /**
- * \brief Set Dendrite_1 pull mode
+ * \brief Set DEN1_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Dendrite_1_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void DEN1_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTA_set_pin_pull_mode(7, pull_mode);
 }
 
 /**
- * \brief Set Dendrite_1 data direction
+ * \brief Set DEN1_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -592,15 +592,15 @@ static inline void Dendrite_1_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Dendrite_1_set_dir(const enum port_dir dir)
+static inline void DEN1_PIN_set_dir(const enum port_dir dir)
 {
 	PORTA_set_pin_dir(7, dir);
 }
 
 /**
- * \brief Set Dendrite_1 input/sense configuration
+ * \brief Set DEN1_PIN input/sense configuration
  *
- * Enable/disable Dendrite_1 digital input buffer and pin change interrupt,
+ * Enable/disable DEN1_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -610,72 +610,72 @@ static inline void Dendrite_1_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Dendrite_1_set_isc(const PORT_ISC_t isc)
+static inline void DEN1_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTA_pin_set_isc(7, isc);
 }
 
 /**
- * \brief Set Dendrite_1 inverted mode
+ * \brief Set DEN1_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Dendrite_1 is inverted
- *                     false = I/O on Dendrite_1 is not inverted
+ * \param[in] inverted true  = I/O on DEN1_PIN is inverted
+ *                     false = I/O on DEN1_PIN is not inverted
  */
-static inline void Dendrite_1_set_inverted(const bool inverted)
+static inline void DEN1_PIN_set_inverted(const bool inverted)
 {
 	PORTA_pin_set_inverted(7, inverted);
 }
 
 /**
- * \brief Set Dendrite_1 level
+ * \brief Set DEN1_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Dendrite_1_set_level(const bool level)
+static inline void DEN1_PIN_set_level(const bool level)
 {
 	PORTA_set_pin_level(7, level);
 }
 
 /**
- * \brief Toggle output level on Dendrite_1
+ * \brief Toggle output level on DEN1_PIN
  *
  * Toggle the pin level
  */
-static inline void Dendrite_1_toggle_level()
+static inline void DEN1_PIN_toggle_level()
 {
 	PORTA_toggle_pin_level(7);
 }
 
 /**
- * \brief Get level on Dendrite_1
+ * \brief Get level on DEN1_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Dendrite_1_get_level()
+static inline bool DEN1_PIN_get_level()
 {
 	return PORTA_get_pin_level(7);
 }
 
 /**
- * \brief Set Dendrite_4 pull mode
+ * \brief Set DEN4_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Dendrite_4_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void DEN4_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTB_set_pin_pull_mode(0, pull_mode);
 }
 
 /**
- * \brief Set Dendrite_4 data direction
+ * \brief Set DEN4_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -685,15 +685,15 @@ static inline void Dendrite_4_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Dendrite_4_set_dir(const enum port_dir dir)
+static inline void DEN4_PIN_set_dir(const enum port_dir dir)
 {
 	PORTB_set_pin_dir(0, dir);
 }
 
 /**
- * \brief Set Dendrite_4 input/sense configuration
+ * \brief Set DEN4_PIN input/sense configuration
  *
- * Enable/disable Dendrite_4 digital input buffer and pin change interrupt,
+ * Enable/disable DEN4_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -703,72 +703,72 @@ static inline void Dendrite_4_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Dendrite_4_set_isc(const PORT_ISC_t isc)
+static inline void DEN4_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTB_pin_set_isc(0, isc);
 }
 
 /**
- * \brief Set Dendrite_4 inverted mode
+ * \brief Set DEN4_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Dendrite_4 is inverted
- *                     false = I/O on Dendrite_4 is not inverted
+ * \param[in] inverted true  = I/O on DEN4_PIN is inverted
+ *                     false = I/O on DEN4_PIN is not inverted
  */
-static inline void Dendrite_4_set_inverted(const bool inverted)
+static inline void DEN4_PIN_set_inverted(const bool inverted)
 {
 	PORTB_pin_set_inverted(0, inverted);
 }
 
 /**
- * \brief Set Dendrite_4 level
+ * \brief Set DEN4_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Dendrite_4_set_level(const bool level)
+static inline void DEN4_PIN_set_level(const bool level)
 {
 	PORTB_set_pin_level(0, level);
 }
 
 /**
- * \brief Toggle output level on Dendrite_4
+ * \brief Toggle output level on DEN4_PIN
  *
  * Toggle the pin level
  */
-static inline void Dendrite_4_toggle_level()
+static inline void DEN4_PIN_toggle_level()
 {
 	PORTB_toggle_pin_level(0);
 }
 
 /**
- * \brief Get level on Dendrite_4
+ * \brief Get level on DEN4_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Dendrite_4_get_level()
+static inline bool DEN4_PIN_get_level()
 {
 	return PORTB_get_pin_level(0);
 }
 
 /**
- * \brief Set Dendrite_5 pull mode
+ * \brief Set DEN5_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Dendrite_5_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void DEN5_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTB_set_pin_pull_mode(1, pull_mode);
 }
 
 /**
- * \brief Set Dendrite_5 data direction
+ * \brief Set DEN5_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -778,15 +778,15 @@ static inline void Dendrite_5_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Dendrite_5_set_dir(const enum port_dir dir)
+static inline void DEN5_PIN_set_dir(const enum port_dir dir)
 {
 	PORTB_set_pin_dir(1, dir);
 }
 
 /**
- * \brief Set Dendrite_5 input/sense configuration
+ * \brief Set DEN5_PIN input/sense configuration
  *
- * Enable/disable Dendrite_5 digital input buffer and pin change interrupt,
+ * Enable/disable DEN5_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -796,72 +796,72 @@ static inline void Dendrite_5_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Dendrite_5_set_isc(const PORT_ISC_t isc)
+static inline void DEN5_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTB_pin_set_isc(1, isc);
 }
 
 /**
- * \brief Set Dendrite_5 inverted mode
+ * \brief Set DEN5_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Dendrite_5 is inverted
- *                     false = I/O on Dendrite_5 is not inverted
+ * \param[in] inverted true  = I/O on DEN5_PIN is inverted
+ *                     false = I/O on DEN5_PIN is not inverted
  */
-static inline void Dendrite_5_set_inverted(const bool inverted)
+static inline void DEN5_PIN_set_inverted(const bool inverted)
 {
 	PORTB_pin_set_inverted(1, inverted);
 }
 
 /**
- * \brief Set Dendrite_5 level
+ * \brief Set DEN5_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Dendrite_5_set_level(const bool level)
+static inline void DEN5_PIN_set_level(const bool level)
 {
 	PORTB_set_pin_level(1, level);
 }
 
 /**
- * \brief Toggle output level on Dendrite_5
+ * \brief Toggle output level on DEN5_PIN
  *
  * Toggle the pin level
  */
-static inline void Dendrite_5_toggle_level()
+static inline void DEN5_PIN_toggle_level()
 {
 	PORTB_toggle_pin_level(1);
 }
 
 /**
- * \brief Get level on Dendrite_5
+ * \brief Get level on DEN5_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Dendrite_5_get_level()
+static inline bool DEN5_PIN_get_level()
 {
 	return PORTB_get_pin_level(1);
 }
 
 /**
- * \brief Set Dendrite_3 pull mode
+ * \brief Set DEN3_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Dendrite_3_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void DEN3_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTB_set_pin_pull_mode(4, pull_mode);
 }
 
 /**
- * \brief Set Dendrite_3 data direction
+ * \brief Set DEN3_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -871,15 +871,15 @@ static inline void Dendrite_3_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Dendrite_3_set_dir(const enum port_dir dir)
+static inline void DEN3_PIN_set_dir(const enum port_dir dir)
 {
 	PORTB_set_pin_dir(4, dir);
 }
 
 /**
- * \brief Set Dendrite_3 input/sense configuration
+ * \brief Set DEN3_PIN input/sense configuration
  *
- * Enable/disable Dendrite_3 digital input buffer and pin change interrupt,
+ * Enable/disable DEN3_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -889,53 +889,53 @@ static inline void Dendrite_3_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Dendrite_3_set_isc(const PORT_ISC_t isc)
+static inline void DEN3_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTB_pin_set_isc(4, isc);
 }
 
 /**
- * \brief Set Dendrite_3 inverted mode
+ * \brief Set DEN3_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Dendrite_3 is inverted
- *                     false = I/O on Dendrite_3 is not inverted
+ * \param[in] inverted true  = I/O on DEN3_PIN is inverted
+ *                     false = I/O on DEN3_PIN is not inverted
  */
-static inline void Dendrite_3_set_inverted(const bool inverted)
+static inline void DEN3_PIN_set_inverted(const bool inverted)
 {
 	PORTB_pin_set_inverted(4, inverted);
 }
 
 /**
- * \brief Set Dendrite_3 level
+ * \brief Set DEN3_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Dendrite_3_set_level(const bool level)
+static inline void DEN3_PIN_set_level(const bool level)
 {
 	PORTB_set_pin_level(4, level);
 }
 
 /**
- * \brief Toggle output level on Dendrite_3
+ * \brief Toggle output level on DEN3_PIN
  *
  * Toggle the pin level
  */
-static inline void Dendrite_3_toggle_level()
+static inline void DEN3_PIN_toggle_level()
 {
 	PORTB_toggle_pin_level(4);
 }
 
 /**
- * \brief Get level on Dendrite_3
+ * \brief Get level on DEN3_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Dendrite_3_get_level()
+static inline bool DEN3_PIN_get_level()
 {
 	return PORTB_get_pin_level(4);
 }
@@ -1034,20 +1034,20 @@ static inline bool PB5_get_level()
 }
 
 /**
- * \brief Set ChartingStatus pull mode
+ * \brief Set CHARGING_STATUS_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void ChartingStatus_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void CHARGING_STATUS_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTB_set_pin_pull_mode(7, pull_mode);
 }
 
 /**
- * \brief Set ChartingStatus data direction
+ * \brief Set CHARGING_STATUS_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -1057,15 +1057,15 @@ static inline void ChartingStatus_set_pull_mode(const enum port_pull_mode pull_m
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void ChartingStatus_set_dir(const enum port_dir dir)
+static inline void CHARGING_STATUS_PIN_set_dir(const enum port_dir dir)
 {
 	PORTB_set_pin_dir(7, dir);
 }
 
 /**
- * \brief Set ChartingStatus input/sense configuration
+ * \brief Set CHARGING_STATUS_PIN input/sense configuration
  *
- * Enable/disable ChartingStatus digital input buffer and pin change interrupt,
+ * Enable/disable CHARGING_STATUS_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -1075,72 +1075,72 @@ static inline void ChartingStatus_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void ChartingStatus_set_isc(const PORT_ISC_t isc)
+static inline void CHARGING_STATUS_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTB_pin_set_isc(7, isc);
 }
 
 /**
- * \brief Set ChartingStatus inverted mode
+ * \brief Set CHARGING_STATUS_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on ChartingStatus is inverted
- *                     false = I/O on ChartingStatus is not inverted
+ * \param[in] inverted true  = I/O on CHARGING_STATUS_PIN is inverted
+ *                     false = I/O on CHARGING_STATUS_PIN is not inverted
  */
-static inline void ChartingStatus_set_inverted(const bool inverted)
+static inline void CHARGING_STATUS_PIN_set_inverted(const bool inverted)
 {
 	PORTB_pin_set_inverted(7, inverted);
 }
 
 /**
- * \brief Set ChartingStatus level
+ * \brief Set CHARGING_STATUS_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void ChartingStatus_set_level(const bool level)
+static inline void CHARGING_STATUS_PIN_set_level(const bool level)
 {
 	PORTB_set_pin_level(7, level);
 }
 
 /**
- * \brief Toggle output level on ChartingStatus
+ * \brief Toggle output level on CHARGING_STATUS_PIN
  *
  * Toggle the pin level
  */
-static inline void ChartingStatus_toggle_level()
+static inline void CHARGING_STATUS_PIN_toggle_level()
 {
 	PORTB_toggle_pin_level(7);
 }
 
 /**
- * \brief Get level on ChartingStatus
+ * \brief Get level on CHARGING_STATUS_PIN
  *
  * Reads the level on a pin
  */
-static inline bool ChartingStatus_get_level()
+static inline bool CHARGING_STATUS_PIN_get_level()
 {
 	return PORTB_get_pin_level(7);
 }
 
 /**
- * \brief Set Led pull mode
+ * \brief Set LED_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Led_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void LED_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTC_set_pin_pull_mode(1, pull_mode);
 }
 
 /**
- * \brief Set Led data direction
+ * \brief Set LED_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -1150,15 +1150,15 @@ static inline void Led_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Led_set_dir(const enum port_dir dir)
+static inline void LED_PIN_set_dir(const enum port_dir dir)
 {
 	PORTC_set_pin_dir(1, dir);
 }
 
 /**
- * \brief Set Led input/sense configuration
+ * \brief Set LED_PIN input/sense configuration
  *
- * Enable/disable Led digital input buffer and pin change interrupt,
+ * Enable/disable LED_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -1168,72 +1168,72 @@ static inline void Led_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Led_set_isc(const PORT_ISC_t isc)
+static inline void LED_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTC_pin_set_isc(1, isc);
 }
 
 /**
- * \brief Set Led inverted mode
+ * \brief Set LED_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Led is inverted
- *                     false = I/O on Led is not inverted
+ * \param[in] inverted true  = I/O on LED_PIN is inverted
+ *                     false = I/O on LED_PIN is not inverted
  */
-static inline void Led_set_inverted(const bool inverted)
+static inline void LED_PIN_set_inverted(const bool inverted)
 {
 	PORTC_pin_set_inverted(1, inverted);
 }
 
 /**
- * \brief Set Led level
+ * \brief Set LED_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Led_set_level(const bool level)
+static inline void LED_PIN_set_level(const bool level)
 {
 	PORTC_set_pin_level(1, level);
 }
 
 /**
- * \brief Toggle output level on Led
+ * \brief Toggle output level on LED_PIN
  *
  * Toggle the pin level
  */
-static inline void Led_toggle_level()
+static inline void LED_PIN_toggle_level()
 {
 	PORTC_toggle_pin_level(1);
 }
 
 /**
- * \brief Get level on Led
+ * \brief Get level on LED_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Led_get_level()
+static inline bool LED_PIN_get_level()
 {
 	return PORTC_get_pin_level(1);
 }
 
 /**
- * \brief Set Button pull mode
+ * \brief Set BUTTON_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void Button_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void BUTTON_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTC_set_pin_pull_mode(2, pull_mode);
 }
 
 /**
- * \brief Set Button data direction
+ * \brief Set BUTTON_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -1243,15 +1243,15 @@ static inline void Button_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void Button_set_dir(const enum port_dir dir)
+static inline void BUTTON_PIN_set_dir(const enum port_dir dir)
 {
 	PORTC_set_pin_dir(2, dir);
 }
 
 /**
- * \brief Set Button input/sense configuration
+ * \brief Set BUTTON_PIN input/sense configuration
  *
- * Enable/disable Button digital input buffer and pin change interrupt,
+ * Enable/disable BUTTON_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -1261,72 +1261,72 @@ static inline void Button_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void Button_set_isc(const PORT_ISC_t isc)
+static inline void BUTTON_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTC_pin_set_isc(2, isc);
 }
 
 /**
- * \brief Set Button inverted mode
+ * \brief Set BUTTON_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on Button is inverted
- *                     false = I/O on Button is not inverted
+ * \param[in] inverted true  = I/O on BUTTON_PIN is inverted
+ *                     false = I/O on BUTTON_PIN is not inverted
  */
-static inline void Button_set_inverted(const bool inverted)
+static inline void BUTTON_PIN_set_inverted(const bool inverted)
 {
 	PORTC_pin_set_inverted(2, inverted);
 }
 
 /**
- * \brief Set Button level
+ * \brief Set BUTTON_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void Button_set_level(const bool level)
+static inline void BUTTON_PIN_set_level(const bool level)
 {
 	PORTC_set_pin_level(2, level);
 }
 
 /**
- * \brief Toggle output level on Button
+ * \brief Toggle output level on BUTTON_PIN
  *
  * Toggle the pin level
  */
-static inline void Button_toggle_level()
+static inline void BUTTON_PIN_toggle_level()
 {
 	PORTC_toggle_pin_level(2);
 }
 
 /**
- * \brief Get level on Button
+ * \brief Get level on BUTTON_PIN
  *
  * Reads the level on a pin
  */
-static inline bool Button_get_level()
+static inline bool BUTTON_PIN_get_level()
 {
 	return PORTC_get_pin_level(2);
 }
 
 /**
- * \brief Set ChargeMode pull mode
+ * \brief Set CHARGING_SWITCHES_PIN pull mode
  *
  * Configure pin to pull up, down or disable pull mode, supported pull
  * modes are defined by device used
  *
  * \param[in] pull_mode Pin pull mode
  */
-static inline void ChargeMode_set_pull_mode(const enum port_pull_mode pull_mode)
+static inline void CHARGING_SWITCHES_PIN_set_pull_mode(const enum port_pull_mode pull_mode)
 {
 	PORTC_set_pin_pull_mode(5, pull_mode);
 }
 
 /**
- * \brief Set ChargeMode data direction
+ * \brief Set CHARGING_SWITCHES_PIN data direction
  *
  * Select if the pin data direction is input, output or disabled.
  * If disabled state is not possible, this function throws an assert.
@@ -1336,15 +1336,15 @@ static inline void ChargeMode_set_pull_mode(const enum port_pull_mode pull_mode)
  *                      PORT_DIR_OFF = Disables the pin
  *                      (low power state)
  */
-static inline void ChargeMode_set_dir(const enum port_dir dir)
+static inline void CHARGING_SWITCHES_PIN_set_dir(const enum port_dir dir)
 {
 	PORTC_set_pin_dir(5, dir);
 }
 
 /**
- * \brief Set ChargeMode input/sense configuration
+ * \brief Set CHARGING_SWITCHES_PIN input/sense configuration
  *
- * Enable/disable ChargeMode digital input buffer and pin change interrupt,
+ * Enable/disable CHARGING_SWITCHES_PIN digital input buffer and pin change interrupt,
  * select pin interrupt edge/level sensing mode
  *
  * \param[in] isc PORT_ISC_INTDISABLE_gc    = Iterrupt disabled but input buffer enabled
@@ -1354,53 +1354,53 @@ static inline void ChargeMode_set_dir(const enum port_dir dir)
  *                PORT_ISC_INPUT_DISABLE_gc = Digital Input Buffer disabled
  *                PORT_ISC_LEVEL_gc         = Sense low Level
  */
-static inline void ChargeMode_set_isc(const PORT_ISC_t isc)
+static inline void CHARGING_SWITCHES_PIN_set_isc(const PORT_ISC_t isc)
 {
 	PORTC_pin_set_isc(5, isc);
 }
 
 /**
- * \brief Set ChargeMode inverted mode
+ * \brief Set CHARGING_SWITCHES_PIN inverted mode
  *
  * Enable or disable inverted I/O on a pin
  *
- * \param[in] inverted true  = I/O on ChargeMode is inverted
- *                     false = I/O on ChargeMode is not inverted
+ * \param[in] inverted true  = I/O on CHARGING_SWITCHES_PIN is inverted
+ *                     false = I/O on CHARGING_SWITCHES_PIN is not inverted
  */
-static inline void ChargeMode_set_inverted(const bool inverted)
+static inline void CHARGING_SWITCHES_PIN_set_inverted(const bool inverted)
 {
 	PORTC_pin_set_inverted(5, inverted);
 }
 
 /**
- * \brief Set ChargeMode level
+ * \brief Set CHARGING_SWITCHES_PIN level
  *
  * Sets output level on a pin
  *
  * \param[in] level true  = Pin level set to "high" state
  *                  false = Pin level set to "low" state
  */
-static inline void ChargeMode_set_level(const bool level)
+static inline void CHARGING_SWITCHES_PIN_set_level(const bool level)
 {
 	PORTC_set_pin_level(5, level);
 }
 
 /**
- * \brief Toggle output level on ChargeMode
+ * \brief Toggle output level on CHARGING_SWITCHES_PIN
  *
  * Toggle the pin level
  */
-static inline void ChargeMode_toggle_level()
+static inline void CHARGING_SWITCHES_PIN_toggle_level()
 {
 	PORTC_toggle_pin_level(5);
 }
 
 /**
- * \brief Get level on ChargeMode
+ * \brief Get level on CHARGING_SWITCHES_PIN
  *
  * Reads the level on a pin
  */
-static inline bool ChargeMode_get_level()
+static inline bool CHARGING_SWITCHES_PIN_get_level()
 {
 	return PORTC_get_pin_level(5);
 }

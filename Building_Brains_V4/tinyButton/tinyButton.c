@@ -27,7 +27,7 @@ If the button is held down for longer than PULSEMODE_BUTTON_PRESS_TIME, we toggl
 void tinyButton_update(void)
 {
 	button_press = false;
-	_Bool button_is_pushed_down = !Button_get_level(); // The digital port will be read as low if the button is pushed down.
+	_Bool button_is_pushed_down = !BUTTON_PIN_get_level(); // The digital port will be read as low if the button is pushed down.
 
 	if (button_is_pushed_down && !button_was_pushed_down)
 	{

@@ -41,29 +41,29 @@ void ADC_initialization(void)
 {
 
 	// Disable digital input buffer
-	Dendrite_2_set_isc(PORT_ISC_INPUT_DISABLE_gc);
+	DEN2_PIN_set_isc(PORT_ISC_INPUT_DISABLE_gc);
 	// Disable pull-up resistor
-	Dendrite_2_set_pull_mode(PORT_PULL_OFF);
+	DEN2_PIN_set_pull_mode(PORT_PULL_OFF);
 
 	// Disable digital input buffer
-	Dendrite_1_set_isc(PORT_ISC_INPUT_DISABLE_gc);
+	DEN1_PIN_set_isc(PORT_ISC_INPUT_DISABLE_gc);
 	// Disable pull-up resistor
-	Dendrite_1_set_pull_mode(PORT_PULL_OFF);
+	DEN1_PIN_set_pull_mode(PORT_PULL_OFF);
 
 	// Disable digital input buffer
-	Dendrite_3_set_isc(PORT_ISC_INPUT_DISABLE_gc);
+	DEN3_PIN_set_isc(PORT_ISC_INPUT_DISABLE_gc);
 	// Disable pull-up resistor
-	Dendrite_3_set_pull_mode(PORT_PULL_OFF);
+	DEN3_PIN_set_pull_mode(PORT_PULL_OFF);
 
 	// Disable digital input buffer
-	Dendrite_5_set_isc(PORT_ISC_INPUT_DISABLE_gc);
+	DEN5_PIN_set_isc(PORT_ISC_INPUT_DISABLE_gc);
 	// Disable pull-up resistor
-	Dendrite_5_set_pull_mode(PORT_PULL_OFF);
+	DEN5_PIN_set_pull_mode(PORT_PULL_OFF);
 
 	// Disable digital input buffer
-	Dendrite_4_set_isc(PORT_ISC_INPUT_DISABLE_gc);
+	DEN4_PIN_set_isc(PORT_ISC_INPUT_DISABLE_gc);
 	// Disable pull-up resistor
-	Dendrite_4_set_pull_mode(PORT_PULL_OFF);
+	DEN4_PIN_set_pull_mode(PORT_PULL_OFF);
 
 	ADC_init();
 }
@@ -92,9 +92,9 @@ void DIGGSIGG_initialization(void)
 {
 
 	// Set pin direction to output
-	Led_set_dir(PORT_DIR_OUT);
+	LED_PIN_set_dir(PORT_DIR_OUT);
 
-	Led_set_level(
+	LED_PIN_set_level(
 	    // <y> Initial level
 	    // <id> pad_initial_level
 	    // <false"> Low
@@ -159,9 +159,9 @@ void DAC_initialization(void)
 {
 
 	// Disable digital input buffer
-	Axon_set_isc(PORT_ISC_INPUT_DISABLE_gc);
+	AXON_PIN_set_isc(PORT_ISC_INPUT_DISABLE_gc);
 	// Disable pull-up resistor
-	Axon_set_pull_mode(PORT_PULL_OFF);
+	AXON_PIN_set_pull_mode(PORT_PULL_OFF);
 
 	DAC_init();
 }
@@ -176,9 +176,9 @@ void system_init()
 	/* PORT setting on PB7 */
 
 	// Set pin direction to input
-	ChartingStatus_set_dir(PORT_DIR_IN);
+	CHARGING_STATUS_PIN_set_dir(PORT_DIR_IN);
 
-	ChartingStatus_set_pull_mode(
+	CHARGING_STATUS_PIN_set_pull_mode(
 	    // <y> Pull configuration
 	    // <id> pad_pull_config
 	    // <PORT_PULL_OFF"> Off
@@ -188,9 +188,9 @@ void system_init()
 	/* PORT setting on PC2 */
 
 	// Set pin direction to input
-	Button_set_dir(PORT_DIR_IN);
+	BUTTON_PIN_set_dir(PORT_DIR_IN);
 
-	Button_set_pull_mode(
+	BUTTON_PIN_set_pull_mode(
 	    // <y> Pull configuration
 	    // <id> pad_pull_config
 	    // <PORT_PULL_OFF"> Off
@@ -200,9 +200,9 @@ void system_init()
 	/* PORT setting on PC5 */
 
 	// Set pin direction to output
-	ChargeMode_set_dir(PORT_DIR_OUT);
+	CHARGING_SWITCHES_PIN_set_dir(PORT_DIR_OUT);
 
-	ChargeMode_set_level(
+	CHARGING_SWITCHES_PIN_set_level(
 	    // <y> Initial level
 	    // <id> pad_initial_level
 	    // <false"> Low

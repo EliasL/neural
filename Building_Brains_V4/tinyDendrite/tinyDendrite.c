@@ -16,11 +16,11 @@ enum DendriteiteSignal
 	NO_SIGNAL, LOW_INHIB, NORMAL_INHIB, HIGH_INHIB, LOW_EXCITE, NORMAL_EXCITE, HIGH_EXCITE, CHARGING
 };
 
-uint16_t tinyDendriteite_values[TINYDendriteITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
-uint8_t Dendriteite_ports[TINYDendriteITE_COUNT] = {DendriteITE_PORT_1, DendriteITE_PORT_2, DendriteITE_PORT_3, DendriteITE_PORT_4, DendriteITE_PORT_5}; // Ports used on the ADC MUX
+uint16_t tinyDendriteite_values[TINYDENDRITEITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
+uint8_t Dendriteite_ports[TINYDENDRITEITE_COUNT] = {DENDRITEITE_PORT_1, DENDRITEITE_PORT_2, DENDRITEITE_PORT_3, DENDRITEITE_PORT_4, DENDRITEITE_PORT_5}; // Ports used on the ADC MUX
 	
-enum DendriteiteSignal tinyDendriteite_current_signals[TINYDendriteITE_COUNT] = {NO_SIGNAL};
-enum DendriteiteSignal tinyDendriteite_previous_signals[TINYDendriteITE_COUNT] = {NO_SIGNAL};
+enum DendriteiteSignal tinyDendriteite_current_signals[TINYDENDRITEITE_COUNT] = {NO_SIGNAL};
+enum DendriteiteSignal tinyDendriteite_previous_signals[TINYDENDRITEITE_COUNT] = {NO_SIGNAL};
 
 
 /*
@@ -28,7 +28,7 @@ This function reads the voltage at the Dendriteite inputs with the ADC
 */
 static void tinyDendriteite_read_signals(void)
 {
-	for (int i = 0; i < TINYDendriteITE_COUNT; i++)
+	for (int i = 0; i < TINYDENDRITEITE_COUNT; i++)
 	{
 		tinyDendriteite_values[i] = ADC_get_conversion(Dendriteite_ports[i]);
 	}
@@ -43,7 +43,7 @@ void tinyDendriteite_update_signals(void)
 {
 	tinyCharge_set_charging(false);
 	
-	for (uint8_t i = 0; i < TINYDendriteITE_COUNT; i++)
+	for (uint8_t i = 0; i < TINYDENDRITEITE_COUNT; i++)
 	{
 		tinyDendriteite_previous_signals[i] = tinyDendriteite_current_signals[i];
 		if (tinyDendriteite_values[i] > CHARGING_THRESHOLD)
@@ -100,7 +100,7 @@ int16_t tinyDendriteite_get_potential()
 	tinyDendriteite_update_signals();
 	
 	int16_t return_potential_val = 0;
-	for (int i = 0; i < TINYDendriteITE_COUNT; i++)
+	for (int i = 0; i < TINYDENDRITEITE_COUNT; i++)
 	{
 		switch(tinyDendriteite_current_signals[i])
 		{
