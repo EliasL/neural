@@ -35,6 +35,7 @@
  *@{
  */
 #include <rtc.h>
+#include "settings.h"
 
 /**
  * \brief Initialize rtc interface
@@ -54,7 +55,7 @@ int8_t RTC_init()
 	            | 1 << RTC_RTCEN_bp     /* Enable: enabled */
 	            | 1 << RTC_RUNSTDBY_bp; /* Run In Standby: enabled */
 
-	RTC.PER = 0x20; /* Period: 0x20 */
+	RTC.PER = 0x20 / TIMESCALE; /* Period: 0x20 */
 
 	// RTC.CLKSEL = RTC_CLKSEL_INT32K_gc; /* 32KHz Internal Ultra Low Power Oscillator (OSCULP32K) */
 

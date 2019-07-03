@@ -113,7 +113,7 @@ bool tinyAxon_remove_pulse(void)
 	}
 	
 	// Now we want to check if the pulse is too far away to be affected by the low potential, or close enough that we decide to remove it
-	// (When we say that the pulse is too far away, it refers to the biological process of how the potential spreads from Dendriteites to axon)
+	// (When we say that the pulse is too far away, it refers to the biological process of how the potential spreads from Dendrites to axon)
 	else if((now + UNDO_PERIOD) < pulse_time){
 		// We decided to remove the pulse
 		pulses_in_queue--;

@@ -30,7 +30,6 @@
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower.
 #define TIMESCALE 1
-RTC.PER = 0x20 / TIMESCALE; /* Period: 0x20 */
 
 
 /*
@@ -46,7 +45,7 @@ RTC.PER = 0x20 / TIMESCALE; /* Period: 0x20 */
 // I want to test reducing the potential by -30 instead of -25 to simulate the hyperpolarization
 #define POSTFIRE_POTENTIAL_REACTION -30
 
-// Time for pulse to travel from Dendriteites to axon
+// Time for pulse to travel from Dendrites to axon
 #define TRAVLE_DELAY 100
 
 // Minimum time between pulses
@@ -65,7 +64,7 @@ RTC.PER = 0x20 / TIMESCALE; /* Period: 0x20 */
 
 /*
 Signal threshold definitions
-When a Dendriteite reads the ADC, these values (between 0 and 255) decide what correspond to the different signals.
+When a Dendrite reads the ADC, these values (between 0 and 255) decide what correspond to the different signals.
 
 See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Software
 */
@@ -79,7 +78,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 /*
 Signal reaction definitions
-When a Dendriteite receives a signal, these values describe how the potential in the neuron changes.
+When a Dendrite receives a signal, these values describe how the potential in the neuron changes.
 */
 #define NO_SIGNAL_REACTION 0
 #define HIGH_EXCITE_REACTION 52
@@ -104,19 +103,19 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 			TENCHINCAL DEFINITIONS
 */
 
-// Number of Dendriteites
-// NB! Chancing this will also require you to change the "Dendriteite_ports" array in tinyDendriteite.c
-#define TINYDENDRITEITE_COUNT 5
+// Number of Dendrites
+// NB! Chancing this will also require you to change the "Dendrite_ports" array in tinyDendrite.c
+#define TINYDENDRITE_COUNT 5
 
 /*
-Dendriteite SW component signals
+Dendrite SW component signals
 See PINMUX CONFIGURATOR in Atmel Start. (You can find this by right-clicking the 
 project file "Building_Brains_V4" in the Solution Explorer, and selecting Re-Configure Atmel Start Project)
 */
-#define DENDRITEITE_PORT_1 7
-#define DENDRITEITE_PORT_2 5
-#define DENDRITEITE_PORT_3 9
-#define DENDRITEITE_PORT_4 11
-#define DENDRITEITE_PORT_5 10
+#define DENDRITE_PORT_1 7
+#define DENDRITE_PORT_2 5
+#define DENDRITE_PORT_3 9
+#define DENDRITE_PORT_4 11
+#define DENDRITE_PORT_5 10
 
 #endif /* SETTINGS_H_ */

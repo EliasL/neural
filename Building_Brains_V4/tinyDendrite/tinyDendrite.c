@@ -1,5 +1,5 @@
 /*
- * tinyDendriteites.c
+ * tinyDendrites.c
  *
  * Created: 18.06.2018 13:50:15
  * Authors: Bendik Bogfjellmo, Elias Lundheim
@@ -11,77 +11,81 @@
 #include "tinyCharge/tinyCharge.h"
 
 // Signal types
-enum DendriteiteSignal
+enum DendriteSignal
 {
 	NO_SIGNAL, LOW_INHIB, NORMAL_INHIB, HIGH_INHIB, LOW_EXCITE, NORMAL_EXCITE, HIGH_EXCITE, CHARGING
 };
 
-uint16_t tinyDendriteite_values[TINYDENDRITEITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
-uint8_t Dendriteite_ports[TINYDENDRITEITE_COUNT] = {DENDRITEITE_PORT_1, DENDRITEITE_PORT_2, DENDRITEITE_PORT_3, DENDRITEITE_PORT_4, DENDRITEITE_PORT_5}; // Ports used on the ADC MUX
+uint16_t tinyDendrite_values[TINYDENDRITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
+uint8_t Dendrite_ports[TINYDENDRITE_COUNT] = {DENDRITE_PORT_1, DENDRITE_PORT_2, DENDRITE_PORT_3, DENDRITE_PORT_4, DENDRITE_PORT_5}; // Ports used on the ADC MUX
 	
-enum DendriteiteSignal tinyDendriteite_current_signals[TINYDENDRITEITE_COUNT] = {NO_SIGNAL};
-enum DendriteiteSignal tinyDendriteite_previous_signals[TINYDENDRITEITE_COUNT] = {NO_SIGNAL};
+enum DendriteSignal tinyDendrite_current_signals[TINYDENDRITE_COUNT] = {NO_SIGNAL};
+enum DendriteSignal tinyDendrite_previous_signals[TINYDENDRITE_COUNT] = {NO_SIGNAL};
 
 
 /*
-This function reads the voltage at the Dendriteite inputs with the ADC
+This function reads the voltage at the Dendrite inputs with the ADC
 */
-static void tinyDendriteite_read_signals(void)
+static void tinyDendrite_read_signals(void)
 {
-	for (int i = 0; i < TINYDENDRITEITE_COUNT; i++)
+	for (int i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
-		tinyDendriteite_values[i] = ADC_get_conversion(Dendriteite_ports[i]);
+		tinyDendrite_values[i] = ADC_get_conversion(Dendrite_ports[i]);
 	}
 }
 
 
 /*
-This function converts the 8 bit value from the ADC into one of the signal types defined in DendriteiteSignal
+This function converts the 8 bit value from the ADC into one of the signal types defined in DendriteSignal
 We also update the charging state
 */
-void tinyDendriteite_update_signals(void)
+void tinyDendrite_update_signals(void)
 {
+	
+	//Read the analog voltage values on each of the Dendrites
+	tinyDendrite_read_signals();
+	
 	tinyCharge_set_charging(false);
 	
-	for (uint8_t i = 0; i < TINYDENDRITEITE_COUNT; i++)
+	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
-		tinyDendriteite_previous_signals[i] = tinyDendriteite_current_signals[i];
-		if (tinyDendriteite_values[i] > CHARGING_THRESHOLD)
+		tinyDendrite_previous_signals[i] = tinyDendrite_current_signals[i];
+		if (tinyDendrite_values[i] > CHARGING_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = CHARGING;
+			tinyDendrite_current_signals[i] = CHARGING;
 			tinyCharge_set_charging(true);
 		}
-		else if (tinyDendriteite_values[i] > NORMAL_EXCITE_THRESHOLD)
+		else if (tinyDendrite_values[i] > NORMAL_EXCITE_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = NORMAL_EXCITE;
+			tinyDendrite_current_signals[i] = NORMAL_EXCITE;
 		}
-		else if (tinyDendriteite_values[i] > HIGH_EXCITE_THRESHOLD)
+		else if (tinyDendrite_values[i] > HIGH_EXCITE_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = HIGH_EXCITE;
+			tinyDendrite_current_signals[i] = HIGH_EXCITE;
 		}
-		else if (tinyDendriteite_values[i] > LOW_EXCITE_THRESHOLD)
+		else if (tinyDendrite_values[i] > LOW_EXCITE_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = LOW_EXCITE;
+			tinyDendrite_current_signals[i] = LOW_EXCITE;
 		}
-		else if (tinyDendriteite_values[i] > NORMAL_INHIB_THRESHOLD)
+		else if (tinyDendrite_values[i] > NORMAL_INHIB_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = NORMAL_INHIB;
+			tinyDendrite_current_signals[i] = NORMAL_INHIB;
 		}
-		else if (tinyDendriteite_values[i] > HIGH_INHIB_THRESHOLD)
+		else if (tinyDendrite_values[i] > HIGH_INHIB_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = HIGH_INHIB;
+			tinyDendrite_current_signals[i] = HIGH_INHIB;
 		}
-		else if (tinyDendriteite_values[i] > LOW_INHIB_THRESHOLD)
+		else if (tinyDendrite_values[i] > LOW_INHIB_THRESHOLD)
 		{
-			tinyDendriteite_current_signals[i] = LOW_INHIB;
+			tinyDendrite_current_signals[i] = LOW_INHIB;
 		}
 		else
 		{
-			tinyDendriteite_current_signals[i] = NO_SIGNAL;
+			tinyDendrite_current_signals[i] = NO_SIGNAL;
 		}
-		if (tinyDendriteite_current_signals[i] == tinyDendriteite_previous_signals[i])
+		if (tinyDendrite_current_signals[i] == tinyDendrite_previous_signals[i])
 		{
-			tinyDendriteite_current_signals[i] = NO_SIGNAL;
+			tinyDendrite_current_signals[i] = NO_SIGNAL;
 		}
 	}
 }
@@ -92,17 +96,15 @@ void tinyDendriteite_update_signals(void)
 This is the master function of the module that is callable from
 outside. It uses the previously declared functions to return the potential.
 */
-int16_t tinyDendriteite_get_potential()
+int16_t tinyDendrite_get_potential()
 {
-	//Read the analog voltage values on each of the Dendriteites
-	tinyDendriteite_read_signals();
-	//Convert the digital value to the various signals defined in DendriteiteSignalType
-	tinyDendriteite_update_signals();
+	//Convert the digital value to the various signals defined in DendriteSignalType
+	tinyDendrite_update_signals();
 	
 	int16_t return_potential_val = 0;
-	for (int i = 0; i < TINYDENDRITEITE_COUNT; i++)
+	for (int i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
-		switch(tinyDendriteite_current_signals[i])
+		switch(tinyDendrite_current_signals[i])
 		{
 			case NO_SIGNAL:
 				return_potential_val += NO_SIGNAL_REACTION;
@@ -135,9 +137,9 @@ int16_t tinyDendriteite_get_potential()
 	return return_potential_val;
 }
 
-double tinyDendriteite_update_potential(double potential){
+double tinyDendrite_update_potential(double potential){
 	
-	uint16_t potential_change = tinyDendriteite_get_potential();
+	uint16_t potential_change = tinyDendrite_get_potential();
 	potential += potential_change;
 	return potential;
 }

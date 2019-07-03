@@ -54,8 +54,8 @@ int main(void)
 			if(tinyCharge_is_charging()){
 				// Charge loop
 				
-				// We check the Dendriteites in order to detect if we have stopped charging
-				tinyDendriteite_update_signals();
+				// We check the Dendrites in order to detect if we have stopped charging
+				tinyDendrite_update_signals();
 				
 				// Update led
 				

@@ -17,7 +17,7 @@ src/rtc.d src/rtc.o: ../src/rtc.c ../include/rtc.h ../utils/compiler.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  ../utils/interrupt_avr8.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../utils/utils_assert.h
+ ../utils/utils_assert.h ../settings.h
 
 ../include/rtc.h:
 
@@ -60,3 +60,5 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
 ../utils/utils_assert.h:
+
+../settings.h:

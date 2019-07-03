@@ -37,8 +37,8 @@ void tinyPotential_update(double time_since_last_update)
 	//Some of the potential in the neuron has decayed away
 	tinyPotential_decay(time_since_last_update);
 	
-	// Update potential with values from Dendriteites
-	tinyPotential_potential = tinyDendriteite_update_potential(tinyPotential_potential);
+	// Update potential with values from Dendrites
+	tinyPotential_potential = tinyDendrite_update_potential(tinyPotential_potential);
 	
 	// Update potential from button press
 	tinyPotential_potential = tinyButton_update_potential(tinyPotential_potential);
