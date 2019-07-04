@@ -20,10 +20,11 @@ tinyISR/tinyISR.d tinyISR/tinyISR.o: ../tinyISR/tinyISR.c \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../Config/clock_config.h ../include/port.h ../include/atmel_start_pins.h \
  ../include/clkctrl.h ../include/rtc.h ../utils/utils_assert.h \
- ../include/adc_basic.h ../include/tca.h ../include/ccl.h \
- ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
- ../include/slpctrl.h ../include/bod.h ../tinyISR/tinyISR.h \
- ../tinyTime/tinyTime.h
+ ../include/adc_basic.h ../include/usart_basic.h ../atmel_start.h \
+ ../include/driver_init.h ../include/atmel_start_pins.h ../include/tca.h \
+ ../include/ccl.h ../include/spi.h ../include/dac_basic.h \
+ ../include/cpuint.h ../include/slpctrl.h ../include/bod.h \
+ ../tinyISR/tinyISR.h ../tinyTime/tinyTime.h
 
 ../include/driver_init.h:
 
@@ -78,6 +79,14 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 ../utils/utils_assert.h:
 
 ../include/adc_basic.h:
+
+../include/usart_basic.h:
+
+../atmel_start.h:
+
+../include/driver_init.h:
+
+../include/atmel_start_pins.h:
 
 ../include/tca.h:
 

@@ -47,6 +47,8 @@
 
 #include <adc_basic.h>
 
+#include <usart_basic.h>
+
 #include <interrupt_avr8.h>
 #include <tca.h>
 

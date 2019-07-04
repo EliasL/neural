@@ -9,6 +9,7 @@
 #include "tinyButton/tinyButton.h"
 #include "tinyCharge/tinyCharge.h"
 #include "settings.h"
+#include "tinyDebugger/tinyDebugger.h"
 
 /*
 Notes for future development
@@ -36,20 +37,11 @@ int main(void)
 	*/
 	VREF.CTRLA = VREF_ADC0REFSEL_4V34_gc;
 	
-	
-	uint32_t current_cycle_time = 1;
-	uint32_t previous_cycle_time = 0;
-	uint16_t time_passed = 0;
-	uint16_t volatile cycles=0;
-	
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
 		if(tinyISR_getflag())
-		{
-			// update cycle time
-			current_cycle_time = tinyTime_now();
-			
+		{			
 			
 			if(tinyCharge_is_charging()){
 				// Charge loop
@@ -59,25 +51,21 @@ int main(void)
 				
 				// Update led
 				
-				
 			}
 			else{
 				// Main loop				
 				tinyButton_update();
 				
-				time_passed = current_cycle_time - previous_cycle_time;
-				tinyPotential_update(time_passed);
+				tinyPotential_update();
 			}
-			
 			
 			
 			// Switch transistors
 			tinyCharge_set_transistors();
 			
 			// Prepare for next cycle
-			previous_cycle_time = current_cycle_time;
-			cycles++;
 			tinyISR_setflag(false);
+			tinyDebugger_end_line();
 		 }
 	}
 }

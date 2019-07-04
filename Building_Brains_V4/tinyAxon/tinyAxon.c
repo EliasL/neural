@@ -177,5 +177,9 @@ double tinyAxon_update_potential(double potential)
 	
 	// Here we set the actual output of the DAC (Digital to Analog Converter)
 	tinyAxon_update_pulse_transmitter();
+	
+	tinyDebugger_send_int("Axon output", axonOutputValue);
+	tinyDebugger_send_int("Pulses in queue", pulses_in_queue);
+	
 	return potential;
 }

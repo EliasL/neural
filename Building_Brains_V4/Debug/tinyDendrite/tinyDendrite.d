@@ -21,11 +21,15 @@ tinyDendrite/tinyDendrite.d tinyDendrite/tinyDendrite.o: \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../Config/clock_config.h ../include/port.h ../include/atmel_start_pins.h \
  ../include/clkctrl.h ../include/rtc.h ../utils/utils_assert.h \
- ../include/adc_basic.h ../include/tca.h ../include/ccl.h \
- ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
- ../include/slpctrl.h ../include/bod.h ../include/atmel_start_pins.h \
+ ../include/adc_basic.h ../include/usart_basic.h ../include/tca.h \
+ ../include/ccl.h ../include/spi.h ../include/dac_basic.h \
+ ../include/cpuint.h ../include/slpctrl.h ../include/bod.h \
+ ../include/atmel_start_pins.h \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../tinyDendrite/tinyDendrite.h ../settings.h ../tinyCharge/tinyCharge.h
+ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
+ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
+ ../tinyDendrite/tinyDendrite.h ../settings.h ../tinyCharge/tinyCharge.h \
+ ../tinyDebugger/tinyDebugger.h
 
 ../atmel_start.h:
 
@@ -83,6 +87,8 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 
 ../include/adc_basic.h:
 
+../include/usart_basic.h:
+
 ../include/tca.h:
 
 ../include/ccl.h:
@@ -101,8 +107,14 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 
 d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
+d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
+
+d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
+
 ../tinyDendrite/tinyDendrite.h:
 
 ../settings.h:
 
 ../tinyCharge/tinyCharge.h:
+
+../tinyDebugger/tinyDebugger.h:

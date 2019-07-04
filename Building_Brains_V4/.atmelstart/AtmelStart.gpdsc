@@ -50,6 +50,7 @@
         <file category="doc" condition="ARMCC, GCC, IAR" name="modules/slpctrl/doc/slpctrl.rst"/>
         <file category="doc" condition="ARMCC, GCC, IAR" name="modules/spi/doc/spi.rst"/>
         <file category="doc" condition="ARMCC, GCC, IAR" name="modules/timer/doc/tca.rst"/>
+        <file category="doc" condition="ARMCC, GCC, IAR" name="modules/usart/doc/usart_basic.rst"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="main.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="src/driver_init.c"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="include/driver_init.h"/>
@@ -67,10 +68,14 @@
         <file category="other" condition="ARMCC, GCC, IAR" name="doxygen/spi_init.dox"/>
         <file category="other" condition="ARMCC, GCC, IAR" name="doxygen/system.dox"/>
         <file category="other" condition="ARMCC, GCC, IAR" name="doxygen/timer.dox"/>
+        <file category="other" condition="ARMCC, GCC, IAR" name="doxygen/usart.dox"/>
+        <file category="other" condition="ARMCC, GCC, IAR" name="doxygen/usart_basic.dox"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="examples/include/adc_basic_example.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="examples/include/dac_basic_example.h"/>
+        <file category="header" condition="ARMCC, GCC, IAR" name="examples/include/usart_basic_example.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="examples/src/adc_basic_example.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="examples/src/dac_basic_example.c"/>
+        <file category="source" condition="ARMCC, GCC, IAR" name="examples/src/usart_basic_example.c"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="include/adc_basic.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="include/bod.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="include/ccl.h"/>
@@ -86,6 +91,7 @@
         <file category="header" condition="ARMCC, GCC, IAR" name="include/spi.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="include/system.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="include/tca.h"/>
+        <file category="header" condition="ARMCC, GCC, IAR" name="include/usart_basic.h"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="src/adc_basic.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="src/bod.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="src/ccl.c"/>
@@ -97,6 +103,7 @@
         <file category="source" condition="ARMCC, GCC, IAR" name="src/slpctrl.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="src/spi.c"/>
         <file category="source" condition="ARMCC, GCC, IAR" name="src/tca.c"/>
+        <file category="source" condition="ARMCC, GCC, IAR" name="src/usart_basic.c"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="utils/assembler.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="utils/assembler/gas.h"/>
         <file category="header" condition="ARMCC, GCC, IAR" name="utils/assembler/iar.h"/>

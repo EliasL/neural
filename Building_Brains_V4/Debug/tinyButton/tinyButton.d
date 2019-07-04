@@ -21,11 +21,12 @@ tinyButton/tinyButton.d tinyButton/tinyButton.o: \
  d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  ../Config/clock_config.h ../include/port.h ../include/atmel_start_pins.h \
  ../include/clkctrl.h ../include/rtc.h ../utils/utils_assert.h \
- ../include/adc_basic.h ../include/tca.h ../include/ccl.h \
- ../include/spi.h ../include/dac_basic.h ../include/cpuint.h \
- ../include/slpctrl.h ../include/bod.h ../include/atmel_start_pins.h \
- ../tinyButton/tinyButton.h ../tinyPotential/tinyPotential.h \
- ../tinyTime/tinyTime.h ../tinyPulse/tinyPulse.h ../settings.h
+ ../include/adc_basic.h ../include/usart_basic.h ../include/tca.h \
+ ../include/ccl.h ../include/spi.h ../include/dac_basic.h \
+ ../include/cpuint.h ../include/slpctrl.h ../include/bod.h \
+ ../include/atmel_start_pins.h ../tinyButton/tinyButton.h \
+ ../tinyPotential/tinyPotential.h ../tinyTime/tinyTime.h \
+ ../tinyPulse/tinyPulse.h ../settings.h
 
 ../atmel_start.h:
 
@@ -82,6 +83,8 @@ d:\various_programs\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 ../utils/utils_assert.h:
 
 ../include/adc_basic.h:
+
+../include/usart_basic.h:
 
 ../include/tca.h:
 

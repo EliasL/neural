@@ -61,6 +61,9 @@ SUBDIRS :=  \
 ../modules/spi/doc/ \
 ../modules/timer/ \
 ../modules/timer/doc/ \
+../modules/usart/ \
+../modules/usart/doc/ \
+../tinyDebugger \
 ../tinyCharge \
 ../tinyPulse \
 ../src/ \
@@ -82,6 +85,7 @@ C_SRCS +=  \
 ../driver_isr.c \
 ../examples/src/adc_basic_example.c \
 ../examples/src/dac_basic_example.c \
+../examples/src/usart_basic_example.c \
 ../src/adc_basic.c \
 ../src/bod.c \
 ../src/ccl.c \
@@ -94,7 +98,9 @@ C_SRCS +=  \
 ../src/slpctrl.c \
 ../src/spi.c \
 ../src/tca.c \
+../src/usart_basic.c \
 ../tinyCharge/tinyCharge.c \
+../tinyDebugger/tinyDebugger.c \
 ../tinyPulse/tinyPulse.c \
 ../tinyTime/tinyTime.c \
 ../main.c \
@@ -119,6 +125,7 @@ atmel_start.o \
 driver_isr.o \
 examples/src/adc_basic_example.o \
 examples/src/dac_basic_example.o \
+examples/src/usart_basic_example.o \
 src/adc_basic.o \
 src/bod.o \
 src/ccl.o \
@@ -132,7 +139,9 @@ src/rtc.o \
 src/slpctrl.o \
 src/spi.o \
 src/tca.o \
+src/usart_basic.o \
 tinyCharge/tinyCharge.o \
+tinyDebugger/tinyDebugger.o \
 tinyPulse/tinyPulse.o \
 tinyTime/tinyTime.o \
 main.o \
@@ -149,6 +158,7 @@ atmel_start.o \
 driver_isr.o \
 examples/src/adc_basic_example.o \
 examples/src/dac_basic_example.o \
+examples/src/usart_basic_example.o \
 src/adc_basic.o \
 src/bod.o \
 src/ccl.o \
@@ -162,7 +172,9 @@ src/rtc.o \
 src/slpctrl.o \
 src/spi.o \
 src/tca.o \
+src/usart_basic.o \
 tinyCharge/tinyCharge.o \
+tinyDebugger/tinyDebugger.o \
 tinyPulse/tinyPulse.o \
 tinyTime/tinyTime.o \
 main.o \
@@ -179,6 +191,7 @@ atmel_start.d \
 driver_isr.d \
 examples/src/adc_basic_example.d \
 examples/src/dac_basic_example.d \
+examples/src/usart_basic_example.d \
 src/adc_basic.d \
 src/bod.d \
 src/ccl.d \
@@ -192,7 +205,9 @@ src/rtc.d \
 src/slpctrl.d \
 src/spi.d \
 src/tca.d \
+src/usart_basic.d \
 tinyCharge/tinyCharge.d \
+tinyDebugger/tinyDebugger.d \
 tinyPulse/tinyPulse.d \
 tinyTime/tinyTime.d \
 main.d \
@@ -209,6 +224,7 @@ atmel_start.d \
 driver_isr.d \
 examples/src/adc_basic_example.d \
 examples/src/dac_basic_example.d \
+examples/src/usart_basic_example.d \
 src/adc_basic.d \
 src/bod.d \
 src/ccl.d \
@@ -222,7 +238,9 @@ src/rtc.d \
 src/slpctrl.d \
 src/spi.d \
 src/tca.d \
+src/usart_basic.d \
 tinyCharge/tinyCharge.d \
+tinyDebugger/tinyDebugger.d \
 tinyPulse/tinyPulse.d \
 tinyTime/tinyTime.d \
 main.d \
@@ -270,6 +288,13 @@ examples/src/adc_basic_example.o: ../examples/src/adc_basic_example.c
 	
 
 examples/src/dac_basic_example.o: ../examples/src/dac_basic_example.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+examples/src/usart_basic_example.o: ../examples/src/usart_basic_example.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -360,7 +385,21 @@ src/tca.o: ../src/tca.c
 	@echo Finished building: $<
 	
 
+src/usart_basic.o: ../src/usart_basic.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 tinyCharge/tinyCharge.o: ../tinyCharge/tinyCharge.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+tinyDebugger/tinyDebugger.o: ../tinyDebugger/tinyDebugger.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

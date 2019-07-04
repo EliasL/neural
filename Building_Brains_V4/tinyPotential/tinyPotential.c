@@ -17,25 +17,35 @@
 #include "tinyButton/tinyButton.h"
 #include "tinyPulse/tinyPulse.h"
 #include "settings.h"
+#include "tinyDebugger/tinyDebugger.h"
 
 static double tinyPotential_potential = 0;
 
 /*
 Function to decay the potential towards 0
 */
-static void tinyPotential_decay(double time_since_last_update)
+static void tinyPotential_decay()
 {
+	// Previously, we kept track of time in case the microchip for some reason uses more than one ms on a cycle
+	// but for simplification, we just assume that each cycle will take one ms. The consequences for a cycle taking longer
+	// are negligible. 
+	
+	uint8_t time_since_last_update = 1;
 	tinyPotential_potential *= (exp(-(time_since_last_update/TINYPOTENTIAL_TIME_CONST)));
+	if(fabs(tinyPotential_potential)<0.01){
+		tinyPotential_potential=0;
+	}
 }
 
 /*
 The function which will run in the main loop.
 This function will run on interrupts by the RTC module.
 */
-void tinyPotential_update(double time_since_last_update)
+void tinyPotential_update()
 {
+	tinyDebugger_send_float("Potential", tinyPotential_potential);
 	//Some of the potential in the neuron has decayed away
-	tinyPotential_decay(time_since_last_update);
+	tinyPotential_decay();
 	
 	// Update potential with values from Dendrites
 	tinyPotential_potential = tinyDendrite_update_potential(tinyPotential_potential);

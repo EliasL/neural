@@ -11,6 +11,6 @@
 
 
 
-void tinyPotential_update(double time_since_last_update);
+void tinyPotential_update();
 
 #endif /* TINY_POTENTIAL_H_ */

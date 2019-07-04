@@ -10,6 +10,8 @@ examples\src\adc_basic_example.c
 
 examples\src\dac_basic_example.c
 
+examples\src\usart_basic_example.c
+
 src\adc_basic.c
 
 src\bod.c
@@ -36,7 +38,11 @@ src\spi.c
 
 src\tca.c
 
+src\usart_basic.c
+
 tinyCharge\tinyCharge.c
+
+tinyDebugger\tinyDebugger.c
 
 tinyPulse\tinyPulse.c
 

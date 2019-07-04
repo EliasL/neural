@@ -29,7 +29,7 @@
 // the usual RTC period is 32 ticks (0x20 in hex), making the clock tick once every ms. When we set the TIMESCALE to two
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower.
-#define TIMESCALE 1
+#define TIMESCALE 0.01
 
 
 /*
