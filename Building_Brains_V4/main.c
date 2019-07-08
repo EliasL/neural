@@ -36,7 +36,6 @@ int main(void)
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
 	VREF.CTRLA = VREF_ADC0REFSEL_4V34_gc;
-	
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
@@ -65,6 +64,7 @@ int main(void)
 			
 			// Prepare for next cycle
 			tinyISR_setflag(false);
+			tinyDebugger_send_int("time", tinyTime_now());
 			tinyDebugger_end_line();
 		 }
 	}

@@ -11,7 +11,8 @@
 _Bool charging;
 
 _Bool tinyCharge_is_charging(){
-	return charging;
+	return false;
+	//return charging;
 }
 
 void tinyCharge_set_charging(_Bool charging_status){
