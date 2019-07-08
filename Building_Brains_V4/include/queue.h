@@ -20,5 +20,6 @@ uint32_t dequeue(node_t **head);
 
 uint32_t dequeue_top(node_t **head);
 
+uint32_t read_end(node_t **head);
 
 #endif /* QUEUE_H_ */

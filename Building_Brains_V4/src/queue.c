@@ -83,3 +83,26 @@ uint32_t dequeue_top(node_t **head){
 	return retval;
 	
 }
+
+uint32_t read_end(node_t **head){
+	// We prepare some variables
+	node_t *current, *prev = NULL;
+	uint32_t retval = 0;
+
+	// If the queue we have been given is empty, we return an error
+	// (0 is usually not an error, but it is probably the best option)
+	if (*head == NULL) return 0;
+
+	// Now we iterate through the queue until we reach the end
+	current = *head;
+	while (current->next != NULL) {
+		prev = current;
+		current = current->next;
+	}
+
+	// We retrieve the value we needed
+	retval = current->val;
+	
+	return retval;
+	
+}

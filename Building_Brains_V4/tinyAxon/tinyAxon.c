@@ -29,7 +29,6 @@ so in addition to the queue, have an additional element (next_pulse) that is eff
 of the queue, but is actually a separate variable for easier access
 */
 node_t *pulse_queue = NULL;
-uint32_t next_pulse;
 
 uint8_t axonOutputValue = 0; // This variable is only used for debugging
 
@@ -93,7 +92,7 @@ static void tinyAxon_fire_pulse()
 {
 	tinyAxon_should_fire = true;
 	pulses_in_queue--;
-	next_pulse = dequeue(&pulse_queue);
+	dequeue(&pulse_queue);
 }
 
 
@@ -152,7 +151,6 @@ double tinyAxon_update_potential(double potential)
 		tinyAxon_enqueue_pulse(now + TRAVLE_DELAY + FIRE_DELAY*pulse_nr);
 		pulse_nr++;
 		
-		// I want to test reducing the potential by -30 instead of -25 to simulate the hyperpolarization
 		potential += POSTFIRE_POTENTIAL_REACTION; // This is usually defined as a negative value, don't be confused by the +=
 	}
 	
@@ -168,7 +166,7 @@ double tinyAxon_update_potential(double potential)
 	}
 	
 	// If there are pulses in the queue, and the pulse has been scheduled to fire
-	if ((pulses_in_queue > 0) && (next_pulse <= now))
+	if ((pulses_in_queue > 0) && (read_end(&pulse_queue) <= now))
 	{
 		// We fire the axon
 		tinyAxon_fire_pulse();
@@ -180,6 +178,7 @@ double tinyAxon_update_potential(double potential)
 	
 	tinyDebugger_send_int("Axon output", axonOutputValue);
 	tinyDebugger_send_int("Pulses in queue", pulses_in_queue);
+	tinyDebugger_send_int("Next pulse", read_end(&pulse_queue));
 	
 	return potential;
 }
