@@ -30,9 +30,9 @@ static void tinyPotential_decay()
 	// but for simplification, we just assume that each cycle will take one ms. The consequences for a cycle taking longer
 	// are negligible. 
 	
-	uint8_t time_since_last_update = 1;
+	double time_since_last_update = 1;
 	tinyPotential_potential *= (exp(-(time_since_last_update/TINYPOTENTIAL_TIME_CONST)));
-	if(fabs(tinyPotential_potential)<0.01){
+	if(fabs(tinyPotential_potential)<0.1){
 		tinyPotential_potential=0;
 	}
 }
@@ -43,7 +43,7 @@ This function will run on interrupts by the RTC module.
 */
 void tinyPotential_update()
 {
-	tinyDebugger_send_float("Potential", tinyPotential_potential);
+	tinyDebugger_send_double("Potential", tinyPotential_potential);
 	//Some of the potential in the neuron has decayed away
 	tinyPotential_decay();
 	

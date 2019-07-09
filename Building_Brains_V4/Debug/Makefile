@@ -93,7 +93,6 @@ C_SRCS +=  \
 ../src/cpuint.c \
 ../src/dac_basic.c \
 ../src/driver_init.c \
-../src/queue.c \
 ../src/rtc.c \
 ../src/slpctrl.c \
 ../src/spi.c \
@@ -134,7 +133,6 @@ src/cpuint.o \
 src/dac_basic.o \
 src/driver_init.o \
 src/protected_io.o \
-src/queue.o \
 src/rtc.o \
 src/slpctrl.o \
 src/spi.o \
@@ -167,7 +165,6 @@ src/cpuint.o \
 src/dac_basic.o \
 src/driver_init.o \
 src/protected_io.o \
-src/queue.o \
 src/rtc.o \
 src/slpctrl.o \
 src/spi.o \
@@ -200,7 +197,6 @@ src/cpuint.d \
 src/dac_basic.d \
 src/driver_init.d \
 src/protected_io.d \
-src/queue.d \
 src/rtc.d \
 src/slpctrl.d \
 src/spi.d \
@@ -233,7 +229,6 @@ src/cpuint.d \
 src/dac_basic.d \
 src/driver_init.d \
 src/protected_io.d \
-src/queue.d \
 src/rtc.d \
 src/slpctrl.d \
 src/spi.d \
@@ -344,13 +339,6 @@ src/dac_basic.o: ../src/dac_basic.c
 	
 
 src/driver_init.o: ../src/driver_init.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-src/queue.o: ../src/queue.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -34,11 +34,11 @@ static void tinyDendrite_read_signals(void)
 	{
 		tinyDendrite_values[i] = ADC_get_conversion(Dendrite_ports[i]);
 	}
-	tinyDebugger_send_int("Dendrite1", tinyDendrite_values[0]);
-	tinyDebugger_send_int("Dendrite2", tinyDendrite_values[1]);
-	tinyDebugger_send_int("Dendrite3", tinyDendrite_values[2]);
-	tinyDebugger_send_int("Dendrite4", tinyDendrite_values[3]);
-	tinyDebugger_send_int("Dendrite5", tinyDendrite_values[4]);
+	tinyDebugger_send_int("D1", tinyDendrite_values[0]);
+	tinyDebugger_send_int("D2", tinyDendrite_values[1]);
+	tinyDebugger_send_int("D3", tinyDendrite_values[2]);
+	tinyDebugger_send_int("D4", tinyDendrite_values[3]);
+	tinyDebugger_send_int("D5", tinyDendrite_values[4]);
 }
 
 

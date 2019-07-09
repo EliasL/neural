@@ -22,7 +22,7 @@ uint32_t fire_flash_time_counter = 0;
 
 /*
 Potential to RGB, spec requirements:
-At resting potential middle light should be white. Lets say rest potential => |potential| < 1, as the potential is really precise as it is a double precision floating point.
+At resting potential middle light should be white. Lets say rest potential => |potential| < 1, as the potential is really precise as it is a double precision doubleing point.
 With positive potential the upper light should be green.(Lets linearly increase this with |potential|)
 With negative potential the lower light should be red.(Lets linearly increase this with |potential|)
 When firing all lights turn blue for ~100ms, but this needs to be tested.

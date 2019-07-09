@@ -11,8 +11,9 @@
 #include "tinyTime/tinyTime.h"
 #include "Potential_to_RGB/Potential_to_RGB.h"
 #include "tinyAxon/tinyAxon.h"
-#include "include/queue.h"
 #include "settings.h"
+#include "tinyDebugger/tinyDebugger.h"
+
 
 /*
 Initiates variables for neuron type, axon firing constants etc.
@@ -23,12 +24,29 @@ _Bool tinyAxon_should_fire = false;
 uint8_t pulses_in_queue = 0; //variable to determine how many pulses are in queue.
 
 /*
-We are using a queue system, see src/queue.c
-But we often want to check the element at the end of the queue (The element that is about to be dequeued)
-so in addition to the queue, have an additional element (next_pulse) that is effectively part 
-of the queue, but is actually a separate variable for easier access
+When there are 0 pulses queued, all of the numbers in this list should be 0.
+When we queue a pulse, we store the number of cycles until we fire.
+Every cycle, we also decrease every number in this list by 1 (except if it is 0)
+If a number goes from 1 to 0, we tell the axon to fire
 */
-node_t *pulse_queue = NULL;
+uint16_t time_left_until_pulse[MAX_NUMBER_OF_PULSES] = {0};
+	
+// This function will be used with time_left_until_pulse to find the newest pulse
+uint8_t find_newest_pulse() {
+	uint16_t max;
+	uint8_t current_index = 0;
+	uint8_t return_index = 0;
+	
+	max = time_left_until_pulse[current_index];
+	
+	for (current_index = 1; current_index < MAX_NUMBER_OF_PULSES; current_index++) {
+		if (time_left_until_pulse[current_index] > max) {
+			return_index = current_index;
+			max = time_left_until_pulse[current_index];
+		}
+	}
+	return return_index;
+}
 
 uint8_t axonOutputValue = 0; // This variable is only used for debugging
 
@@ -92,46 +110,55 @@ static void tinyAxon_fire_pulse()
 {
 	tinyAxon_should_fire = true;
 	pulses_in_queue--;
-	dequeue(&pulse_queue);
 }
 
 
 /*
-solution to remove future firing if a inhibitory signal is received
-shortly after a excitatory signal.
+If the potential is very low, we want to try to remove a pulse.
 */
 bool tinyAxon_remove_pulse(void)
 {
-	// We want to remove the pulse last added to the queue
-	// We also want to return a bool indicating whether or not a pulse actually was removed
-	uint32_t now = tinyTime_now();
-	uint32_t pulse_time = dequeue_top(&pulse_queue);
-	if(pulse_time == 0){ // Here, 0 is regarded as an error
-		//There was no pulse to remove
+	// We want to return a bool indicating whether or not a pulse actually was removed.
+	if(pulses_in_queue == 0){
+		//There was no pulse to remove.
 		return false;
 	}
-	
-	// Now we want to check if the pulse is too far away to be affected by the low potential, or close enough that we decide to remove it
-	// (When we say that the pulse is too far away, it refers to the biological process of how the potential spreads from Dendrites to axon)
-	else if((now + UNDO_PERIOD) < pulse_time){
-		// We decided to remove the pulse
-		pulses_in_queue--;
-		return true;
-	}
-	// Here we have found that there is a pulse queued, but it is old enough to let pass anyway, so now we need to put it back into the queue
 	else{
-		enqueue(&pulse_queue, pulse_time);
-		return false;
+		// If we are to remove a pulse, we want to remove the one that will fire last.
+		uint16_t newest_pulse = time_left_until_pulse[find_newest_pulse()];
+	
+		// Now we want to check if the pulse is too far away to be affected by the low potential, or close enough that we decide to remove it.
+		// (When we say that the pulse is too far away, it refers to the biological process of how the potential spreads from Dendrites to axon).
+		if(newest_pulse > PULSE_NO_RETURN_TIME){
+			// We decided to remove the pulse
+			pulses_in_queue--;
+			return true;
+		}
+		// Here we have found that there is a pulse queued, but it is old enough to let pass anyway, so now we need to put it back into the queue.
+		else{
+			return false;
+		}
 	}
 }
 
 /*
 Adds an element to the queue
 */
-static void tinyAxon_enqueue_pulse(uint32_t new_pulse)
+static void tinyAxon_add_pulse(uint16_t new_pulse)
 {
-	enqueue(&pulse_queue, new_pulse);
-	pulses_in_queue++;
+	// We want to check each slot in the time_left_until_pulse, and
+	// if we find an empty slot (0), we add a pulse.
+	for (uint8_t i = 0; i<MAX_NUMBER_OF_PULSES; i++)
+	{
+		if(time_left_until_pulse[i] == 0){
+			time_left_until_pulse[i] = new_pulse;
+			pulses_in_queue++;
+			// We return so we only ever add one
+			return;
+		}
+	}
+	// We might not add any pulses if the list is full, but we still pretend as though we have.
+	// Maybe this should be changed in the future?
 }
 
 
@@ -142,13 +169,12 @@ If the axon does fire, the potential is reduced
 */
 double tinyAxon_update_potential(double potential)
 {
-	int pulse_nr = 0;
-	uint32_t now = tinyTime_now();
+	uint8_t pulse_nr = 0;
 	
 	//While the neuron has enough potential to fire, we want to fire more
 	while (potential > THRESHOLD_POTENTIAL)
 	{
-		tinyAxon_enqueue_pulse(now + TRAVLE_DELAY + FIRE_DELAY*pulse_nr);
+		tinyAxon_add_pulse(TRAVLE_DELAY + FIRE_DELAY*pulse_nr);
 		pulse_nr++;
 		
 		potential += POSTFIRE_POTENTIAL_REACTION; // This is usually defined as a negative value, don't be confused by the +=
@@ -165,20 +191,30 @@ double tinyAxon_update_potential(double potential)
 		}
 	}
 	
-	// If there are pulses in the queue, and the pulse has been scheduled to fire
-	if ((pulses_in_queue > 0) && (read_end(&pulse_queue) <= now))
+	// If there are pulses in the queue, we want to reduce the time in each of the time_left_until_pulse elements
+	if (pulses_in_queue > 0)
 	{
-		// We fire the axon
-		tinyAxon_fire_pulse();
-		set_LED_fire();
+		for (uint8_t i = 0; i<MAX_NUMBER_OF_PULSES; i++)
+		{
+			if(time_left_until_pulse[i] != 0){
+				time_left_until_pulse[i]--;
+				
+				// If the time went from 1 to 0, we fire the axon
+				if(time_left_until_pulse[i] == 0){
+					
+					// We fire the axon
+					tinyAxon_fire_pulse();
+					set_LED_fire();
+				}
+			}
+		}
 	}
 	
 	// Here we set the actual output of the DAC (Digital to Analog Converter)
 	tinyAxon_update_pulse_transmitter();
 	
-	tinyDebugger_send_int("Axon output", axonOutputValue);
-	tinyDebugger_send_int("Pulses in queue", pulses_in_queue);
-	tinyDebugger_send_int("Next pulse", read_end(&pulse_queue));
+	tinyDebugger_send_uint8("Axon", axonOutputValue);
+	tinyDebugger_send_uint8("Pulses", pulses_in_queue);
 	
 	return potential;
 }

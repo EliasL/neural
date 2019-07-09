@@ -28,8 +28,6 @@ src\driver_init.c
 
 src\protected_io.S
 
-src\queue.c
-
 src\rtc.c
 
 src\slpctrl.c

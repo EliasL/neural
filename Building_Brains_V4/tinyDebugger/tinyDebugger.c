@@ -18,15 +18,19 @@ Our python script (if running), will pick them up and plot the values in real ti
 */
 
 
-// We use 15 as an arbitrary max, you could increase this if you need to watch more variables.
-const char *data_to_send[15] = {NULL};
-uint8_t current_index = 0;
+// We use 10 as an arbitrary max, you could increase this if you need to watch more variables.
+const char *data_to_send[10] = {NULL};
 
 
 void tinyDebugger_send_int(const char* name, int value){
 	printf("%s:%d;", name, value);
 }
-void tinyDebugger_send_float(const char* name, double value){
+
+void tinyDebugger_send_uint8(const char* name, uint8_t value){
+printf("%s:%u;", name, value);
+}
+
+void tinyDebugger_send_double(const char* name, double value){
 	#define NUMBER_OF_DECIMALS 1
 	char number[20]; // Arbitrary max
 	dtostrf(value,1,NUMBER_OF_DECIMALS, number);

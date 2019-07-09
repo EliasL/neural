@@ -22,6 +22,10 @@
 // Note that this value is adjusted with the TIMESCALE, so that one second is constant regardless of TIMESCALE
 #define PULSEMODE_BUTTON_PRESS_TIME 2000 * TIMESCALE //(ms)
 
+// The neuron only keeps track of a certain number of pulses
+// Note that if there are memory limitations, reducing this number might help slightly
+#define MAX_NUMBER_OF_PULSES 10
+
 // TINYPOTENTIAL_TIME_CONST determines how fast the potential will decay over time.
 #define TINYPOTENTIAL_TIME_CONST 100 //(ms)
 
@@ -53,8 +57,9 @@
 
 // If a pulse has been queued, and the neurons potential drops significantly shortly after the pulse has been queued
 // we want to remove the pulse. However, if the potential has already traveled most of the distance to the axon, we
-// want to let the pulse reach the axon anyway (fire). An UNDO_PERIOD of 0 would mean that a queued pulse is never removed.
-#define UNDO_PERIOD 60
+// want to let the pulse reach the axon anyway (fire). If a pulse is less than the PULSE_NO_RETURN_TIME ms away from 
+// firing, the pulse will not be removed.
+#define PULSE_NO_RETURN_TIME 60
 
 
 /*
