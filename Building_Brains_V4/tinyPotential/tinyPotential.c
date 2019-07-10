@@ -12,7 +12,6 @@
 #include "tinyPotential.h"
 #include "tinyDendrite/tinyDendrite.h"
 #include "tinyAxon/tinyAxon.h"
-#include "Potential_to_RGB/Potential_to_RGB.h"
 #include "tinyTime/tinyTime.h"
 #include "tinyButton/tinyButton.h"
 #include "tinyPulse/tinyPulse.h"
@@ -43,12 +42,11 @@ This function will run on interrupts by the RTC module.
 */
 void tinyPotential_update()
 {
-	tinyDebugger_send_double("Potential", tinyPotential_potential);
 	//Some of the potential in the neuron has decayed away
 	tinyPotential_decay();
-	
 	// Update potential with values from Dendrites
 	tinyPotential_potential = tinyDendrite_update_potential(tinyPotential_potential);
+	tinyDebugger_send_double("DendP", tinyPotential_potential);
 	
 	// Update potential from button press
 	tinyPotential_potential = tinyButton_update_potential(tinyPotential_potential);
@@ -59,7 +57,8 @@ void tinyPotential_update()
 	// Let the axon affect the potential
 	// This is also where we decide whether or not the axon should fire
 	tinyPotential_potential = tinyAxon_update_potential(tinyPotential_potential);
+	tinyDebugger_send_double("AxonP", tinyPotential_potential);
 
 	//Update the led
-	potential_to_RGB_update_LEDs(tinyPotential_potential);
+	//potential_to_RGB_update_LEDs(tinyPotential_potential);
 }

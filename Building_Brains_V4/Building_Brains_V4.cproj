@@ -272,11 +272,10 @@
     <Folder Include="tinyTime" />
     <Folder Include="tinyButton" />
     <Folder Include="tinyISR" />
-    <Folder Include="Potential_to_RGB" />
     <Folder Include="tinyPotential" />
     <Folder Include="tinyAxon" />
     <Folder Include="tinyDendrite" />
-    <Folder Include="tinyCCLRGB" />
+    <Folder Include="tinyLED" />
     <Folder Include="utils\" />
     <Folder Include="utils\assembler\" />
   </ItemGroup>
@@ -434,12 +433,6 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Potential_to_RGB\Potential_to_RGB.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Potential_to_RGB\Potential_to_RGB.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="settings.h">
       <SubType>compile</SubType>
     </Compile>
@@ -449,10 +442,10 @@
     <Compile Include="tinyButton\tinyButton.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tinyCCLRGB\tinyCCLRGB.c">
+    <Compile Include="tinyLED\tinyLED.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="tinyCCLRGB\tinyCCLRGB.h">
+    <Compile Include="tinyLED\tinyLED.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="tinyAxon\tinyAxon.c">

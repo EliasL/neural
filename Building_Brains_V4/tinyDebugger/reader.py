@@ -36,7 +36,9 @@ class DebugMessages:
         
     def get_values_of(self, key):
         if key not in self.storage:
-            self.storage[key] = [getattr(debugMessage, key) for debugMessage in self.debugMessages]
+            # NB! -1 is used as an error when there is no attribute to get. Don't be confused if a lot of values suddenly go to -1
+            # or if a value you expected should change, is constantly -1. Check your spelling. 
+            self.storage[key] = [getattr(debugMessage, key) if hasattr(debugMessage, key) else -1 for debugMessage in self.debugMessages]
         return self.storage[key]
 
 

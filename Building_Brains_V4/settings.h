@@ -33,8 +33,32 @@
 // the usual RTC period is 32 ticks (0x20 in hex), making the clock tick once every ms. When we set the TIMESCALE to two
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower.
-#define TIMESCALE 0.01
+#define TIMESCALE 1
 
+/*
+			LED SETTINGS
+*/
+
+// The number of LEDs used
+#define  NUMBER_OF_LEDS 2
+
+// We give the LEDs names to clarify code
+#define NEURON_OUT_LED 0
+#define NEURON_INN_LED 1
+
+// Brightness as a value between 0 and 1
+#define LED_BRIGHTNESS 0.2
+
+// When setting colors, make sure the color is defined in tinyLED.h
+
+// Choose the color displayed when charging
+#define CHARGING_COLOR RED
+
+// How many times per second a led in SWING mode swings
+#define SWING_RATE 1 * TIMESCALE
+
+// How many time per second a led in FLASH mode flashes
+#define FLASH_RATE 1 * TIMESCALE
 
 /*
 			POTENTIAL SETTINGS

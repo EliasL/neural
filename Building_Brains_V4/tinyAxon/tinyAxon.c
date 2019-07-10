@@ -9,7 +9,6 @@
 #include <stdbool.h>
 #include <math.h>
 #include "tinyTime/tinyTime.h"
-#include "Potential_to_RGB/Potential_to_RGB.h"
 #include "tinyAxon/tinyAxon.h"
 #include "settings.h"
 #include "tinyDebugger/tinyDebugger.h"
@@ -29,20 +28,20 @@ When we queue a pulse, we store the number of cycles until we fire.
 Every cycle, we also decrease every number in this list by 1 (except if it is 0)
 If a number goes from 1 to 0, we tell the axon to fire
 */
-uint16_t time_left_until_pulse[MAX_NUMBER_OF_PULSES] = {0};
+uint16_t pulse_queue[MAX_NUMBER_OF_PULSES] = {0};
 	
-// This function will be used with time_left_until_pulse to find the newest pulse
+// This function will be used with pulse_queue to find the newest pulse
 uint8_t find_newest_pulse() {
 	uint16_t max;
 	uint8_t current_index = 0;
 	uint8_t return_index = 0;
 	
-	max = time_left_until_pulse[current_index];
+	max = pulse_queue[current_index];
 	
 	for (current_index = 1; current_index < MAX_NUMBER_OF_PULSES; current_index++) {
-		if (time_left_until_pulse[current_index] > max) {
+		if (pulse_queue[current_index] > max) {
 			return_index = current_index;
-			max = time_left_until_pulse[current_index];
+			max = pulse_queue[current_index];
 		}
 	}
 	return return_index;
@@ -110,6 +109,7 @@ static void tinyAxon_fire_pulse()
 {
 	tinyAxon_should_fire = true;
 	pulses_in_queue--;
+	// TODO led update
 }
 
 
@@ -125,7 +125,7 @@ bool tinyAxon_remove_pulse(void)
 	}
 	else{
 		// If we are to remove a pulse, we want to remove the one that will fire last.
-		uint16_t newest_pulse = time_left_until_pulse[find_newest_pulse()];
+		uint16_t newest_pulse = pulse_queue[find_newest_pulse()];
 	
 		// Now we want to check if the pulse is too far away to be affected by the low potential, or close enough that we decide to remove it.
 		// (When we say that the pulse is too far away, it refers to the biological process of how the potential spreads from Dendrites to axon).
@@ -146,15 +146,15 @@ Adds an element to the queue
 */
 static void tinyAxon_add_pulse(uint16_t new_pulse)
 {
-	// We want to check each slot in the time_left_until_pulse, and
+	// We want to check each slot in the pulse_queue, and
 	// if we find an empty slot (0), we add a pulse.
 	for (uint8_t i = 0; i<MAX_NUMBER_OF_PULSES; i++)
 	{
-		if(time_left_until_pulse[i] == 0){
-			time_left_until_pulse[i] = new_pulse;
+		if(pulse_queue[i] == 0){
+			pulse_queue[i] = new_pulse;
 			pulses_in_queue++;
 			// We return so we only ever add one
-			return;
+			break;
 		}
 	}
 	// We might not add any pulses if the list is full, but we still pretend as though we have.
@@ -168,14 +168,28 @@ Decides whether or not the axon should fire
 If the axon does fire, the potential is reduced
 */
 double tinyAxon_update_potential(double potential)
-{
-	uint8_t pulse_nr = 0;
-	
+{	
 	//While the neuron has enough potential to fire, we want to fire more
 	while (potential > THRESHOLD_POTENTIAL)
 	{
-		tinyAxon_add_pulse(TRAVLE_DELAY + FIRE_DELAY*pulse_nr);
-		pulse_nr++;
+		// We have to check if there are already queued pulses, so that the frequency never exceeds FIRE_DELAY
+		if(pulses_in_queue>0){
+			uint16_t newest_pulse = pulse_queue[find_newest_pulse()];
+			
+			// There is at least one pulse in the queue, and it is so close, that we need to offset the new pulse, so that we keep at least
+			// one FIRE_DELAY between each pulse
+			if(newest_pulse + FIRE_DELAY > TRAVLE_DELAY+FIRE_DELAY){
+				tinyAxon_add_pulse(newest_pulse + FIRE_DELAY);
+			}
+			// There is at least one pulse in the queue, but it's far enough away to ignore
+			else{
+				tinyAxon_add_pulse(TRAVLE_DELAY + FIRE_DELAY);
+			}
+		}
+		// There are no pulses in the queue, so we add a pulse as normal
+		else{
+			tinyAxon_add_pulse(TRAVLE_DELAY + FIRE_DELAY);		
+		}
 		
 		potential += POSTFIRE_POTENTIAL_REACTION; // This is usually defined as a negative value, don't be confused by the +=
 	}
@@ -191,20 +205,19 @@ double tinyAxon_update_potential(double potential)
 		}
 	}
 	
-	// If there are pulses in the queue, we want to reduce the time in each of the time_left_until_pulse elements
+	// If there are pulses in the queue, we want to reduce the time in each of the pulse_queue elements
 	if (pulses_in_queue > 0)
 	{
 		for (uint8_t i = 0; i<MAX_NUMBER_OF_PULSES; i++)
 		{
-			if(time_left_until_pulse[i] != 0){
-				time_left_until_pulse[i]--;
+			if(pulse_queue[i] != 0){
+				pulse_queue[i]--;
 				
 				// If the time went from 1 to 0, we fire the axon
-				if(time_left_until_pulse[i] == 0){
+				if(pulse_queue[i] == 0){
 					
 					// We fire the axon
 					tinyAxon_fire_pulse();
-					set_LED_fire();
 				}
 			}
 		}

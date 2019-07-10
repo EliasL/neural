@@ -70,11 +70,10 @@ SUBDIRS :=  \
 ../tinyTime \
 ../tinyButton \
 ../tinyISR \
-../Potential_to_RGB \
 ../tinyPotential \
 ../tinyAxon \
 ../tinyDendrite \
-../tinyCCLRGB \
+../tinyLED \
 ../utils/ \
 ../utils/assembler/
 
@@ -103,9 +102,8 @@ C_SRCS +=  \
 ../tinyPulse/tinyPulse.c \
 ../tinyTime/tinyTime.c \
 ../main.c \
-../Potential_to_RGB/Potential_to_RGB.c \
 ../tinyButton/tinyButton.c \
-../tinyCCLRGB/tinyCCLRGB.c \
+../tinyLED/tinyLED.c \
 ../tinyAxon/tinyAxon.c \
 ../tinyDendrite/tinyDendrite.c \
 ../tinyISR/tinyISR.c \
@@ -143,9 +141,8 @@ tinyDebugger/tinyDebugger.o \
 tinyPulse/tinyPulse.o \
 tinyTime/tinyTime.o \
 main.o \
-Potential_to_RGB/Potential_to_RGB.o \
 tinyButton/tinyButton.o \
-tinyCCLRGB/tinyCCLRGB.o \
+tinyLED/tinyLED.o \
 tinyAxon/tinyAxon.o \
 tinyDendrite/tinyDendrite.o \
 tinyISR/tinyISR.o \
@@ -175,9 +172,8 @@ tinyDebugger/tinyDebugger.o \
 tinyPulse/tinyPulse.o \
 tinyTime/tinyTime.o \
 main.o \
-Potential_to_RGB/Potential_to_RGB.o \
 tinyButton/tinyButton.o \
-tinyCCLRGB/tinyCCLRGB.o \
+tinyLED/tinyLED.o \
 tinyAxon/tinyAxon.o \
 tinyDendrite/tinyDendrite.o \
 tinyISR/tinyISR.o \
@@ -207,9 +203,8 @@ tinyDebugger/tinyDebugger.d \
 tinyPulse/tinyPulse.d \
 tinyTime/tinyTime.d \
 main.d \
-Potential_to_RGB/Potential_to_RGB.d \
 tinyButton/tinyButton.d \
-tinyCCLRGB/tinyCCLRGB.d \
+tinyLED/tinyLED.d \
 tinyAxon/tinyAxon.d \
 tinyDendrite/tinyDendrite.d \
 tinyISR/tinyISR.d \
@@ -239,9 +234,8 @@ tinyDebugger/tinyDebugger.d \
 tinyPulse/tinyPulse.d \
 tinyTime/tinyTime.d \
 main.d \
-Potential_to_RGB/Potential_to_RGB.d \
 tinyButton/tinyButton.d \
-tinyCCLRGB/tinyCCLRGB.d \
+tinyLED/tinyLED.d \
 tinyAxon/tinyAxon.d \
 tinyDendrite/tinyDendrite.d \
 tinyISR/tinyISR.d \
@@ -415,13 +409,6 @@ tinyTime/tinyTime.o: ../tinyTime/tinyTime.c
 	@echo Finished building: $<
 	
 
-Potential_to_RGB/Potential_to_RGB.o: ../Potential_to_RGB/Potential_to_RGB.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 tinyButton/tinyButton.o: ../tinyButton/tinyButton.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -429,7 +416,7 @@ tinyButton/tinyButton.o: ../tinyButton/tinyButton.c
 	@echo Finished building: $<
 	
 
-tinyCCLRGB/tinyCCLRGB.o: ../tinyCCLRGB/tinyCCLRGB.c
+tinyLED/tinyLED.o: ../tinyLED/tinyLED.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Various_programs\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../examples/include" -I"../Config" -I"D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny817 -B "D:\Various_programs\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny817" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

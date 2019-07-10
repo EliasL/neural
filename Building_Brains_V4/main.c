@@ -10,6 +10,7 @@
 #include "tinyCharge/tinyCharge.h"
 #include "settings.h"
 #include "tinyDebugger/tinyDebugger.h"
+#include "tinyLED/tinyLED.h"
 
 /*
 Notes for future development
@@ -48,7 +49,9 @@ int main(void)
 				// We check the Dendrites in order to detect if we have stopped charging
 				tinyDendrite_update_signals();
 				
-				// Update led
+				// Update LED
+				tinyLED_set_color(NEURON_OUT_LED, CHARGING_COLOR);
+				tinyLED_update();
 				
 			}
 			else{
@@ -56,6 +59,10 @@ int main(void)
 				tinyButton_update();
 				
 				tinyPotential_update();
+				
+				//LED update
+				tinyLED_set_color(NEURON_OUT_LED, OFF);
+				tinyLED_update();
 			}
 			
 			

@@ -48,11 +48,9 @@ tinyTime\tinyTime.c
 
 main.c
 
-Potential_to_RGB\Potential_to_RGB.c
-
 tinyButton\tinyButton.c
 
-tinyCCLRGB\tinyCCLRGB.c
+tinyLED\tinyLED.c
 
 tinyAxon\tinyAxon.c
 

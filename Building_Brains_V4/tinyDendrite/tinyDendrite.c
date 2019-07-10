@@ -109,7 +109,7 @@ int16_t tinyDendrite_get_potential()
 	tinyDendrite_update_signals();
 	
 	int16_t return_potential_val = 0;
-	for (int i = 0; i < TINYDENDRITE_COUNT; i++)
+	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
 		switch(tinyDendrite_current_signals[i])
 		{
@@ -146,7 +146,7 @@ int16_t tinyDendrite_get_potential()
 
 double tinyDendrite_update_potential(double potential){
 	
-	uint16_t potential_change = tinyDendrite_get_potential();
+	int16_t potential_change = tinyDendrite_get_potential();
 	potential += potential_change;
 	return potential;
 }
