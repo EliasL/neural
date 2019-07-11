@@ -49,30 +49,25 @@ int main(void)
 				// Charge loop
 				
 				if(tinyCharge_is_fully_charged()){
-					tinyLED_set_color(INN_LED, CHARGING_DONE_COLOR);
-				}
-				else{
-					
-					tinyLED_set_color(INN_LED, OFF);
-				}
-				
+					tinyLED_set_color(OUT_LED, CHARGING_DONE_COLOR);
+				}				
 				// We check the Dendrites in order to detect if we have stopped charging
 				tinyDendrite_update_signals();
 				
-				// Set LED
-				tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
-				
 			}
 			else{
-				// Main loop				
-				tinyButton_update();
+				// Main loop			
 				
-				tinyPotential_update();
-				
-				//Set LED
+				// Set LED
 				if(tinyLED_get_color(OUT_LED) == OFF){
 					tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
 				}
+				
+				// Update button	
+				tinyButton_update();
+				
+				// Update the potential (This is where most of the important stuff happens)
+				tinyPotential_update();
 			}
 			// Update LED
 			tinyLED_update();

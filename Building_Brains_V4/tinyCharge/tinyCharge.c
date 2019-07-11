@@ -7,6 +7,8 @@
 
 #include <stdbool.h>
 #include <atmel_start.h>
+#include "settings.h"
+#include "tinyLED/tinyLED.h"
 
 _Bool connected_to_charger;
 
@@ -19,7 +21,34 @@ _Bool tinyCharge_is_fully_charged(){
 }
 
 void tinyCharge_set_charging_mode(_Bool charging_status){
-	connected_to_charger = charging_status;
+	if(charging_status != connected_to_charger){
+		connected_to_charger = charging_status;
+		tinyCharge_switch_mode();
+	}
+}
+
+void tinyCharge_switch_mode(){
+	
+	if(connected_to_charger){
+		// Switch from main to charging mode
+		
+		// Set LED
+		tinyLED_set_color(OUT_LED, OFF);
+		tinyLED_set_color_mode(INN_LED, CHARGING_COLOR, SWING);
+		
+		// Disable DAC
+		DAC_disable();
+	}
+	else{
+		// Switch from charge to main mode
+		
+		// Set LED
+		tinyLED_set_color(OUT_LED, OFF);
+		tinyLED_set_color(INN_LED, OFF);
+		
+		// Enable DAC
+		DAC_enable();
+	}
 }
 
 
