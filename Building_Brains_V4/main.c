@@ -37,21 +37,30 @@ int main(void)
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
 	VREF.CTRLA = VREF_ADC0REFSEL_4V34_gc;
+	
+
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
 		if(tinyISR_getflag())
 		{			
 			
-			if(tinyCharge_is_charging()){
+			if(tinyCharge_is_connected_to_charger()){
 				// Charge loop
+				
+				if(tinyCharge_is_fully_charged()){
+					tinyLED_set_color(INN_LED, CHARGING_DONE_COLOR);
+				}
+				else{
+					
+					tinyLED_set_color(INN_LED, OFF);
+				}
 				
 				// We check the Dendrites in order to detect if we have stopped charging
 				tinyDendrite_update_signals();
 				
-				// Update LED
-				tinyLED_set_color(NEURON_OUT_LED, CHARGING_COLOR);
-				tinyLED_update();
+				// Set LED
+				tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
 				
 			}
 			else{
@@ -60,12 +69,14 @@ int main(void)
 				
 				tinyPotential_update();
 				
-				//LED update
-				tinyLED_set_color(NEURON_OUT_LED, OFF);
-				tinyLED_update();
+				//Set LED
+				if(tinyLED_get_color(OUT_LED) == OFF){
+					tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
+				}
 			}
-			
-			
+			// Update LED
+			tinyLED_update();
+				
 			// Switch transistors
 			tinyCharge_set_transistors();
 			
@@ -73,6 +84,7 @@ int main(void)
 			tinyISR_setflag(false);
 			tinyDebugger_send_int("time", tinyTime_now());
 			tinyDebugger_end_line();
+			
 		 }
 	}
 }

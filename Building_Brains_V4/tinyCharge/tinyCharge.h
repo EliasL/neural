@@ -11,9 +11,11 @@
 
 
 
-_Bool tinyCharge_is_charging();
+_Bool tinyCharge_is_connected_to_charger();
 
-void tinyCharge_set_charging(_Bool charging_status);
+_Bool tinyCharge_is_fully_charged();
+
+void tinyCharge_set_charging_mode(_Bool charging_status);
 
 void tinyCharge_set_transistors();
 

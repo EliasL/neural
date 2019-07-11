@@ -12,7 +12,7 @@ ISR will periodically interrupt with a period of ~1ms
 */
 
 //timer_counter
-static uint32_t time_counter = 0; // Will overflow after 49 days.
+uint32_t time_counter = 0; // Will overflow after 49 days.
 
 /*
 This function increments the time counter.

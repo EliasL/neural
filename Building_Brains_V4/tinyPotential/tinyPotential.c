@@ -19,21 +19,20 @@
 #include "tinyDebugger/tinyDebugger.h"
 
 static double tinyPotential_potential = 0;
+static uint32_t previous_update_time = 0;
 
 /*
 Function to decay the potential towards 0
 */
 static void tinyPotential_decay()
 {
-	// Previously, we kept track of time in case the microchip for some reason uses more than one ms on a cycle
-	// but for simplification, we just assume that each cycle will take one ms. The consequences for a cycle taking longer
-	// are negligible. 
-	
-	double time_since_last_update = 1;
-	tinyPotential_potential *= (exp(-(time_since_last_update/TINYPOTENTIAL_TIME_CONST)));
+		
+	uint8_t time_since_last_update = tinyTime_now() - previous_update_time;
+	tinyPotential_potential *= (exp(-((float)time_since_last_update/(float)TINYPOTENTIAL_TIME_CONST)));
 	if(fabs(tinyPotential_potential)<0.1){
 		tinyPotential_potential=0;
 	}
+	previous_update_time = tinyTime_now();
 }
 
 /*

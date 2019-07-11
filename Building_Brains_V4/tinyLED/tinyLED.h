@@ -16,11 +16,12 @@ enum Colors{
 
 enum ColorModes
 {
-	STABLE, FLASH, SWING
+	STABLE, FLASH, SWING, PING, FLASH_ONCE
 };
 
 void tinyLED_update(void);
 void tinyLED_set_color(uint8_t LED_id, enum Colors color);
+enum Colors tinyLED_get_color(uint8_t LED_id);
 void tinyLED_set_color_mode(uint8_t LED_id, enum Colors color, enum ColorModes mode);
 	
 

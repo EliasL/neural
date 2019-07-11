@@ -12,6 +12,7 @@
 #include "tinyAxon/tinyAxon.h"
 #include "settings.h"
 #include "tinyDebugger/tinyDebugger.h"
+#include "tinyLED/tinyLED.h"
 
 
 /*
@@ -66,11 +67,12 @@ static void tinyAxon_start_sending_pulse()
 		DAC_set_output(INHIBITORY_NEURON_OUTPUT);
 		axonOutputValue=INHIBITORY_NEURON_OUTPUT;
 	}
+	
+	tinyLED_set_color_mode(OUT_LED, WHITE, FLASH_ONCE);
 }
 
 static void tinyAxon_stop_sending_pulse()
 {
-	
 	DAC_set_output(NO_SIGNAL_OUTPUT);
 	axonOutputValue=NO_SIGNAL_OUTPUT;
 }
@@ -178,20 +180,22 @@ double tinyAxon_update_potential(double potential)
 			
 			// There is at least one pulse in the queue, and it is so close, that we need to offset the new pulse, so that we keep at least
 			// one FIRE_DELAY between each pulse
-			if(newest_pulse + FIRE_DELAY > TRAVLE_DELAY+FIRE_DELAY){
+			if(newest_pulse + FIRE_DELAY > TRAVLE_DELAY){
 				tinyAxon_add_pulse(newest_pulse + FIRE_DELAY);
 			}
 			// There is at least one pulse in the queue, but it's far enough away to ignore
 			else{
-				tinyAxon_add_pulse(TRAVLE_DELAY + FIRE_DELAY);
+				tinyAxon_add_pulse(TRAVLE_DELAY);
 			}
 		}
 		// There are no pulses in the queue, so we add a pulse as normal
 		else{
-			tinyAxon_add_pulse(TRAVLE_DELAY + FIRE_DELAY);		
+			tinyAxon_add_pulse(TRAVLE_DELAY);		
 		}
 		
 		potential += POSTFIRE_POTENTIAL_REACTION; // This is usually defined as a negative value, don't be confused by the +=
+		
+		tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 	}
 	
 	// If the neuron has a very low potential, we want to remove a pulse from the queue (if there is one)

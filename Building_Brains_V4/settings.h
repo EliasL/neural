@@ -33,7 +33,12 @@
 // the usual RTC period is 32 ticks (0x20 in hex), making the clock tick once every ms. When we set the TIMESCALE to two
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower.
-#define TIMESCALE 1
+#define TIMESCALE 0.05
+
+// Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
+// debugging messages when we want the neuron to run quickly
+// Set 1 for true and 0 for false
+#define DEBUGGING 0
 
 /*
 			LED SETTINGS
@@ -43,23 +48,33 @@
 #define  NUMBER_OF_LEDS 2
 
 // We give the LEDs names to clarify code
-#define NEURON_OUT_LED 0
-#define NEURON_INN_LED 1
+#define OUT_LED 0
+#define INN_LED 1
 
 // Brightness as a value between 0 and 1
-#define LED_BRIGHTNESS 0.2
+#define LED_BRIGHTNESS 0.1
 
 // When setting colors, make sure the color is defined in tinyLED.h
 
 // Choose the color displayed when charging
 #define CHARGING_COLOR RED
 
+// Choose the color displayed when charging
+#define CHARGING_DONE_COLOR GREEN
+
+// Choose the color that pings with a small flash to show that it is on
+#define PING_COLOR BLUE
+
 // How many times per second a led in SWING mode swings
-#define SWING_RATE 1 * TIMESCALE
+#define SWING_RATE 0.5 * TIMESCALE
 
 // How many time per second a led in FLASH mode flashes
 #define FLASH_RATE 1 * TIMESCALE
+// How many time per second a led in PING mode flashes (The flash lasts for FLASH_TIME seconds)
+#define PING_RATE 0.1 * TIMESCALE
 
+// How long various flashes last (max 0.255, can be changed to a higher max if needed by changing uint8 to unit16) 
+#define FLASH_TIME 0.2 * TIMESCALE
 /*
 			POTENTIAL SETTINGS
 */

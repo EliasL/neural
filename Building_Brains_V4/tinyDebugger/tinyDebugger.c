@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tinyDebugger.h"
+#include "settings.h"
 
 /*
 The idea is that throughout the project, we can prepare to send various variables, and label them appropriately.
@@ -23,22 +24,32 @@ const char *data_to_send[10] = {NULL};
 
 
 void tinyDebugger_send_int(const char* name, int value){
-	printf("%s:%d;", name, value);
+	if(DEBUGGING){
+		printf("%s:%d;", name, value);
+	}
 }
 
 void tinyDebugger_send_uint8(const char* name, uint8_t value){
-printf("%s:%u;", name, value);
+	if(DEBUGGING){
+		printf("%s:%u;", name, value);
+	}
 }
 
 void tinyDebugger_send_double(const char* name, double value){
-	#define NUMBER_OF_DECIMALS 1
-	char number[20]; // Arbitrary max
-	dtostrf(value,1,NUMBER_OF_DECIMALS, number);
-	printf("%s:%s;", name, number);
+	if(DEBUGGING){
+		#define NUMBER_OF_DECIMALS 1
+		char number[20]; // Arbitrary max
+		dtostrf(value,1,NUMBER_OF_DECIMALS, number);
+		printf("%s:%s;", name, number);
+	}
 }
 void tinyDebugger_send_string(const char* name, char * value){
-	printf("%s:%s;", name, value);
+	if(DEBUGGING){
+		printf("%s:%s;", name, value);
+	}
 }
 void tinyDebugger_end_line(){
-	printf("\r\n");
+	if(DEBUGGING){
+		printf("\r\n");
+	}
 }

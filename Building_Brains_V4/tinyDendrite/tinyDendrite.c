@@ -52,7 +52,7 @@ void tinyDendrite_update_signals(void)
 	//Read the analog voltage values on each of the Dendrites
 	tinyDendrite_read_signals();
 	
-	tinyCharge_set_charging(false);
+	tinyCharge_set_charging_mode(false);
 	
 	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
@@ -60,7 +60,7 @@ void tinyDendrite_update_signals(void)
 		if (tinyDendrite_values[i] > CHARGING_THRESHOLD)
 		{
 			tinyDendrite_current_signals[i] = CHARGING;
-			tinyCharge_set_charging(true);
+			tinyCharge_set_charging_mode(true);
 		}
 		else if (tinyDendrite_values[i] > NORMAL_EXCITE_THRESHOLD)
 		{

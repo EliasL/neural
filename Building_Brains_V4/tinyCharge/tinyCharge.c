@@ -8,19 +8,23 @@
 #include <stdbool.h>
 #include <atmel_start.h>
 
-_Bool charging;
+_Bool connected_to_charger;
 
-_Bool tinyCharge_is_charging(){
-	return charging;
+_Bool tinyCharge_is_connected_to_charger(){
+	return connected_to_charger;
 }
 
-void tinyCharge_set_charging(_Bool charging_status){
-	charging = charging_status;
+_Bool tinyCharge_is_fully_charged(){
+	return CHARGING_STATUS_PIN_get_level();
+}
+
+void tinyCharge_set_charging_mode(_Bool charging_status){
+	connected_to_charger = charging_status;
 }
 
 
 void tinyCharge_set_transistors(){
-	if(charging){
+	if(connected_to_charger){
 		// ChargeMode is the pin that goes to the two large transistors on the neuron.
 		CHARGING_SWITCHES_PIN_set_level(false); // We want the pin low for charging
 	}
