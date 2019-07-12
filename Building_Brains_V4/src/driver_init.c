@@ -200,6 +200,18 @@ void system_init()
 {
 	mcu_init();
 
+	/* PORT setting on PB6 */
+
+	// Set pin direction to input
+	CHARGING_CONNECTION_PIN_set_dir(PORT_DIR_IN);
+
+	CHARGING_CONNECTION_PIN_set_pull_mode(
+	    // <y> Pull configuration
+	    // <id> pad_pull_config
+	    // <PORT_PULL_OFF"> Off
+	    // <PORT_PULL_UP"> Pull-up
+	    PORT_PULL_OFF);
+
 	/* PORT setting on PB7 */
 
 	// Set pin direction to input

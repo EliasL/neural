@@ -4,7 +4,7 @@ versions:
   api: '1.0'
   backend: 1.5.122
   commit: 820baecf7dd115d94b0d42ee3b0b9d6ba2da7113
-  content: 1.0.1507
+  content: 1.0.1582
   content_pack_name: acme-packs-all
   format: '2'
   frontend: 1.5.1877
@@ -484,6 +484,12 @@ pads:
     definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB7
     mode: Digital input
     user_label: CHARGING_STATUS_PIN
+    configuration: null
+  CHARGING_CONNECTION_PIN:
+    name: PB6
+    definition: Atmel:ATtiny417_81x_161x_321x_drivers:1.0.0::ATtiny817-MFR::pad::PB6
+    mode: Digital input
+    user_label: CHARGING_CONNECTION_PIN
     configuration: null
   PB5:
     name: PB5

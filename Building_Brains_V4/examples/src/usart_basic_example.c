@@ -31,7 +31,6 @@
 #include <usart_basic_example.h>
 #include <usart_basic.h>
 #include <atomic.h>
-#include <stdint.h>
 
 static uint8_t rx[16];
 

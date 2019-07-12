@@ -38,7 +38,13 @@
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Set 1 for true and 0 for false
-#define DEBUGGING 0
+#define DEBUGGING 1
+
+// An alternative to turning off the debugging completely, we can choose to set DEBUG_EVERY to something larger than 1. (max 255)
+// For example, setting DEBUG_EVERY to 5, will make the tiny send a debug message every 5 cycles. 
+// Be aware that this will result in important events not being logged. Short events such as dendrite and axon inputs and outputs, that only
+// last one or two cycles, will seldomly be picked up by debugging every 5 cycles. 
+#define DEBUG_EVERY 1
 
 /*
 			LED SETTINGS
@@ -139,7 +145,8 @@ When a Dendrite receives a signal, these values describe how the potential in th
 See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Software
 */
 #define NO_SIGNAL_OUTPUT 0
-#define EXCITATORY_NEURON_OUTPUT 215
+// Due to various complications, we resort to finding values that work by trail an error
+#define EXCITATORY_NEURON_OUTPUT 255
 #define INHIBITORY_NEURON_OUTPUT 116
 
 

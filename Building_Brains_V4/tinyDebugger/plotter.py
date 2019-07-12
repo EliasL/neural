@@ -43,10 +43,10 @@ class Plotter:
                 self.lines[graph_number][name] = self.axises[graph_number].plot([],[])[0]
 
         # Set y limits on the graphs
-        self.axises[0].set_ylim(-26, 50)
-        self.axises[1].set_ylim(0, 255)
-        self.axises[2].set_ylim(0, 255)
-        self.axises[3].set_ylim(0, 10)
+        self.axises[0].set_ylim(-30, 50)
+        self.axises[1].set_ylim(-5, 260)
+        self.axises[2].set_ylim(-5, 260)
+        self.axises[3].set_ylim(-2, 10)
 
         #Other stuff
         for axis, line in zip(self.axises, self.lines):

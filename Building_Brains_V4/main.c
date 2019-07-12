@@ -26,6 +26,7 @@ probably due to a lac of memory in the MC (Micro Chip). Keep this in mind if you
 
 int main(void)
 {	
+	
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();
 	/*
@@ -36,9 +37,14 @@ int main(void)
 	A plausible explanation is that the microchip does not up the voltage, so that if the microchip is only ever 
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
-	VREF.CTRLA = VREF_ADC0REFSEL_4V34_gc;
+	/*
+	For some reason, the code below does not produce the desired results, but we suspect that since 35 is 00100011 in binary, this will give the desired settings
 	
-
+	VREF.CTRLA = VREF_ADC0REFSEL_2V5_gc;
+	VREF.CTRLA = VREF_DAC0REFSEL_4V34_gc;
+	*/
+	VREF.CTRLA = 35;
+	 
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
@@ -49,7 +55,7 @@ int main(void)
 				// Charge loop
 				
 				if(tinyCharge_is_fully_charged()){
-					tinyLED_set_color(OUT_LED, CHARGING_DONE_COLOR);
+					//tinyLED_set_color(OUT_LED, CHARGING_DONE_COLOR);
 				}				
 				// We check the Dendrites in order to detect if we have stopped charging
 				tinyDendrite_update_signals();
@@ -59,9 +65,9 @@ int main(void)
 				// Main loop			
 				
 				// Set LED
-				if(tinyLED_get_color(OUT_LED) == OFF){
-					tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
-				}
+				//if(tinyLED_get_color(OUT_LED) == OFF){
+				//	tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
+				//}
 				
 				// Update button	
 				tinyButton_update();
@@ -70,14 +76,14 @@ int main(void)
 				tinyPotential_update();
 			}
 			// Update LED
-			tinyLED_update();
+			//tinyLED_update();
 				
 			// Switch transistors
 			tinyCharge_set_transistors();
 			
 			// Prepare for next cycle
 			tinyISR_setflag(false);
-			tinyDebugger_send_int("time", tinyTime_now());
+			tinyDebugger_send_uint32("time", tinyTime_now());
 			tinyDebugger_end_line();
 			
 		 }

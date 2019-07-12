@@ -15,11 +15,14 @@ class DebugMessage:
 
     @staticmethod
     def parse_data(string):
+        
+        splitChar1 = "\t"
+        splitChar2 = ":"
         # Example string:
         # Potential:0.0;Dendrite1:0;Dendrite2:0;Dendrite3:0;Dendrite4:0;Dendrite5:0;Axon output:0;Pulses in queue:0;
 
         # This line is too long to be readable, but it works, it makes a list that looks like this [[key, value], ...]
-        key_value_list = [[key_value for key_value in key_value_string.split(":")] for key_value_string in string.split(";")[:-1]]
+        key_value_list = [[key_value for key_value in key_value_string.split(splitChar2)] for key_value_string in string.split(splitChar1)[:-1]]
         
         key_value_list = [[key_value[0], eval(key_value[1])] for key_value in key_value_list]
         # key_values is in the format [['key', value], ... ]

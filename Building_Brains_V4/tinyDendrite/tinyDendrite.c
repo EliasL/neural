@@ -18,7 +18,7 @@ enum DendriteSignal
 	NO_SIGNAL, LOW_INHIB, NORMAL_INHIB, HIGH_INHIB, LOW_EXCITE, NORMAL_EXCITE, HIGH_EXCITE, CHARGING
 };
 
-uint16_t tinyDendrite_values[TINYDENDRITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
+uint8_t tinyDendrite_values[TINYDENDRITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
 uint8_t Dendrite_ports[TINYDENDRITE_COUNT] = {DENDRITE_PORT_1, DENDRITE_PORT_2, DENDRITE_PORT_3, DENDRITE_PORT_4, DENDRITE_PORT_5}; // Ports used on the ADC MUX
 	
 enum DendriteSignal tinyDendrite_current_signals[TINYDENDRITE_COUNT] = {NO_SIGNAL};
@@ -34,11 +34,11 @@ static void tinyDendrite_read_signals(void)
 	{
 		tinyDendrite_values[i] = ADC_get_conversion(Dendrite_ports[i]);
 	}
-	tinyDebugger_send_int("D1", tinyDendrite_values[0]);
-	tinyDebugger_send_int("D2", tinyDendrite_values[1]);
-	tinyDebugger_send_int("D3", tinyDendrite_values[2]);
-	tinyDebugger_send_int("D4", tinyDendrite_values[3]);
-	tinyDebugger_send_int("D5", tinyDendrite_values[4]);
+	tinyDebugger_send_uint8("D1", tinyDendrite_values[0]);
+	tinyDebugger_send_uint8("D2", tinyDendrite_values[1]);
+	tinyDebugger_send_uint8("D3", tinyDendrite_values[2]);
+	tinyDebugger_send_uint8("D4", tinyDendrite_values[3]);
+	tinyDebugger_send_uint8("D5", tinyDendrite_values[4]);
 }
 
 

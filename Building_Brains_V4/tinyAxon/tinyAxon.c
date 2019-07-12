@@ -127,12 +127,14 @@ bool tinyAxon_remove_pulse(void)
 	}
 	else{
 		// If we are to remove a pulse, we want to remove the one that will fire last.
-		uint16_t newest_pulse = pulse_queue[find_newest_pulse()];
+		uint8_t pulse_index = find_newest_pulse();
+		uint16_t newest_pulse = pulse_queue[pulse_index];
 	
 		// Now we want to check if the pulse is too far away to be affected by the low potential, or close enough that we decide to remove it.
 		// (When we say that the pulse is too far away, it refers to the biological process of how the potential spreads from Dendrites to axon).
 		if(newest_pulse > PULSE_NO_RETURN_TIME){
 			// We decided to remove the pulse
+			pulse_queue[pulse_index] = 0;
 			pulses_in_queue--;
 			return true;
 		}
@@ -230,7 +232,7 @@ double tinyAxon_update_potential(double potential)
 	// Here we set the actual output of the DAC (Digital to Analog Converter)
 	tinyAxon_update_pulse_transmitter();
 	
-	tinyDebugger_send_uint8("Axon", axonOutputValue);
+	tinyDebugger_send_uint8("Ax", axonOutputValue);
 	tinyDebugger_send_uint8("Pulses", pulses_in_queue);
 	
 	return potential;

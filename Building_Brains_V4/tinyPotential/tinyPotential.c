@@ -57,7 +57,4 @@ void tinyPotential_update()
 	// This is also where we decide whether or not the axon should fire
 	tinyPotential_potential = tinyAxon_update_potential(tinyPotential_potential);
 	tinyDebugger_send_double("AxonP", tinyPotential_potential);
-
-	//Update the led
-	//potential_to_RGB_update_LEDs(tinyPotential_potential);
 }
