@@ -1071,22 +1071,22 @@ END GROUP
  *(.fini0)
                 0x00001c26                _etext = .
 
-.rodata         0x00009c26       0x49 load address 0x00001c26
+.rodata         0x00009c26       0x56 load address 0x00001c26
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00009c26       0x1f tinyDebugger/tinyDebugger.o
+                0x00009c26       0x2a tinyDebugger/tinyDebugger.o
  .rodata.str1.1
-                0x00009c45        0x5 main.o
+                0x00009c50        0x5 main.o
  .rodata.str1.1
-                0x00009c4a        0xa tinyAxon/tinyAxon.o
+                0x00009c55        0xc tinyAxon/tinyAxon.o
  .rodata.str1.1
-                0x00009c54        0xf tinyDendrite/tinyDendrite.o
+                0x00009c61        0xf tinyDendrite/tinyDendrite.o
  .rodata.str1.1
-                0x00009c63        0xc tinyPotential/tinyPotential.o
+                0x00009c70        0xc tinyPotential/tinyPotential.o
  *(.gnu.linkonce.r*)
 
-.data           0x00803e00       0x16 load address 0x00001c6f
+.data           0x00803e00       0x16 load address 0x00001c7c
                 0x00803e00                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1173,8 +1173,8 @@ END GROUP
  COMMON         0x00803e65        0x6 d:/various_programs/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3/short-calls\libc.a(iob.o)
                 0x00803e65                __iob
                 0x00803e6b                PROVIDE (__bss_end, .)
-                0x00001c6f                __data_load_start = LOADADDR (.data)
-                0x00001c85                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001c7c                __data_load_start = LOADADDR (.data)
+                0x00001c92                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00803e6b        0x0
                 [!provide]                PROVIDE (__noinit_start, .)

@@ -28,19 +28,19 @@ _Bool tinyDebugger_send_message = true;
 
 void tinyDebugger_send_int(const char* name, int value){
 	if(DEBUGGING && tinyDebugger_send_message){
-		printf("%s:%d\t", name, value);
+		printf("%s:%3d\t", name, value);
 	}
 }
 
 void tinyDebugger_send_uint32(const char* name, uint32_t value){
 	if(DEBUGGING && tinyDebugger_send_message){
-		printf("%s:%lu\t", name, value);
+		printf("%s:%8lu\t", name, value);
 	}
 }
 
 void tinyDebugger_send_uint8(const char* name, uint8_t value){
 	if(DEBUGGING && tinyDebugger_send_message){
-		printf("%s:%u\t", name, value);
+		printf("%s:%3u\t", name, value);
 	}
 }
 
@@ -49,7 +49,7 @@ void tinyDebugger_send_double(const char* name, double value){
 		#define NUMBER_OF_DECIMALS 1
 		char number[20]; // Arbitrary max
 		dtostrf(value,1,NUMBER_OF_DECIMALS, number);
-		printf("%s:%s\t", name, number);
+		printf("%s:%5s\t", name, number);
 	}
 }
 void tinyDebugger_send_string(const char* name, char * value){
