@@ -19,7 +19,7 @@
 tinyLED
 
 This script lets you not only set the color of a led, but it also lets
-you set the mode of a led to a sin curve. In order to do this, we store
+you set the mode of a led, to for example a sin curve. In order to do this, we store
 the color and mode of the LEDs in one array, and then the actual value of
 the LEDs at at given time in a different array.
 
@@ -159,8 +159,8 @@ void tinyLED_update(void)
 				rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*sinValue, rgb_colors[i].green*sinValue, rgb_colors[i].blue*sinValue};
 				break;
 			case PING:
-				// PING brightness should always be very low
-				rgb_colors[i] = (struct RGB_Color){5*fmin(1,rgb_colors[i].red)*ping_on, 5*fmin(1,rgb_colors[i].green)*ping_on, 5*fmin(1,rgb_colors[i].blue)*ping_on};
+				// in the line below, fmin will either return 1 or 0, so each rgb color is either 0 or 255*PING_BRIGHTNESS
+				rgb_colors[i] = (struct RGB_Color){255*PING_BRIGHTNESS*fmin(1,rgb_colors[i].red)*ping_on, 255*PING_BRIGHTNESS*fmin(1,rgb_colors[i].green)*ping_on, 255*PING_BRIGHTNESS*fmin(1,rgb_colors[i].blue)*ping_on};
 				break;
 			case FLASH_ONCE:
 				if(tinyLED_flash_once_time[i]>0){

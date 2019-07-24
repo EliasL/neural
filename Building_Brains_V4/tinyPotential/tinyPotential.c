@@ -36,8 +36,7 @@ static void tinyPotential_decay()
 }
 
 /*
-The function which will run in the main loop.
-This function will run on interrupts by the RTC module.
+Update the potential
 */
 void tinyPotential_update()
 {

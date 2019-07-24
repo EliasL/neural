@@ -35,6 +35,7 @@ double tinyPulse_update_potential(double potential){
 		time_since_last_pulse = tinyTime_now() - time_of_last_pulse;
 		
 		if(time_since_last_pulse >= ideal_time_between_pulses){
+			// This isn't actually a button press. You could have a separate variable for this, but it seems unnecessary.
 			potential += BUTTON_PRESS_REACTION;
 			time_of_last_pulse = tinyTime_now();			
 		}

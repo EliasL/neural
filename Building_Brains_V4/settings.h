@@ -60,6 +60,7 @@
 // Brightness as a value between 0 and 1
 #define LED_BRIGHTNESS 0.1
 
+
 // When setting colors, make sure the color is defined in tinyLED.h
 
 // Choose the color displayed when charging
@@ -68,8 +69,11 @@
 // Choose the color displayed when charging
 #define CHARGING_DONE_COLOR GREEN
 
-// Choose the color that pings with a small flash to show that it is on
+// Choose the color that pings with a small flash to show that the neuron is on
 #define PING_COLOR BLUE
+
+// Choose how bright the ping is (Should be very low, typically 0.02)
+#define PING_BRIGHTNESS 0.02
 
 // How many times per second a led in SWING mode swings
 #define SWING_RATE 0.5 * TIMESCALE
@@ -81,6 +85,7 @@
 
 // How long various flashes last (max 0.255, can be changed to a higher max if needed by changing uint8 to unit16) 
 #define FLASH_TIME 0.2 * TIMESCALE
+
 /*
 			POTENTIAL SETTINGS
 */

@@ -1384,6 +1384,7 @@ double tinyPulse_update_potential(double potential){
      55a:	68 17       	cp	r22, r24
      55c:	79 07       	cpc	r23, r25
      55e:	90 f0       	brcs	.+36     	; 0x584 <tinyPulse_update_potential+0x5c>
+			// This isn't actually a button press. You could have a separate variable for this, but it seems unnecessary.
 			potential += BUTTON_PRESS_REACTION;
      560:	20 e0       	ldi	r18, 0x00	; 0
      562:	30 e0       	ldi	r19, 0x00	; 0
@@ -2582,9 +2583,9 @@ _Bool tinyISR_getflag(void)
      ab8:	08 95       	ret
 
 00000aba <tinyPotential_update>:
+
 /*
-The function which will run in the main loop.
-This function will run on interrupts by the RTC module.
+Update the potential
 */
 void tinyPotential_update()
 {
