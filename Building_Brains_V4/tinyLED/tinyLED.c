@@ -164,7 +164,7 @@ void tinyLED_update(void)
 				break;
 			case FLASH_ONCE:
 				if(tinyLED_flash_once_time[i]>0){
-					rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*sinValue, rgb_colors[i].green*sinValue, rgb_colors[i].blue*sinValue};
+					rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red, rgb_colors[i].green, rgb_colors[i].blue};
 					tinyLED_flash_once_time[i]--;
 				}
 				else{
