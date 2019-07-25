@@ -47,7 +47,7 @@ class DebugMessages:
 
 
 class SerialReader:
-    def __init__(self, logFilePath="log.csv", usb_port='COM18', baudrate=9600):
+    def __init__(self, usb_port, logFilePath="log.csv", baudrate=9600):
         self.logFilePath = logFilePath
         self.ser = serial.Serial(usb_port, baudrate)
         self.ser.flushInput()
@@ -71,8 +71,11 @@ class SerialReader:
         #Optional
         print(data, end='')
                 
-if __name__ == '__main__':               
-    ser = SerialReader()
+if __name__ == '__main__':  
+    
+    # It is very likely that you have to change the usb_port
+    # If you're on windows, go to device manager and find the EDBG Virtual COM Port             
+    ser = SerialReader(usb_port='COM20')
 
     #Optional - delete log file if exists
     if os.path.exists(ser.logFilePath):

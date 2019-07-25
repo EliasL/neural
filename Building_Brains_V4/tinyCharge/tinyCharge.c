@@ -33,15 +33,15 @@ void tinyCharge_switch_mode(){
 		// Switch from main to charging mode
 		
 		// Set LED
-		//tinyLED_set_color(OUT_LED, OFF);
-		//tinyLED_set_color_mode(INN_LED, CHARGING_COLOR, SWING);
+		tinyLED_set_color(OUT_LED, OFF);
+		tinyLED_set_color_mode(INN_LED, CHARGING_COLOR, SWING);
 	}
 	else{
 		// Switch from charge to main mode
 		
 		// Set LED
-		//tinyLED_set_color(OUT_LED, OFF);
-		//tinyLED_set_color(INN_LED, OFF);
+		tinyLED_set_color(OUT_LED, OFF);
+		tinyLED_set_color(INN_LED, OFF);
 	}
 }
 
