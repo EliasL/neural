@@ -37,13 +37,9 @@ int main(void)
 	A plausible explanation is that the microchip does not up the voltage, so that if the microchip is only ever 
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
-	/*
-	For some reason, the code below does not produce the desired results, but we suspect that since 35 is 00100011 in binary, this will give the desired settings
 	
-	VREF.CTRLA = VREF_ADC0REFSEL_2V5_gc;
-	VREF.CTRLA = VREF_DAC0REFSEL_4V34_gc;
-	*/
-	VREF.CTRLA = 35;
+	VREF.CTRLA |= VREF_ADC0REFSEL_2V5_gc;
+	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
 	 
 	while (1)
 	{

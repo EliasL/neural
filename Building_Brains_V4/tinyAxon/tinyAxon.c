@@ -232,6 +232,11 @@ double tinyAxon_update_potential(double potential)
 	// Here we set the actual output of the DAC (Digital to Analog Converter)
 	tinyAxon_update_pulse_transmitter();
 	
+	// We need to check if the axon is connected to a charger. We do this by checking the AXON_CHECK_PIN. If it is hight while the axon is not firing, it must be connected to a charger
+	if(AXON_CHECK_PIN_get_level() && !tinyAxon_should_fire){
+		//tinyCharge_set_charging_mode(true);
+	}
+	
 	tinyDebugger_send_uint8("Axon", axonOutputValue);
 	tinyDebugger_send_uint8("Pulses", pulses_in_queue);
 	

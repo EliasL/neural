@@ -203,9 +203,9 @@ void system_init()
 	/* PORT setting on PB6 */
 
 	// Set pin direction to input
-	CHARGING_CONNECTION_PIN_set_dir(PORT_DIR_IN);
+	AXON_CHECK_PIN_set_dir(PORT_DIR_IN);
 
-	CHARGING_CONNECTION_PIN_set_pull_mode(
+	AXON_CHECK_PIN_set_pull_mode(
 	    // <y> Pull configuration
 	    // <id> pad_pull_config
 	    // <PORT_PULL_OFF"> Off

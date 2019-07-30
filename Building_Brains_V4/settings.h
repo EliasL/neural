@@ -33,12 +33,12 @@
 // the usual RTC period is 32 ticks (0x20 in hex), making the clock tick once every ms. When we set the TIMESCALE to two
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower.
-#define TIMESCALE 1
+#define TIMESCALE 0.05
 
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Set 1 for true and 0 for false
-#define DEBUGGING 0
+#define DEBUGGING 1
 
 // An alternative to turning off the debugging completely, we can choose to set DEBUG_EVERY to something larger than 1. (max 255)
 // For example, setting DEBUG_EVERY to 5, will make the tiny send a debug message every 5 cycles. 
@@ -166,7 +166,8 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 /*
 Dendrite SW component signals
 See PINMUX CONFIGURATOR in Atmel Start. (You can find this by right-clicking the 
-project file "Building_Brains_V4" in the Solution Explorer, and selecting Re-Configure Atmel Start Project)
+project file "Building_Brains_V4" in the Solution Explorer, and selecting Re-Configure Atmel Start Project,
+then in the PINMUX, look at SW component signals)
 */
 #define DENDRITE_PORT_1 7
 #define DENDRITE_PORT_2 5

@@ -9,6 +9,7 @@
 #include <atmel_start.h>
 #include "settings.h"
 #include "tinyLED/tinyLED.h"
+#include "tinyDebugger/tinyDebugger.h"
 
 _Bool connected_to_charger;
 

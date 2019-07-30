@@ -175,17 +175,21 @@ void tinyLED_update(void)
 				break;
 		}
 	}
+	
+	// We only write to the LEDs if there is something to change. (In SWING mode, we update the LEDs every cycle)
 	if(!tinyLED_RGB_Color_Compare(&rgb_colors, &tinyLED_old_colors)){
 		for (uint8_t i = 0; i < NUMBER_OF_LEDS; i++)
 		{
 			// Write to LEDs
-			//For some reason unknown to the writer the data-bus to the LEDs is serialized as GRB
+			//For some reason, the data-bus to the LEDs is serialized as GRB
 			//which means the 24-bit data-bus will look like [Green[0:7], Red[0:7], Blue[0:7]]
 			tinyLED_SPIWriteByte(rgb_colors[i].green);
 			tinyLED_SPIWriteByte(rgb_colors[i].red);
 			tinyLED_SPIWriteByte(rgb_colors[i].blue);
 			tinyLED_old_colors[i] = rgb_colors[i];
-		}
+	}
+		tinyDebugger_send_uint8("LED1 color", tinyLED_colors[0].color);
+		tinyDebugger_send_uint8("LED2 color", tinyLED_colors[1].color);
 	}
 }
 

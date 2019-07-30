@@ -40,7 +40,7 @@
  * \acme_license_stop
  *
  * Project: Building_Brains_V4
- * Target:  ATtiny817 
+ * Target:  ATtiny3217 
  *
  **/
 
