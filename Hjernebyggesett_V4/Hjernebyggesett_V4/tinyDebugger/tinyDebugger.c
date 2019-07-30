@@ -1,0 +1,66 @@
+/*
+ * tinyDebugger.c
+ *
+ * Created: 04.07.2019 08:52:27
+ * Author: Elias Lundheim
+ */ 
+
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "tinyDebugger.h"
+#include "settings.h"
+
+/*
+The idea is that throughout the project, we can prepare to send various variables, and label them appropriately.
+Then, at the end of the main loop, we write them all to the pc via USART. 
+Our python script (if running), will pick them up and plot the values in real time.
+*/
+
+
+// We use 10 as an arbitrary max, you could increase this if you need to watch more variables.
+const char *data_to_send[10] = {NULL};
+uint8_t tinyDebugger_print_attempts = 0; // This will overflow, but that's not a problem
+_Bool tinyDebugger_send_message = true;
+
+
+void tinyDebugger_send_int(const char* name, int value){
+	if(DEBUGGING && tinyDebugger_send_message){
+		printf("%s:%3d\t", name, value);
+	}
+}
+
+void tinyDebugger_send_uint32(const char* name, uint32_t value){
+	if(DEBUGGING && tinyDebugger_send_message){
+		printf("%s:%8lu\t", name, value);
+	}
+}
+
+void tinyDebugger_send_uint8(const char* name, uint8_t value){
+	if(DEBUGGING && tinyDebugger_send_message){
+		printf("%s:%3u\t", name, value);
+	}
+}
+
+void tinyDebugger_send_double(const char* name, double value){
+	if(DEBUGGING && tinyDebugger_send_message){
+		#define NUMBER_OF_DECIMALS 1
+		char number[20]; // Arbitrary max
+		dtostrf(value,1,NUMBER_OF_DECIMALS, number);
+		printf("%s:%5s\t", name, number);
+	}
+}
+void tinyDebugger_send_string(const char* name, char * value){
+	if(DEBUGGING && tinyDebugger_send_message){
+		printf("%s:%s\t", name, value);
+	}
+}
+void tinyDebugger_end_line(){
+	if(DEBUGGING && tinyDebugger_send_message){
+		printf("\r\n");
+	}
+	tinyDebugger_print_attempts++;
+	tinyDebugger_send_message = tinyDebugger_print_attempts%DEBUG_EVERY == 0;
+}
