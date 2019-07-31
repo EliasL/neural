@@ -105,7 +105,7 @@ drivers:
       adc_ctrla_runstby: false
       adc_ctrlb_sampnum: 1 ADC sample
       adc_ctrlc_presc: CLK_PER divided by 2
-      adc_ctrlc_refsel: Internal reference
+      adc_ctrlc_refsel: VDD
       adc_ctrlc_sampcap: false
       adc_ctrld_asdv: false
       adc_ctrld_initdly: Delay 0 CLK_ADC cycles

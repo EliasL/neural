@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import time
-from reader import DebugMessage, DebugMessages
+from reader import SerialReader
 plt.ion()
 
 class Plotter:
@@ -71,6 +71,14 @@ class Plotter:
         x_values = debugMessages.get_values_of(x_axis_key)
         oldest = x_values[0]
         latest = x_values[-1]
+
+        # If the oldest is larger than the latest, it means that the microcontroller has been reset
+        if oldest > latest:
+            debugMessages.remove_values_where_key_larger_than(x_axis_key, latest)
+            x_values = debugMessages.get_values_of(x_axis_key)
+            oldest = x_values[0]
+            latest = x_values[-1]
+
         for axis in self.axises:
             axis.set_xlim(oldest, latest)
         
@@ -83,23 +91,23 @@ class Plotter:
         self.figure.canvas.draw()
         self.figure.canvas.flush_events()
 
-def parseData(lines):
-    messages = [DebugMessage(line) for line in lines]
-    return DebugMessages(messages)  
 
-logFilePath = "log.csv"
 
-plotter = Plotter()
 
-max_lines_to_plot = 150
-while True:
-    with open(logFilePath, 'r') as f:
-        lines = f.read().splitlines()
-        if len(lines)>max_lines_to_plot:
-            last_lines = lines[-max_lines_to_plot:]
-        else:
-            last_lines = lines
+if __name__ == '__main__':  
+    logFilePath = "log.csv"
 
-    plotter.draw(parseData(last_lines))
-    updateCheck = last_lines[-1]
-    
+    plotter = Plotter()
+
+    max_lines_to_plot = 150
+    while True:
+        with open(logFilePath, 'r') as f:
+            lines = f.read().splitlines()
+            if len(lines)>max_lines_to_plot:
+                last_lines = lines[-max_lines_to_plot:]
+            else:
+                last_lines = lines
+
+        plotter.draw(SerialReader.parseData(last_lines))
+        updateCheck = last_lines[-1]
+        

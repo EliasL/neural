@@ -10,6 +10,7 @@
 #include "settings.h"
 #include "tinyLED/tinyLED.h"
 #include "tinyDebugger/tinyDebugger.h"
+#include "tinyAxon/tinyAxon.h"
 
 _Bool connected_to_charger;
 
@@ -36,6 +37,11 @@ void tinyCharge_switch_mode(){
 		// Set LED
 		tinyLED_set_color(OUT_LED, OFF);
 		tinyLED_set_color_mode(INN_LED, CHARGING_COLOR, SWING);
+		
+		// Stop axon from firing
+		// (There is a small chance that the neuron is put into charging mode as it is firing. The axon is then never told to stop firing)
+		tinyAxon_stop_sending_pulse();
+		
 	}
 	else{
 		// Switch from charge to main mode

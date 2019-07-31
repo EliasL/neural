@@ -27,23 +27,37 @@ class DebugMessage:
         key_value_list = [[key_value[0], eval(key_value[1])] for key_value in key_value_list]
         # key_values is in the format [['key', value], ... ]
         return key_value_list
+    
+    def __eq__(self, obj):
+        if self.key_list != obj.key_list:
+            return False
+
+        for key in self.key_list:
+            if getattr(self, key) != getattr(obj, key):
+                return False
+        
+        return True
+
+
 
 class DebugMessages:
     def __init__(self, debugMessages):
         # We assume that the keys of the first debugMessage are the same
         # as the keys in all of the debugMessages
         self.debugMessages = debugMessages
-
-        # This variable stores data so we don't have to get the data every time we call get_values_of()
-        self.storage = {}
         
     def get_values_of(self, key):
-        if key not in self.storage:
-            # NB! -1 is used as an error when there is no attribute to get. Don't be confused if a lot of values suddenly go to -1
-            # or if a value you expected should change, is constantly -1. Check your spelling. 
-            self.storage[key] = [getattr(debugMessage, key) if hasattr(debugMessage, key) else -1 for debugMessage in self.debugMessages]
-        return self.storage[key]
-
+        # NB! -1 is used as an error when there is no attribute to get. Don't be confused if a lot of values suddenly go to -1.
+        # If a value you expected should change, is constantly -1, you should check if the names are the same everywhere. 
+        return [getattr(debugMessage, key) if hasattr(debugMessage, key) else -1 for debugMessage in self.debugMessages]
+    
+    def remove_values_where_key_larger_than(self, key, value):
+        newMessages = []
+        for debugMessage in self.debugMessages:
+            if hasattr(debugMessage, key):
+                if getattr(debugMessage, key) <= value:
+                    newMessages.append(debugMessage)
+        self.debugMessages = newMessages
 
 
 class SerialReader:
@@ -60,7 +74,7 @@ class SerialReader:
         except:
             return ""
     
-    def saveData(self):
+    def saveData(self, printData=True):
         data = self.readline()
         # Check if there was an error reading the data
         if data == "":
@@ -68,8 +82,15 @@ class SerialReader:
         with open(self.logFilePath, 'a+', newline='') as logFile:
             logFile.write(data)
         
-        #Optional
-        print(data, end='')
+        if printData:
+            print(data, end='')
+
+        return data
+    
+    @staticmethod
+    def parseData(lines):
+        messages = [DebugMessage(line) for line in lines]
+        return DebugMessages(messages)  
                 
 if __name__ == '__main__':  
     

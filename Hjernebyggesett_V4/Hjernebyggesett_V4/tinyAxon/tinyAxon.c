@@ -71,7 +71,7 @@ static void tinyAxon_start_sending_pulse()
 	tinyLED_set_color_mode(OUT_LED, WHITE, FLASH_ONCE);
 }
 
-static void tinyAxon_stop_sending_pulse()
+void tinyAxon_stop_sending_pulse()
 {
 	DAC_0_set_output(NO_SIGNAL_OUTPUT);
 	axonOutputValue=NO_SIGNAL_OUTPUT;

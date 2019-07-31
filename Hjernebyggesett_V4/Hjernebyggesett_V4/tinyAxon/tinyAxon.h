@@ -17,5 +17,6 @@ enum NeuronType
 
 double tinyAxon_update_potential(double potential);
 
+void tinyAxon_stop_sending_pulse();
 
 #endif /* tinyAxon_H_ */

@@ -38,7 +38,6 @@ int main(void)
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
 	
-	VREF.CTRLA |= VREF_ADC0REFSEL_2V5_gc;
 	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
 	 
 	while (1)

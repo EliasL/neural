@@ -77,7 +77,7 @@
           <AcmeProjectActionInfo Action="File" Source="include/system.h" IsConfig="false" Hash="7l/l+XJIHH3gQtYswsVwRA" />
           <AcmeProjectActionInfo Action="File" Source="include/tca.h" IsConfig="false" Hash="sQN2feFC0dmer7/q1BSBNQ" />
           <AcmeProjectActionInfo Action="File" Source="include/usart_basic.h" IsConfig="false" Hash="xTOWoHh/DAtIHHm/krORXw" />
-          <AcmeProjectActionInfo Action="File" Source="src/adc_basic.c" IsConfig="false" Hash="f9yMUA8bIBogvmUVQgi3/g" />
+          <AcmeProjectActionInfo Action="File" Source="src/adc_basic.c" IsConfig="false" Hash="ADCoeslnJ/irdOyziRO2oA" />
           <AcmeProjectActionInfo Action="File" Source="src/bod.c" IsConfig="false" Hash="M6Afy4OgCozZHH5ahIiZ8w" />
           <AcmeProjectActionInfo Action="File" Source="src/ccl.c" IsConfig="false" Hash="Mz4kPqP09x0cozqoSNnQHw" />
           <AcmeProjectActionInfo Action="File" Source="src/clkctrl.c" IsConfig="false" Hash="qLXnpbDuS1bXLN5gtLnIDg" />
