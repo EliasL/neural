@@ -174,7 +174,7 @@ If the axon does fire, the potential is reduced
 double tinyAxon_update_potential(double potential)
 {	
 	//While the neuron has enough potential to fire, we want to fire more
-	while (potential > THRESHOLD_POTENTIAL)
+	while (potential >= THRESHOLD_POTENTIAL)
 	{
 		// We have to check if there are already queued pulses, so that the frequency never exceeds FIRE_DELAY
 		if(pulses_in_queue>0){

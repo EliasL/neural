@@ -44,7 +44,6 @@ void tinyPotential_update()
 	tinyPotential_decay();
 	// Update potential with values from Dendrites
 	tinyPotential_potential = tinyDendrite_update_potential(tinyPotential_potential);
-	tinyDebugger_send_double("DendP", tinyPotential_potential);
 	
 	// Update potential from button press
 	tinyPotential_potential = tinyButton_update_potential(tinyPotential_potential);
@@ -52,8 +51,10 @@ void tinyPotential_update()
 	// Update potential with values from spontaneous pulse.
 	tinyPotential_potential = tinyPulse_update_potential(tinyPotential_potential);
 	
+	tinyDebugger_send_double("Potential", tinyPotential_potential);
+	
+	
 	// Let the axon affect the potential
 	// This is also where we decide whether or not the axon should fire
 	tinyPotential_potential = tinyAxon_update_potential(tinyPotential_potential);
-	tinyDebugger_send_double("AxonP", tinyPotential_potential);
 }

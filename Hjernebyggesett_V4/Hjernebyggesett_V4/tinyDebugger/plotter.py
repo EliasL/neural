@@ -12,8 +12,7 @@ class Plotter:
         # NB You have to use either ONLY -1, 0 and 1 OR 2 and 3 as well (all of them)
         self.variable_graph_number = {
             "time":-1,
-            "DendP":0,
-            "AxonP":0,
+            "Potential":0,
             "D1":1,
             "D2":1,
             "D3":1,

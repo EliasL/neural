@@ -22,7 +22,7 @@ Our python script (if running), will pick them up and plot the values in real ti
 
 // We use 10 as an arbitrary max, you could increase this if you need to watch more variables.
 const char *data_to_send[10] = {NULL};
-uint8_t tinyDebugger_print_attempts = 0; // This will overflow, but that's not a problem
+uint16_t tinyDebugger_print_attempts = 0;
 _Bool tinyDebugger_send_message = true;
 
 

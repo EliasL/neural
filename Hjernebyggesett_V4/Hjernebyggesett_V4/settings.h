@@ -37,14 +37,14 @@
 
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
+// Debugging in high timescales (above 0.1), often leads to strange behavior
 // Set 1 for true and 0 for false
 #define DEBUGGING 1
 
 
 // An alternative to turning off the debugging completely, we can choose to set DEBUG_EVERY to something larger than 1. (max 255)
-// For example, setting DEBUG_EVERY to 5, will make the tiny send a debug message every 5 cycles. 
-// Be aware that this will result in important events not being logged. Short events such as dendrite and axon inputs and outputs, that only
-// last one or two cycles, will seldomly be picked up by debugging every 5 cycles. 
+// For example, setting DEBUG_EVERY to 50, will make the tiny send a debug message every 50 cycles. 
+// Be aware that this will result in important events not being logged.
 #define DEBUG_EVERY 1
 
 
@@ -120,12 +120,12 @@
 
 
 // This is how much the potential changes when we press the button
-#define BUTTON_PRESS_REACTION 26
+#define BUTTON_PRESS_REACTION 25
 
 
 // After the axon has fired, the potential changes by this amount
 // I want to test reducing the potential by -30 instead of -25 to simulate the hyperpolarization
-#define POSTFIRE_POTENTIAL_REACTION -30
+#define POSTFIRE_POTENTIAL_REACTION -25
 
 
 // Time for pulse to travel from Dendrites to axon
@@ -133,7 +133,7 @@
 
 
 // Minimum time between pulses
-#define FIRE_DELAY 50
+#define FIRE_DELAY 10
 
 
 // If a pulse has been queued, and the neurons potential drops significantly shortly after the pulse has been queued
@@ -170,10 +170,10 @@ When a Dendrite receives a signal, these values describe how the potential in th
 
 #define NO_SIGNAL_REACTION 0
 #define HIGH_EXCITE_REACTION 52
-#define NORMAL_EXCITE_REACTION 26
+#define NORMAL_EXCITE_REACTION 25
 #define LOW_EXCITE_REACTION 20
 #define HIGH_INHIB_REACTION -50
-#define NORMAL_INHIB_REACTION -26
+#define NORMAL_INHIB_REACTION -25
 #define LOW_INHIB_REACTION -20
 
 
@@ -187,7 +187,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 
 // Due to various complications, we resort to finding values that work by trail an error
-#define EXCITATORY_NEURON_OUTPUT 200
+#define EXCITATORY_NEURON_OUTPUT 210
 #define INHIBITORY_NEURON_OUTPUT 116
 
 

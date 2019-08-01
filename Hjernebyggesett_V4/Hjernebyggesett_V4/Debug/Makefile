@@ -68,7 +68,6 @@ SUBDIRS :=  \
 ../tinyButton/ \
 ../tinyCharge/ \
 ../tinyDebugger/ \
-../tinyDebugger/__pycache__/ \
 ../tinyDendrite/ \
 ../tinyISR/ \
 ../tinyLED/ \
