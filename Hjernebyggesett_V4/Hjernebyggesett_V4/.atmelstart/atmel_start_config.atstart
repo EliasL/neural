@@ -172,7 +172,7 @@ drivers:
     functionality: USART
     api: Drivers:USART:Basic
     configuration:
-      baud_rate: 9600
+      baud_rate: 115200
       ctrla_abeie: false
       ctrla_dreie: false
       ctrla_lbme: false

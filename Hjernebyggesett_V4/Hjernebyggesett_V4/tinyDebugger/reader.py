@@ -61,21 +61,21 @@ class DebugMessages:
 
 
 class SerialReader:
-    def __init__(self, usb_port, logFilePath="log.csv", baudrate=9600):
+    def __init__(self, usb_port, logFilePath="log.csv", baudrate=115200):
         self.logFilePath = logFilePath
         self.ser = serial.Serial(usb_port, baudrate)
         self.ser.flushInput()
         self.ser.flushOutput()
 
-    def readline(self):
+    def readLine(self):
         raw_data = self.ser.readline()
         try:
             return raw_data.decode('utf-8')
         except:
             return ""
     
-    def saveData(self, printData=True):
-        data = self.readline()
+    def saveData(self, printData=False):
+        data = self.readLine()
         # Check if there was an error reading the data
         if data == "":
             return

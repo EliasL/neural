@@ -20,10 +20,11 @@ def reader(queue, timeBetweenMessage):
     # If you're on windows, go to device manager and find the EDBG Virtual COM Port             
     ser = SerialReader(usb_port=usb_port, logFilePath=logFilePath)
     # We discard the first line, since it's usually incomplete
-    ser.readline()
+    ser.readLine()
     lastTime = time.time()
     while True:
-        line = ser.saveData()
+        # Use ser.saveData() here if you want to save the data to log.csv
+        line = ser.readLine()
         if line != "":
             queue.put(line)
             timeBetweenMessage = time.time() - lastTime

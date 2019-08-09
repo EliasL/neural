@@ -1245,8 +1245,8 @@ uint8_t USART_0_read()
 }
      4e0:	e0 e0       	ldi	r30, 0x00	; 0
      4e2:	f8 e0       	ldi	r31, 0x08	; 8
-     4e4:	87 e4       	ldi	r24, 0x47	; 71
-     4e6:	90 e1       	ldi	r25, 0x10	; 16
+     4e4:	8b e5       	ldi	r24, 0x5B	; 91
+     4e6:	91 e0       	ldi	r25, 0x01	; 1
      4e8:	80 87       	std	Z+8, r24	; 0x08
      4ea:	91 87       	std	Z+9, r25	; 0x09
      4ec:	80 ec       	ldi	r24, 0xC0	; 192
@@ -1678,11 +1678,11 @@ static void tinyAxon_start_sending_pulse()
 	if (NEURONTYPE == EXCITATORY_NEURON)
 	{
 		DAC_0_set_output(EXCITATORY_NEURON_OUTPUT);
-     6dc:	8c e8       	ldi	r24, 0x8C	; 140
+     6dc:	82 ed       	ldi	r24, 0xD2	; 210
      6de:	90 e0       	ldi	r25, 0x00	; 0
      6e0:	0e 94 80 01 	call	0x300	; 0x300 <DAC_0_set_output>
 		axonOutputValue=EXCITATORY_NEURON_OUTPUT;
-     6e4:	8c e8       	ldi	r24, 0x8C	; 140
+     6e4:	82 ed       	ldi	r24, 0xD2	; 210
      6e6:	80 93 16 38 	sts	0x3816, r24	; 0x803816 <__data_end>
 	{
 		DAC_0_set_output(INHIBITORY_NEURON_OUTPUT);

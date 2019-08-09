@@ -72,7 +72,7 @@ int putchar(int outChar)
 int8_t USART_0_init()
 {
 
-	USART0.BAUD = (uint16_t)USART0_BAUD_RATE(9600); /* set baud rate register */
+	USART0.BAUD = (uint16_t)USART0_BAUD_RATE(115200); /* set baud rate register */
 
 	// USART0.CTRLA = 0 << USART_ABEIE_bp /* Auto-baud Error Interrupt Enable: disabled */
 	//		 | 0 << USART_DREIE_bp /* Data Register Empty Interrupt Enable: disabled */
