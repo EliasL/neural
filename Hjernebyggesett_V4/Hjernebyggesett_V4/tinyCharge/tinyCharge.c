@@ -29,7 +29,12 @@ void tinyCharge_set_charging_mode(_Bool charging_status){
 	}
 }
 
+
 void tinyCharge_switch_mode(){
+	
+	//TODO
+	// Dissable DAC so that it doesn't draw current (Probably working now!)
+	
 	
 	if(connected_to_charger){
 		// Switch from main to charging mode
@@ -42,6 +47,9 @@ void tinyCharge_switch_mode(){
 		// (There is a small chance that the neuron is put into charging mode as it is firing. The axon is then never told to stop firing)
 		tinyAxon_stop_sending_pulse();
 		
+		// disable DAC
+		tinyCharge_DAC_dissable();
+		
 	}
 	else{
 		// Switch from charge to main mode
@@ -49,9 +57,30 @@ void tinyCharge_switch_mode(){
 		// Set LED
 		tinyLED_set_color(OUT_LED, OFF);
 		tinyLED_set_color(INN_LED, OFF);
+		
+		// enable DAC
+		tinyCharge_DAC_enable();
 	}
 }
 
+void tinyCharge_DAC_dissable(){
+	
+	// We need some way to disable the DAC to prevent huge current draw when charging (64mA). When there is no code uploaded to the attiny, there is no problem.
+	// We're going to try to enable the pin as a dendrite, since they seem to be doing fine. Completely uninitializing the pin probably caused a microchip to be fried.
+	
+	DAC_0_uninit();
+	DAC_0_disable();
+	
+}
+
+void tinyCharge_DAC_enable(){
+	
+	// We need some way to disable the DAC to prevent huge current draw when charging (64mA). When there is no code uploaded to the attiny, there is no problem.
+	// We're going to try to enable the pin as a dendrite, since they seem to be doing fine. Completely uninitializing the pin probably caused a microchip to be fried.
+	
+	DAC_0_init();
+	DAC_0_enable();
+}
 
 void tinyCharge_set_transistors(){
 	if(connected_to_charger){

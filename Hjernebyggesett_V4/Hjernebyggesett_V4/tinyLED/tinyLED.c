@@ -138,7 +138,7 @@ void tinyLED_update(void)
 	uint32_t now = tinyTime_now();
 	
 	// This is a sin curve, but between 0 and 1 instead of -1 and 1
-	double sinValue = 1+sin((double)now/(100*M_PI/SWING_RATE))/2;
+	double sinValue = 0.5+sin((double)now/(100*M_PI/SWING_RATE))/2;
 	
 	// If FLASH_RATE is one, then that means that the left side of the "<" will just count from 0 to 1000, and flash_on will be true for half of the time
 	_Bool flash_on = now%(uint32_t)(1000/FLASH_RATE)  <   500/FLASH_RATE;

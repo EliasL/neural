@@ -39,7 +39,6 @@ int main(void)
 	*/
 	
 	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
-	 
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  

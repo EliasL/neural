@@ -39,6 +39,8 @@ typedef uint16_t dac_resolution_t;
 
 int8_t DAC_0_init();
 
+int8_t DAC_0_uninit();
+
 void DAC_0_enable();
 
 void DAC_0_disable();

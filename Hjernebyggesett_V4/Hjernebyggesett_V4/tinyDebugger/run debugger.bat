@@ -1,1 +1,2 @@
 python debugger.py
+exit

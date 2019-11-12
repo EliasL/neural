@@ -57,6 +57,22 @@ int8_t DAC_0_init()
 	return 0;
 }
 
+
+/*
+Makeshift function i hope works
+*/
+int8_t DAC_0_uninit()
+{
+
+	// DAC0.DATA = 0x0; /* DATA Register: 0x0 */
+
+	DAC0.CTRLA = 1 << DAC_ENABLE_bp      /* DAC Enable: enabled */
+	| 0 << DAC_OUTEN_bp     /* Output Buffer Enable: disabled */
+	| 0 << DAC_RUNSTDBY_bp; /* Run in Standby Mode: disabled */
+
+	return 0;
+}
+
 /**
  * \brief Enable DAC_0
  * 1. If supported by the clock system, enables the clock to the DAC

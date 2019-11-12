@@ -19,4 +19,6 @@ void tinyCharge_set_charging_mode(_Bool charging_status);
 
 void tinyCharge_set_transistors();
 
+void tinyCharge_DAC_dissable();
+
 #endif /* TINYCHARGE_H_ */
