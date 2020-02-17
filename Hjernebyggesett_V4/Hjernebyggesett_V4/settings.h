@@ -18,7 +18,7 @@
 #define NEURONTYPE EXCITATORY_NEURON
 
 
-// The neuron only keeps track of a certain number of pulses
+// The neuron only keeps track of a certain number of pulses (When a pulse is queued, it is stored in an array of this length.)
 // Note that if there are memory limitations, reducing this number might help slightly
 #define MAX_NUMBER_OF_PULSES 10
 
@@ -32,20 +32,14 @@
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower. Note that some settings are effected by the timescale value. Counterintuitively, this means that they will NOT change 
 // when the timescale is adjusted. See PULSEMODE_BUTTON_PRESS_TIME for an example.
-#define TIMESCALE 0.05
+#define TIMESCALE 0.5
 
 
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Debugging in high timescales (above 0.1), often leads to strange behavior
 // Set 1 for true and 0 for false
-#define DEBUGGING 1
-
-
-// An alternative to turning off the debugging completely, we can choose to set DEBUG_EVERY to something larger than 1. (max 255)
-// For example, setting DEBUG_EVERY to 50, will make the tiny send a debug message every 50 cycles. 
-// Be aware that this will result in important events not being logged.
-#define DEBUG_EVERY 1
+#define DEBUGGING 0
 
 
 // A value of n will result in n pulses every second when the neuron is in pulse mode. (max 500)
@@ -67,8 +61,8 @@
 
 
 // We give the LEDs names to clarify code
-#define OUT_LED 0
-#define INN_LED 1
+#define OUT_LED 1
+#define INN_LED 0
 
 
 // Brightness as a value between 0 and 1
@@ -87,6 +81,7 @@
 
 
 // Choose the color that pings with a small flash to show that the neuron is on
+// Choose the color OFF to disable pinging
 #define PING_COLOR BLUE
 
 
@@ -120,7 +115,7 @@
 
 
 // This is how much the potential changes when we press the button
-#define BUTTON_PRESS_REACTION 25
+#define BUTTON_PRESS_REACTION 26
 
 
 // After the axon has fired, the potential changes by this amount
@@ -155,6 +150,10 @@ When a Dendrite reads the ADC, these values (between 0 and 255) decide what corr
 See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Software
 */
 
+// MAJOR PROBLEM sending signals evoke a readout on some of the dendrites of about 125
+// This drastically reduces our viable signal space. One option is to run a calibration run where
+// one could measure how much each denrite responds to firing, and deducting that amount from the signal input when a signal
+// is read at the same time that the axon fires.
 #define CHARGING_THRESHOLD 232
 #define NORMAL_EXCITE_THRESHOLD 199
 #define HIGH_EXCITE_THRESHOLD 166

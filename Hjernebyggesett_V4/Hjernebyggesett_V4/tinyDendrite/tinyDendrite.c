@@ -11,6 +11,7 @@
 #include "settings.h"
 #include "tinyCharge/tinyCharge.h"
 #include "tinyDebugger/tinyDebugger.h"
+#include "tinyLED/tinyLED.h"
 
 // Signal types
 enum DendriteSignal

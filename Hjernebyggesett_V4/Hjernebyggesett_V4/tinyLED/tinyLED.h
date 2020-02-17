@@ -11,7 +11,7 @@
 
 
 enum Colors{
-	OFF, RED, BLUE, GREEN, WHITE
+	OFF, RED, BLUE, GREEN, YELLOW, WHITE
 };
 
 enum ColorModes

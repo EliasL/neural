@@ -102,6 +102,9 @@ static struct RGB_Color tinyLED_enum_to_RGB_Color(enum Colors color){
 		case BLUE:
 			rgb_color = (struct RGB_Color){0, 0, 255*LED_BRIGHTNESS};
 			break;
+		case YELLOW:
+			rgb_color = (struct RGB_Color){255*LED_BRIGHTNESS, 255*LED_BRIGHTNESS, 0};
+			break;
 		case WHITE:
 			// Should the /3 be there? This requires testing.
 			// After testing, findings were that at 0.1 brightness, one would see the three LEDs instead of one white led
@@ -117,11 +120,12 @@ static struct RGB_Color tinyLED_enum_to_RGB_Color(enum Colors color){
 	return rgb_color;
 			
 };
-
-_Bool tinyLED_RGB_Color_Compare(struct RGB_Color* a, struct RGB_Color* b){
+// This might be cause of strange light behavior?
+//Message		expected 'struct RGB_Color *' but argument is of type 'struct RGB_Color (*)[2]'	Hjernebyggesett_V4	C:\Users\Elias Lundheim\Documents\GitHub\neural\Hjernebyggesett_V4\Hjernebyggesett_V4\tinyLED\tinyLED.c	121
+_Bool tinyLED_RGB_Color_Compare(struct RGB_Color (*a)[NUMBER_OF_LEDS], struct RGB_Color (*b)[NUMBER_OF_LEDS]){
 	for (int i=0; i<NUMBER_OF_LEDS; i++)
 	{
-		if(!(a[i].red==b[i].red && a[i].green==b[i].green && a[i].blue==b[i].blue)){
+		if(!((*a)[i].red==(*b)[i].red && (*a)[i].green==(*b)[i].green && (*a)[i].blue==(*b)[i].blue)){
 			return false;
 		}
 	}
@@ -185,7 +189,7 @@ void tinyLED_update(void)
 		}
 	}
 	
-	// We only write to the LEDs if there is something to change. (In SWING mode, we update the LEDs every cycle)
+	// We only write to the LEDs if there is something to change. (eg. in SWING mode, we update the LEDs almost every cycle)
 	if(!tinyLED_RGB_Color_Compare(&rgb_colors, &tinyLED_old_colors)){
 		for (uint8_t i = 0; i < NUMBER_OF_LEDS; i++)
 		{
@@ -196,7 +200,7 @@ void tinyLED_update(void)
 			tinyLED_SPIWriteByte(rgb_colors[i].red);
 			tinyLED_SPIWriteByte(rgb_colors[i].blue);
 			tinyLED_old_colors[i] = rgb_colors[i];
-	}
+		}
 		tinyDebugger_send_uint8("LED1 color", tinyLED_colors[0].color);
 		tinyDebugger_send_uint8("LED2 color", tinyLED_colors[1].color);
 	}

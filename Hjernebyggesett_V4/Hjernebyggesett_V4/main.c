@@ -49,7 +49,8 @@ int main(void)
 				// Charge loop
 				
 				if(tinyCharge_is_fully_charged()){
-					tinyLED_set_color(OUT_LED, CHARGING_DONE_COLOR);
+					tinyLED_set_color(INN_LED, CHARGING_DONE_COLOR);
+					tinyLED_set_color(OUT_LED, OFF)
 				}				
 				// We check the Dendrites in order to detect if we have stopped charging
 				tinyDendrite_update_signals();
@@ -59,7 +60,7 @@ int main(void)
 				// Main loop			
 				
 				// Set LED
-				if(tinyLED_get_color(OUT_LED) == OFF){
+				if(tinyLED_get_color(OUT_LED) == OFF && PING_COLOR != OFF){
 					tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
 				}
 				

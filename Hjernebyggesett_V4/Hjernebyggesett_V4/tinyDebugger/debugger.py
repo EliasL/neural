@@ -6,7 +6,7 @@ from reader import SerialReader
 from plotter import Plotter
 
 lines = []
-usb_port = 'COM20'
+usb_port = 'COM3'
 logFilePath = "log.csv"
 secondsOfPlot = 10 # the plot will show the last n seconds
 
