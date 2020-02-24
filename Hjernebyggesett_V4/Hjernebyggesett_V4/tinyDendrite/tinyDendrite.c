@@ -12,6 +12,7 @@
 #include "tinyCharge/tinyCharge.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"
+#include "tinyAxon/tinyAxon.h"
 
 // Signal types
 enum DendriteSignal
@@ -107,6 +108,11 @@ outside. It uses the previously declared functions to return the potential.
 */
 int16_t tinyDendrite_get_potential()
 {
+	if(tinyAxon_is_firing() && IGNORE_INPUT_WHILE_FIRING){
+		
+		return NO_SIGNAL_REACTION;
+	}
+	
 	//Convert the digital value to the various signals defined in DendriteSignalType
 	tinyDendrite_update_signals();
 	
@@ -120,21 +126,27 @@ int16_t tinyDendrite_get_potential()
 				break;
 			case HIGH_EXCITE:
 				return_potential_val += HIGH_EXCITE_REACTION;
+				tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 				break;
 			case NORMAL_EXCITE:
 				return_potential_val += NORMAL_EXCITE_REACTION;
+				tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 				break;
 			case LOW_EXCITE:
 				return_potential_val += LOW_EXCITE_REACTION;
+				tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 				break;
 			case HIGH_INHIB:
 				return_potential_val += HIGH_INHIB_REACTION;
+				tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
 				break;
 			case NORMAL_INHIB:
 				return_potential_val += NORMAL_INHIB_REACTION;
+				tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
 				break;
 			case LOW_INHIB:
 				return_potential_val += LOW_INHIB_REACTION;
+				tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
 				break;
 			case CHARGING:
 				// Nothing happens
@@ -143,7 +155,9 @@ int16_t tinyDendrite_get_potential()
 				break;
 		}
 	}
+	
 	return return_potential_val;
+	
 }
 
 double tinyDendrite_update_potential(double potential){

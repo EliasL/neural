@@ -18,8 +18,17 @@
 /*
 Initiates variables for neuron type, axon firing constants etc.
 */
-_Bool tinyAxon_has_fired = false;
+_Bool tinyAxon_has_just_fired = false;
 _Bool tinyAxon_should_fire = false;
+
+// DAC has no DAC_0_get_output, so we keep track of this here.
+uint8_t axonOutputValue = 0;
+
+
+_Bool tinyAxon_is_firing(){
+	return axonOutputValue != NO_SIGNAL_OUTPUT;
+}
+
 
 uint8_t pulses_in_queue = 0; //variable to determine how many pulses are in queue.
 
@@ -47,9 +56,6 @@ uint8_t find_newest_pulse() {
 	}
 	return return_index;
 }
-
-uint8_t axonOutputValue = 0; // This variable is only used for debugging
-
 
 /*
 Pulse send function.
@@ -88,15 +94,15 @@ static void tinyAxon_update_pulse_transmitter(void)
 	if (tinyAxon_should_fire)
 	{
 		tinyAxon_should_fire = false;
-		tinyAxon_has_fired = true;
-		
 		tinyAxon_start_sending_pulse();
+		tinyAxon_has_just_fired = true;
+		
 	}
-	else if (tinyAxon_has_fired)
+	else if (tinyAxon_has_just_fired)
 	{
-		tinyAxon_has_fired = false;
+		tinyAxon_has_just_fired = false;
 	}
-	else if (!tinyAxon_has_fired && !tinyAxon_should_fire)
+	else if (!tinyAxon_has_just_fired && !tinyAxon_should_fire)
 	{
 		tinyAxon_stop_sending_pulse();
 	}
@@ -180,12 +186,12 @@ double tinyAxon_update_potential(double potential)
 		if(pulses_in_queue>0){
 			uint16_t newest_pulse = pulse_queue[find_newest_pulse()];
 			
-			// There is at least one pulse in the queue, and it is so close, that we need to offset the new pulse, so that we keep at least
+			// There is at least one pulse in the queue, and it is "so close", that we need to offset the new pulse, so that we keep at least
 			// one FIRE_DELAY between each pulse
 			if(newest_pulse + FIRE_DELAY > TRAVLE_DELAY){
 				tinyAxon_add_pulse(newest_pulse + FIRE_DELAY);
 			}
-			// There is at least one pulse in the queue, but it's far enough away to ignore
+			// There is at least one pulse in the queue, but it's "far enough away" to ignore
 			else{
 				tinyAxon_add_pulse(TRAVLE_DELAY);
 			}
@@ -201,13 +207,16 @@ double tinyAxon_update_potential(double potential)
 	}
 	
 	// If the neuron has a very low potential, we want to remove a pulse from the queue (if there is one)
-	if(potential < -THRESHOLD_POTENTIAL && pulses_in_queue > 0) // Perhaps this should be a separate variable? For now, we will just simply use -THRESHOLD_POTENTIAL
+	if(potential < -THRESHOLD_POTENTIAL)
 	{
-		// The neurons potential is low enough to attempt to remove a queued fire (Fire less)
-		if(tinyAxon_remove_pulse())
+		if(pulses_in_queue > 0) // Perhaps this should be a separate variable? For now, we will just simply use -THRESHOLD_POTENTIAL
 		{
-			// The potential has evened out a bit
-			potential += THRESHOLD_POTENTIAL;
+			// The neurons potential is low enough to attempt to remove a queued fire (Fire less)
+			if(tinyAxon_remove_pulse())
+			{
+				// The potential has evened out a bit
+				potential += THRESHOLD_POTENTIAL;
+			}
 		}
 	}
 	

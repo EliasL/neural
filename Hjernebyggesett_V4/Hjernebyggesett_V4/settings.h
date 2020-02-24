@@ -51,6 +51,9 @@
 #define PULSEMODE_BUTTON_PRESS_TIME 2000 * TIMESCALE //(ms)
 
 
+// The axon affects the dendrites. Setting this value to 1 will make the neuron ignore inputs while it is firing.
+#define IGNORE_INPUT_WHILE_FIRING 1
+
 /*
 			LED SETTINGS
 */
@@ -82,7 +85,7 @@
 
 // Choose the color that pings with a small flash to show that the neuron is on
 // Choose the color OFF to disable pinging
-#define PING_COLOR BLUE
+#define PING_COLOR OFF
 
 
 // Choose how bright the ping is (Should be very low, typically 0.02)
@@ -186,8 +189,8 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 
 // Due to various complications, we resort to finding values that work by trail an error
-#define EXCITATORY_NEURON_OUTPUT 210
-#define INHIBITORY_NEURON_OUTPUT 116
+#define EXCITATORY_NEURON_OUTPUT 230
+#define INHIBITORY_NEURON_OUTPUT 128
 
 
 /*

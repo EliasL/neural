@@ -29,7 +29,8 @@ tinyDendrite/tinyDendrite.d tinyDendrite/tinyDendrite.o: \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  ../tinyDendrite/tinyDendrite.h ../settings.h ../tinyCharge/tinyCharge.h \
- ../tinyDebugger/tinyDebugger.h ../tinyLED/tinyLED.h
+ ../tinyDebugger/tinyDebugger.h ../tinyLED/tinyLED.h \
+ ../tinyAxon/tinyAxon.h
 
 ../atmel_start.h:
 
@@ -120,3 +121,5 @@ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5
 ../tinyDebugger/tinyDebugger.h:
 
 ../tinyLED/tinyLED.h:
+
+../tinyAxon/tinyAxon.h:

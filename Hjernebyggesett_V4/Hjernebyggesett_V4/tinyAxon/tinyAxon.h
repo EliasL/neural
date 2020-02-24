@@ -15,6 +15,8 @@ enum NeuronType
 	EXCITATORY_NEURON, INHIBITORY_NEURON
 };
 
+_Bool tinyAxon_is_firing();
+
 double tinyAxon_update_potential(double potential);
 
 void tinyAxon_stop_sending_pulse();
