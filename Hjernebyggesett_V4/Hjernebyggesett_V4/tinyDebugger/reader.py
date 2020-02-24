@@ -96,7 +96,7 @@ if __name__ == '__main__':
     
     # It is very likely that you have to change the usb_port
     # If you're on windows, go to device manager and find the EDBG Virtual COM Port             
-    ser = SerialReader(usb_port='COM20', baudrate=115200)
+    ser = SerialReader(usb_port='COM3', baudrate=115200)
 
     #Optional - delete log file if exists
     if os.path.exists(ser.logFilePath):

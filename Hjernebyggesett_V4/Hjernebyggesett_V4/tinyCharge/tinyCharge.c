@@ -22,46 +22,6 @@ _Bool tinyCharge_is_fully_charged(){
 	return CHARGING_STATUS_PIN_get_level();
 }
 
-void tinyCharge_set_charging_mode(_Bool charging_status){
-	if(charging_status != connected_to_charger){
-		connected_to_charger = charging_status;
-		tinyCharge_switch_mode();
-	}
-}
-
-
-void tinyCharge_switch_mode(){
-	
-	//TODO
-	// Dissable DAC so that it doesn't draw current (Probably working now!)
-	
-	
-	if(connected_to_charger){
-		// Switch from main to charging mode
-		
-		// Set LED
-		tinyLED_set_color(OUT_LED, OFF);
-		tinyLED_set_color_mode(INN_LED, CHARGING_COLOR, SWING);
-		
-		// Stop axon from firing
-		// (There is a small chance that the neuron is put into charging mode as it is firing. The axon is then never told to stop firing)
-		tinyAxon_stop_sending_pulse();
-		
-		// disable DAC
-		tinyCharge_DAC_dissable();
-		
-	}
-	else{
-		// Switch from charge to main mode
-		
-		// Set LED
-		tinyLED_set_color(OUT_LED, OFF);
-		tinyLED_set_color(INN_LED, OFF);
-		
-		// enable DAC
-		tinyCharge_DAC_enable();
-	}
-}
 
 void tinyCharge_DAC_dissable(){
 	
@@ -81,6 +41,45 @@ void tinyCharge_DAC_enable(){
 	DAC_0_init();
 	DAC_0_enable();
 }
+
+
+void tinyCharge_switch_mode(){
+	
+	if(connected_to_charger){
+		// Switch from main to charging mode
+		
+		// Set LED
+		tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
+		tinyLED_set_color(INN_LED, OFF);
+
+
+		// Stop axon from firing
+		// (There is a small chance that the neuron is put into charging mode as it is firing. The axon is then never told to stop firing)
+		tinyAxon_stop_sending_pulse();
+
+		// disable DAC
+		tinyCharge_DAC_dissable();
+		
+	}
+	else{
+		// Switch from charge to main mode
+		
+		// Set LED
+		tinyLED_set_color(OUT_LED, OFF);
+		tinyLED_set_color(INN_LED, OFF);
+		
+		// enable DAC
+		tinyCharge_DAC_enable();
+	}
+}
+
+void tinyCharge_set_charging_mode(_Bool charging_status){
+	if(charging_status != connected_to_charger){
+		connected_to_charger = charging_status;
+		tinyCharge_switch_mode();
+	}
+}
+
 
 void tinyCharge_set_transistors(){
 	if(connected_to_charger){

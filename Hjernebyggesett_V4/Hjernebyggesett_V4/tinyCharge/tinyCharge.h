@@ -21,4 +21,6 @@ void tinyCharge_set_transistors();
 
 void tinyCharge_DAC_dissable();
 
+void tinyCharge_DAC_enable();
+
 #endif /* TINYCHARGE_H_ */
