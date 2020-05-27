@@ -32,14 +32,14 @@
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower. Note that some settings are effected by the timescale value. Counterintuitively, this means that they will NOT change 
 // when the timescale is adjusted. See PULSEMODE_BUTTON_PRESS_TIME for an example.
-#define TIMESCALE 0.5
+#define TIMESCALE 0.05
 
 
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Debugging in high timescales (above 0.1), often leads to strange behavior
 // Set 1 for true and 0 for false
-#define DEBUGGING 0
+#define DEBUGGING 1
 
 
 // A value of n will result in n pulses every second when the neuron is in pulse mode. (max 500)
@@ -52,7 +52,7 @@
 
 
 // The axon affects the dendrites. Setting this value to 1 will make the neuron ignore inputs while it is firing.
-#define IGNORE_INPUT_WHILE_FIRING 1
+#define IGNORE_INPUT_WHILE_FIRING 0
 
 /*
 			LED SETTINGS

@@ -15,13 +15,12 @@ secondsOfPlot = 10 # the plot will show the last n seconds
 if os.path.exists(logFilePath):
     os.remove(logFilePath)
 
-def reader(queue, timeBetweenMessage, printData=False):
+def reader(queue, printData=False):
     # It is very likely that you have to change the usb_port
     # If you're on windows, go to device manager and find the EDBG Virtual COM Port             
     ser = SerialReader(usb_port=usb_port, logFilePath=logFilePath)
     # We discard the first line, since it's usually incomplete
     ser.readLine()
-    lastTime = time.time()
     while True:
         # Use ser.saveData() here if you want to save the data to log.csv
         line = ser.readLine()
@@ -29,10 +28,8 @@ def reader(queue, timeBetweenMessage, printData=False):
             if printData:
                 print(line, end="")
             queue.put(line)
-            timeBetweenMessage = time.time() - lastTime
-            lastTime = time.time()
 
-def plotter(queue, timeBetweenMessage):
+def plotter(queue):
     lines = []
     plotter = Plotter()
     while True:
@@ -54,9 +51,8 @@ def plotter(queue, timeBetweenMessage):
 if __name__ == '__main__':
     ctx = mp.get_context('spawn')
     messageQueue = ctx.Queue()
-    timeBetweenMessage = mp.Value('d', 1.0)
-    process1 = ctx.Process(target=reader, args=(messageQueue, timeBetweenMessage, True))
+    process1 = ctx.Process(target=reader, args=(messageQueue, True))
     process1.start()
 
-    process2 = ctx.Process(target=plotter, args=(messageQueue, timeBetweenMessage))
+    process2 = ctx.Process(target=plotter, args=(messageQueue))
     process2.start()

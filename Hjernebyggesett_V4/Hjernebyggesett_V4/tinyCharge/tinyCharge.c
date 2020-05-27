@@ -90,3 +90,6 @@ void tinyCharge_set_transistors(){
 		CHARGING_SWITCHES_PIN_set_level(true);
 	}
 }
+
+
+//Thinks it's charging when axon fires
