@@ -196,6 +196,9 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 /*
 			TENCHINCAL DEFINITIONS
 */
+// To avoid that the axon firing activates the charge mode, we require several cycles of high signal levels in order
+// to switch to charging mode.
+#define CYCLES_REQUIRED_FOR_CHARGING_MODE_SWITCH 10
 
 // Number of Dendrites
 // NB! Chancing this will also require you to change the "Dendrite_ports" array in tinyDendrite.c

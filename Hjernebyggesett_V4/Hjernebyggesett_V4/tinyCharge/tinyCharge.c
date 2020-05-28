@@ -15,6 +15,13 @@
 
 _Bool connected_to_charger;
 
+/*
+The charge_counter keeps track of how many cycles the neuron has thought that it has been connected to a charger
+To avoid the axon of the neuron activating the charge mode, we require several cycles of high signal levels in order
+to switch to charging mode
+*/
+uint8_t charge_counter = 0; 
+
 _Bool tinyCharge_is_connected_to_charger(){
 	return connected_to_charger;
 }
@@ -48,8 +55,26 @@ Checks if the levels of the dendrites and axon are at charging levels
 and updates the mode accordingly
 */
 void tinyCharge_update_charging_mode(){
-	_Bool charge = tinyAxon_check_charge_level() || tinyDendrite_check_charge_level();
-	tinyCharge_set_charging_mode(charge);
+	// For complicated reasons, the axon_check_level will be high even when the charger is not connected
+	// WHEN the neuron is in charging mode, hence we ignore the axon level when the neuron is in charging mode
+	_Bool charging;
+	if(connected_to_charger){
+		charging = tinyDendrite_check_charge_level();
+	} else{
+		charging = tinyDendrite_check_charge_level() || tinyAxon_check_charge_level();
+	}
+	
+	// In order to prevent the axon from stimulating itself, we only switch into charging mode when the conditions have been right for several cycles
+	if(!connected_to_charger && charging){
+		charge_counter++;
+		if(charge_counter > CYCLES_REQUIRED_FOR_CHARGING_MODE_SWITCH){
+			charge_counter = 0;
+			tinyCharge_set_charging_mode(charging);
+		}
+	}
+	else{
+		//tinyCharge_set_charging_mode(charging);
+	}
 }
 
 
