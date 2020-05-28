@@ -19,6 +19,8 @@ _Bool tinyAxon_is_firing();
 
 double tinyAxon_update_potential(double potential);
 
+_Bool tinyAxon_check_charge_level(void);
+
 void tinyAxon_stop_sending_pulse();
 
 #endif /* tinyAxon_H_ */

@@ -43,19 +43,11 @@ static void tinyDendrite_read_signals(void)
 	tinyDebugger_send_uint8("D5", tinyDendrite_values[4]);
 }
 
-
-/*
-This function converts the 8 bit value from the ADC into one of the signal types defined in DendriteSignal
-We also update the charging state
-*/
-void tinyDendrite_update_signals(void)
+_Bool tinyDendrite_check_charge_level(void)
 {
-	
-	//Read the analog voltage values on each of the Dendrites
-	tinyDendrite_read_signals();
-	
 	_Bool charging = false;
 	
+	tinyDendrite_read_signals();
 	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
 	{
 		tinyDendrite_previous_signals[i] = tinyDendrite_current_signals[i];
@@ -63,6 +55,31 @@ void tinyDendrite_update_signals(void)
 		{
 			tinyDendrite_current_signals[i] = CHARGING;
 			charging = true;
+		}
+	}
+	return charging;
+}
+
+/*
+This function converts the 8 bit value from the ADC into one of the signal types defined in DendriteSignal
+*/
+void tinyDendrite_update_signals(void)
+{
+	
+	//Read the analog voltage values on each of the Dendrites
+	//Since read_signals is called in check_charge_level, and check_charge_level is called at the beginning
+	//of every loop, it's probably unnecessary to read the signals again, but I'll leave it inn for now.
+	tinyDendrite_read_signals();
+	
+	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
+	{
+		tinyDendrite_previous_signals[i] = tinyDendrite_current_signals[i];
+		if (tinyDendrite_values[i] > CHARGING_THRESHOLD)
+		{
+			tinyDendrite_current_signals[i] = CHARGING;
+			// Previously, we used this function to check charging, but this has now
+			// been moved to tinyDendrite_check_charging.
+			//charging = true;
 		}
 		else if (tinyDendrite_values[i] > NORMAL_EXCITE_THRESHOLD)
 		{
@@ -97,7 +114,6 @@ void tinyDendrite_update_signals(void)
 			tinyDendrite_current_signals[i] = NO_SIGNAL;
 		}
 	}
-	tinyCharge_set_charging_mode(charging);
 }
 
 

@@ -54,5 +54,5 @@ if __name__ == '__main__':
     process1 = ctx.Process(target=reader, args=(messageQueue, True))
     process1.start()
 
-    process2 = ctx.Process(target=plotter, args=(messageQueue))
+    process2 = ctx.Process(target=plotter, args=(messageQueue, True))
     process2.start()

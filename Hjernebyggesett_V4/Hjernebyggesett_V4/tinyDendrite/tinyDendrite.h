@@ -12,6 +12,8 @@
 
 double tinyDendrite_update_potential(double potential);
 
+_Bool tinyDendrite_check_charge_level(void);
+
 void tinyDendrite_update_signals(void);
 
 

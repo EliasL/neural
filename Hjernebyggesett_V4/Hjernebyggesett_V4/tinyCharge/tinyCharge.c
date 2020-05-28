@@ -11,6 +11,7 @@
 #include "tinyLED/tinyLED.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyAxon/tinyAxon.h"
+#include "tinyDendrite/tinyDendrite.h"
 
 _Bool connected_to_charger;
 
@@ -40,6 +41,15 @@ void tinyCharge_DAC_enable(){
 	
 	DAC_0_init();
 	DAC_0_enable();
+}
+
+/*
+Checks if the levels of the dendrites and axon are at charging levels
+and updates the mode accordingly
+*/
+void tinyCharge_update_charging_mode(){
+	_Bool charge = tinyAxon_check_charge_level() || tinyDendrite_check_charge_level();
+	tinyCharge_set_charging_mode(charge);
 }
 
 

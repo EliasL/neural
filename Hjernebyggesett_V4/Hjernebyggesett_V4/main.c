@@ -44,6 +44,7 @@ int main(void)
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
 		if(tinyISR_getflag())
 		{
+			tinyCharge_update_charging_mode();
 			
 			if(tinyCharge_is_connected_to_charger()){
 				// Charge loop
@@ -51,9 +52,11 @@ int main(void)
 				if(tinyCharge_is_fully_charged()){
 					tinyLED_set_color(INN_LED, CHARGING_DONE_COLOR);
 					tinyLED_set_color(OUT_LED, OFF);
+				}
+				else{
+					tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
+					tinyLED_set_color(INN_LED, OFF);
 				}				
-				// We check the Dendrites in order to detect if we have stopped charging
-				tinyDendrite_update_signals();
 				
 			}
 			else{
