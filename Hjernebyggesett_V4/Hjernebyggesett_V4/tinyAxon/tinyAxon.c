@@ -242,7 +242,7 @@ double tinyAxon_update_potential(double potential)
 	tinyAxon_update_pulse_transmitter();
 	
 	tinyDebugger_send_uint8("Axon", axonOutputValue);
-	tinyDebugger_send_uint8("Pulses", AXON_CHECK_PIN_get_level());
+	tinyDebugger_send_uint8("Pulses", pulses_in_queue);
 	
 	
 	return potential;

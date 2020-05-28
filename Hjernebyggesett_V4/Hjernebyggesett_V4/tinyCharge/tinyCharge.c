@@ -73,7 +73,7 @@ void tinyCharge_update_charging_mode(){
 		}
 	}
 	else{
-		//tinyCharge_set_charging_mode(charging);
+		tinyCharge_set_charging_mode(charging);
 	}
 }
 
