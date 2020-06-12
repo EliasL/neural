@@ -264,6 +264,7 @@
     <Folder Include="tinyLED\" />
     <Folder Include="tinyPotential\" />
     <Folder Include="tinyPulse\" />
+    <Folder Include="tinyTester\" />
     <Folder Include="tinyTime\" />
     <Folder Include="utils\" />
     <Folder Include="utils\assembler\" />
@@ -453,6 +454,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="tinyPulse\tinyPulse.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tinyTester\tinyTester.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="tinyTester\tinyTester.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="tinyTime\tinyTime.c">

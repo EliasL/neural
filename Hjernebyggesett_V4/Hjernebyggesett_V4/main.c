@@ -12,6 +12,7 @@
 #include "settings.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"
+#include "tinyTester/tinyTester.h"
 
 /*
 Notes for future development
@@ -40,6 +41,9 @@ int main(void)
 	*/
 	
 	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
+	
+	tinyTester_test();
+	
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  

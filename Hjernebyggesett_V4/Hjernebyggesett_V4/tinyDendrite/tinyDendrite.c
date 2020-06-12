@@ -20,27 +20,26 @@ enum DendriteSignal
 	NO_SIGNAL, LOW_INHIB, NORMAL_INHIB, HIGH_INHIB, LOW_EXCITE, NORMAL_EXCITE, HIGH_EXCITE, CHARGING
 };
 
-uint8_t tinyDendrite_values[TINYDENDRITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
-uint8_t Dendrite_ports[TINYDENDRITE_COUNT] = {DENDRITE_PORT_1, DENDRITE_PORT_2, DENDRITE_PORT_3, DENDRITE_PORT_4, DENDRITE_PORT_5}; // Ports used on the ADC MUX
+uint8_t tinyDendrite_values[DENDRITE_COUNT] = {0}; // Current ADC (Analog to Digital Converter) values
+uint8_t Dendrite_ports[DENDRITE_COUNT] = {DENDRITE_PORT_1, DENDRITE_PORT_2, DENDRITE_PORT_3, DENDRITE_PORT_4, DENDRITE_PORT_5}; // Ports used on the ADC MUX
 	
-enum DendriteSignal tinyDendrite_current_signals[TINYDENDRITE_COUNT] = {NO_SIGNAL};
-enum DendriteSignal tinyDendrite_previous_signals[TINYDENDRITE_COUNT] = {NO_SIGNAL};
+enum DendriteSignal tinyDendrite_current_signals[DENDRITE_COUNT] = {NO_SIGNAL};
+enum DendriteSignal tinyDendrite_previous_signals[DENDRITE_COUNT] = {NO_SIGNAL};
 
 
 /*
 This function reads the voltage at the Dendrite inputs with the ADC
 */
-static void tinyDendrite_read_signals(void)
+void tinyDendrite_read_signals(void)
 {
-	for (int i = 0; i < TINYDENDRITE_COUNT; i++)
+	for (int i = 0; i < DENDRITE_COUNT; i++)
 	{
 		tinyDendrite_values[i] = ADC_0_get_conversion(Dendrite_ports[i]);
 	}
-	tinyDebugger_send_uint8("D1", tinyDendrite_values[0]);
-	tinyDebugger_send_uint8("D2", tinyDendrite_values[1]);
-	tinyDebugger_send_uint8("D3", tinyDendrite_values[2]);
-	tinyDebugger_send_uint8("D4", tinyDendrite_values[3]);
-	tinyDebugger_send_uint8("D5", tinyDendrite_values[4]);
+}
+
+uint8_t tinyDendrite_get_value(uint8_t dendrite_number){
+	return tinyDendrite_values[dendrite_number];
 }
 
 _Bool tinyDendrite_check_charge_level(void)
@@ -48,7 +47,7 @@ _Bool tinyDendrite_check_charge_level(void)
 	_Bool charging = false;
 	
 	tinyDendrite_read_signals();
-	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
+	for (uint8_t i = 0; i < DENDRITE_COUNT; i++)
 	{
 		tinyDendrite_previous_signals[i] = tinyDendrite_current_signals[i];
 		if (tinyDendrite_values[i] > CHARGING_THRESHOLD)
@@ -66,13 +65,17 @@ This function converts the 8 bit value from the ADC into one of the signal types
 void tinyDendrite_update_signals(void)
 {
 	
-	//Read the analog voltage values on each of the Dendrites
-	//Since read_signals is called in check_charge_level, and check_charge_level is called at the beginning
-	//of every loop, it's probably unnecessary to read the signals again, but I'll leave it inn for now.
-	//tinyDendrite_read_signals();
-	// It was commented out anyway because of double debugging messages
+	// This function does not read the dendrite values! Read_signals must be called somewhere prior to this function!
+	// As of writing this, the update_charging_mode function in main runs check_charge_level, so 
+	// the tinyDendrite_values are updated when update_signals is called later
 	
-	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
+	tinyDebugger_send_uint8("D1", tinyDendrite_values[0]);
+	tinyDebugger_send_uint8("D2", tinyDendrite_values[1]);
+	tinyDebugger_send_uint8("D3", tinyDendrite_values[2]);
+	tinyDebugger_send_uint8("D4", tinyDendrite_values[3]);
+	tinyDebugger_send_uint8("D5", tinyDendrite_values[4]);
+	
+	for (uint8_t i = 0; i < DENDRITE_COUNT; i++)
 	{
 		tinyDendrite_previous_signals[i] = tinyDendrite_current_signals[i];
 		if (tinyDendrite_values[i] > CHARGING_THRESHOLD)
@@ -134,7 +137,7 @@ int16_t tinyDendrite_get_potential()
 	tinyDendrite_update_signals();
 	
 	int16_t return_potential_val = 0;
-	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
+	for (uint8_t i = 0; i < DENDRITE_COUNT; i++)
 	{
 		switch(tinyDendrite_current_signals[i])
 		{

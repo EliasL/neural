@@ -58,5 +58,7 @@ tinyPotential\tinyPotential.c
 
 tinyPulse\tinyPulse.c
 
+tinyTester\tinyTester.c
+
 tinyTime\tinyTime.c
 

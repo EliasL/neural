@@ -1,5 +1,7 @@
-main.d main.o: .././main.c ../atmel_start.h ../include/driver_init.h \
- ../utils/compiler.h \
+tinyTester/tinyTester.d tinyTester/tinyTester.o: \
+ ../tinyTester/tinyTester.c \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
+ ../atmel_start.h ../include/driver_init.h ../utils/compiler.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -13,7 +15,6 @@ main.d main.o: .././main.c ../atmel_start.h ../include/driver_init.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\builtins.h \
- d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  ../utils/interrupt_avr8.h \
@@ -24,13 +25,14 @@ main.d main.o: .././main.c ../atmel_start.h ../include/driver_init.h \
  ../include/ccl.h ../include/spi.h ../include/dac_basic.h \
  ../include/cpuint.h ../include/slpctrl.h ../include/bod.h \
  ../include/atmel_start_pins.h \
- d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././tinyDendrite/tinyDendrite.h .././tinyAxon/tinyAxon.h \
- .././tinyPotential/tinyPotential.h .././tinyISR/tinyISR.h \
- .././tinyTime/tinyTime.h .././tinyButton/tinyButton.h \
- .././tinyCharge/tinyCharge.h .././tinyPulse/tinyPulse.h .././settings.h \
- .././tinyDebugger/tinyDebugger.h .././tinyLED/tinyLED.h \
- .././tinyTester/tinyTester.h
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
+ ../tinyDendrite/tinyDendrite.h ../tinyAxon/tinyAxon.h \
+ ../tinyTime/tinyTime.h ../settings.h ../tinyDebugger/tinyDebugger.h \
+ ../tinyLED/tinyLED.h
+
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
 ../atmel_start.h:
 
@@ -63,8 +65,6 @@ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\a
 d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\builtins.h:
-
-d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
 d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
@@ -106,28 +106,20 @@ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\a
 
 ../include/atmel_start_pins.h:
 
-d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
-.././tinyDendrite/tinyDendrite.h:
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
-.././tinyAxon/tinyAxon.h:
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
 
-.././tinyPotential/tinyPotential.h:
+../tinyDendrite/tinyDendrite.h:
 
-.././tinyISR/tinyISR.h:
+../tinyAxon/tinyAxon.h:
 
-.././tinyTime/tinyTime.h:
+../tinyTime/tinyTime.h:
 
-.././tinyButton/tinyButton.h:
+../settings.h:
 
-.././tinyCharge/tinyCharge.h:
+../tinyDebugger/tinyDebugger.h:
 
-.././tinyPulse/tinyPulse.h:
-
-.././settings.h:
-
-.././tinyDebugger/tinyDebugger.h:
-
-.././tinyLED/tinyLED.h:
-
-.././tinyTester/tinyTester.h:
+../tinyLED/tinyLED.h:

@@ -39,7 +39,7 @@
 // debugging messages when we want the neuron to run quickly
 // Debugging in high timescales (above 0.1), often leads to strange behavior
 // Set 1 for true and 0 for false
-#define DEBUGGING 1
+#define DEBUGGING 0
 
 
 // A value of n will result in n pulses every second when the neuron is in pulse mode. (max 500)
@@ -208,7 +208,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 // Number of Dendrites
 // NB! Chancing this will also require you to change the "Dendrite_ports" array in tinyDendrite.c
-#define TINYDENDRITE_COUNT 5
+#define DENDRITE_COUNT 5
 
 /*
 Dendrite SW component signals

@@ -10,6 +10,11 @@
 #define TINYDendrite_H_
 
 
+void tinyDendrite_read_signals(void);
+
+
+uint8_t tinyDendrite_get_value(uint8_t dendrite_number);
+
 double tinyDendrite_update_potential(double potential);
 
 _Bool tinyDendrite_check_charge_level(void);

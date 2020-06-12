@@ -73,6 +73,7 @@ SUBDIRS :=  \
 ../tinyLED/ \
 ../tinyPotential/ \
 ../tinyPulse/ \
+../tinyTester/ \
 ../tinyTime/ \
 ../utils/ \
 ../utils/assembler/
@@ -107,6 +108,7 @@ C_SRCS +=  \
 ../tinyLED/tinyLED.c \
 ../tinyPotential/tinyPotential.c \
 ../tinyPulse/tinyPulse.c \
+../tinyTester/tinyTester.c \
 ../tinyTime/tinyTime.c
 
 
@@ -146,6 +148,7 @@ tinyISR/tinyISR.o \
 tinyLED/tinyLED.o \
 tinyPotential/tinyPotential.o \
 tinyPulse/tinyPulse.o \
+tinyTester/tinyTester.o \
 tinyTime/tinyTime.o
 
 OBJS_AS_ARGS +=  \
@@ -177,6 +180,7 @@ tinyISR/tinyISR.o \
 tinyLED/tinyLED.o \
 tinyPotential/tinyPotential.o \
 tinyPulse/tinyPulse.o \
+tinyTester/tinyTester.o \
 tinyTime/tinyTime.o
 
 C_DEPS +=  \
@@ -208,6 +212,7 @@ tinyISR/tinyISR.d \
 tinyLED/tinyLED.d \
 tinyPotential/tinyPotential.d \
 tinyPulse/tinyPulse.d \
+tinyTester/tinyTester.d \
 tinyTime/tinyTime.d
 
 C_DEPS_AS_ARGS +=  \
@@ -239,6 +244,7 @@ tinyISR/tinyISR.d \
 tinyLED/tinyLED.d \
 tinyPotential/tinyPotential.d \
 tinyPulse/tinyPulse.d \
+tinyTester/tinyTester.d \
 tinyTime/tinyTime.d
 
 OUTPUT_FILE_PATH +=Hjernebyggesett_V4.elf
@@ -438,6 +444,13 @@ tinyPotential/tinyPotential.o: ../tinyPotential/tinyPotential.c
 	
 
 tinyPulse/tinyPulse.o: ../tinyPulse/tinyPulse.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Software\Atmel Studio 7\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../Config" -I"D:\Software\Atmel Studio 7\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny3217 -B "D:\Software\Atmel Studio 7\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny3217" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+tinyTester/tinyTester.o: ../tinyTester/tinyTester.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Software\Atmel Studio 7\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../examples/include" -I"../include" -I"../utils" -I"../utils/assembler" -I".." -I"../Config" -I"D:\Software\Atmel Studio 7\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny3217 -B "D:\Software\Atmel Studio 7\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\gcc\dev\attiny3217" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

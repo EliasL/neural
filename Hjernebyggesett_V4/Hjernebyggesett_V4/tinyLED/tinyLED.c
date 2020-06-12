@@ -217,8 +217,8 @@ void tinyLED_update(void)
 			tinyLED_SPIWriteByte(rgb_colors[i].blue);
 			tinyLED_old_colors[i] = rgb_colors[i];
 		}
-		tinyDebugger_send_uint8("LED1 color", tinyLED_settings[0].color);
-		tinyDebugger_send_uint8("LED2 color", tinyLED_settings[1].color);
+		//tinyDebugger_send_uint8("LED1 color", tinyLED_settings[0].color);
+		//tinyDebugger_send_uint8("LED2 color", tinyLED_settings[1].color);
 	}
 }
 
