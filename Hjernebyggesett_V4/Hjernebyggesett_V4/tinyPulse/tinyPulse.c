@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include "tinyTime/tinyTime.h"
 #include "settings.h"
+#include "tinyLED/tinyLED.h"
 
 /*
 
@@ -25,8 +26,29 @@ uint32_t time_of_last_pulse = 0;
 uint16_t time_since_last_pulse = 0;
 uint16_t ideal_time_between_pulses = 1000/PULSEMODE_FREQUENCY;
 
+
+_Bool tinyPulse_is_in_pulse_mode(){
+	return pulse_mode;
+}
+
 void tinyPulse_toggle_pulse_mode(){
 	pulse_mode = !pulse_mode;
+	
+	if(tinyPulse_is_in_pulse_mode()){
+		tinyLED_set_color_mode(OUT_LED, PULSEMODE_COLOR, WEAK);
+		tinyLED_set_color_mode(INN_LED, PULSEMODE_COLOR, WEAK);
+	}
+	else{
+		tinyLED_set_color(OUT_LED, LED_OFF);
+		tinyLED_set_color(INN_LED, LED_OFF);
+	}
+}
+
+void tinyPulse_set_pulse_mode(_Bool mode){
+	if (pulse_mode != mode)
+	{
+		tinyPulse_toggle_pulse_mode();
+	}
 }
 
 double tinyPulse_update_potential(double potential){

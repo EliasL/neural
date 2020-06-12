@@ -69,7 +69,8 @@ void tinyDendrite_update_signals(void)
 	//Read the analog voltage values on each of the Dendrites
 	//Since read_signals is called in check_charge_level, and check_charge_level is called at the beginning
 	//of every loop, it's probably unnecessary to read the signals again, but I'll leave it inn for now.
-	tinyDendrite_read_signals();
+	//tinyDendrite_read_signals();
+	// It was commented out anyway because of double debugging messages
 	
 	for (uint8_t i = 0; i < TINYDENDRITE_COUNT; i++)
 	{

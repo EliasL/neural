@@ -8,6 +8,7 @@
 #include "tinyTime/tinyTime.h"
 #include "tinyButton/tinyButton.h"
 #include "tinyCharge/tinyCharge.h"
+#include "tinyPulse/tinyPulse.h"
 #include "settings.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"
@@ -50,12 +51,14 @@ int main(void)
 				// Charge loop
 				
 				if(tinyCharge_is_fully_charged()){
+					// When the neuron is connected to a charger, and fully charged:
 					tinyLED_set_color(INN_LED, CHARGING_DONE_COLOR);
-					tinyLED_set_color(OUT_LED, OFF);
+					tinyLED_set_color(OUT_LED, LED_OFF);
 				}
 				else{
+					// When the neuron is charging and is not fully charged
 					tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
-					tinyLED_set_color(INN_LED, OFF);
+					tinyLED_set_color(INN_LED, LED_OFF);
 				}				
 				
 			}
@@ -63,9 +66,11 @@ int main(void)
 				// Main loop			
 				
 				// Set LED
-				if(tinyLED_get_color(OUT_LED) == OFF && PING_COLOR != OFF){
+				// If the out led is turned LED_OFF, and the ping color is not disabled,
+				// we turn on ping mode
+				if(tinyLED_get_color(OUT_LED) == LED_OFF && PING_COLOR != LED_OFF){
 					tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
-				}
+				}				
 				
 				// Update button	
 				tinyButton_update();

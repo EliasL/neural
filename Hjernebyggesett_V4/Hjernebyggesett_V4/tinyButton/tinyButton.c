@@ -16,6 +16,7 @@
 static _Bool button_was_pushed_down = false;
 
 _Bool button_press = false;
+_Bool ignore_next_button_press = false;
 
 // We use this variable to see how long the button has been held down
 static uint32_t tinyButton_start_time = 0;
@@ -39,11 +40,19 @@ void tinyButton_update(void)
 		{
 			tinyPulse_toggle_pulse_mode();
 			tinyButton_start_time = tinyTime_now();
+			// We don't want switching to pulse mode to count as a button press, so we ignore the next button press
+			ignore_next_button_press = true;
 		}
 	}
 	if (!button_is_pushed_down && button_was_pushed_down)
 	{
-		button_press = true;
+		if(!ignore_next_button_press){
+			button_press = true;
+		}
+		else{
+			ignore_next_button_press = false;
+		}
+		
 	}
 	button_was_pushed_down = button_is_pushed_down;
 }

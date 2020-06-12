@@ -85,11 +85,17 @@
 
 // Choose the color that pings with a small flash to show that the neuron is on
 // Choose the color OFF to disable pinging
-#define PING_COLOR OFF
-
+#define PING_COLOR LED_OFF
 
 // Choose how bright the ping is (Should be very low, typically 0.02)
 #define PING_BRIGHTNESS 0.02
+
+
+// Choose what color to display when the neuron is in puse mode
+#define PULSEMODE_COLOR BLUE
+
+// Choose how bright the weak light mode should be
+#define WEAK_BRIGHTNESS 0.1
 
 
 // How many times per second a led in SWING mode swings
@@ -189,7 +195,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 
 // Due to various complications, we resort to finding values that work by trail an error
-#define EXCITATORY_NEURON_OUTPUT 230
+#define EXCITATORY_NEURON_OUTPUT 128//230
 #define INHIBITORY_NEURON_OUTPUT 128
 
 

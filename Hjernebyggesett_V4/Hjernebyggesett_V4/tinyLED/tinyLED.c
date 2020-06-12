@@ -40,7 +40,8 @@ struct ColorSetting
 };
 
 // list containing the current values for each led
-struct ColorSetting tinyLED_colors[NUMBER_OF_LEDS];
+struct ColorSetting tinyLED_settings[NUMBER_OF_LEDS];
+struct ColorSetting tinyLED_old_settings[NUMBER_OF_LEDS];
 struct RGB_Color tinyLED_old_colors[NUMBER_OF_LEDS];
 uint8_t tinyLED_flash_once_time[NUMBER_OF_LEDS];
 
@@ -54,15 +55,25 @@ void tinyLED_set_color(uint8_t LED_id, enum Colors color)
 
 enum Colors tinyLED_get_color(uint8_t LED_id)
 {
-	return tinyLED_colors[LED_id].color;
+	return tinyLED_settings[LED_id].color;
 }
 /*
 changes the values in the variables stored in the LED-array.
 */
 void tinyLED_set_color_mode(uint8_t LED_id, enum Colors color, enum ColorModes mode)
 {
+	// If we are in pulse mode, we want to stay in pulse mode after we have flashed a light.
+	// We do this by storing the previous mode in old settings.
+	// However, it can happen that two flashes comes very quickly after one another, that leads
+	// to an infinite flash loop, therefore, we only store the settings if it is not flash mode.
+	if(tinyLED_settings[LED_id].mode != FLASH_ONCE){
+		// We use two lines to avoid pointer trouble. (I'm not good with pointers)
+		tinyLED_old_settings[LED_id].color = tinyLED_settings[LED_id].color;
+		tinyLED_old_settings[LED_id].mode = tinyLED_settings[LED_id].mode;
+	}
+	
 	struct ColorSetting setting = {.color=color, .mode=mode};
-	tinyLED_colors[LED_id] = setting;
+	tinyLED_settings[LED_id] = setting;
 	if (mode == FLASH_ONCE)
 	{
 		tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
@@ -90,7 +101,7 @@ static struct RGB_Color tinyLED_enum_to_RGB_Color(enum Colors color){
 	struct RGB_Color rgb_color;
 	switch(color)
 	{
-		case OFF:
+		case LED_OFF:
 			rgb_color = (struct RGB_Color){0, 0, 0};
 			break;
 		case RED:
@@ -158,12 +169,15 @@ void tinyLED_update(void)
 	for (uint8_t i = 0; i < NUMBER_OF_LEDS; i++)
 	{		
 		// Convert enum to RGB_Color
-		rgb_colors[i] = tinyLED_enum_to_RGB_Color(tinyLED_colors[i].color);
+		rgb_colors[i] = tinyLED_enum_to_RGB_Color(tinyLED_settings[i].color);
 			
 		// Adjust colors according to mode
-		switch(tinyLED_colors[i].mode)
+		switch(tinyLED_settings[i].mode)
 		{
 			case STABLE:
+				break;
+			case WEAK:
+				rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*WEAK_BRIGHTNESS, rgb_colors[i].green*WEAK_BRIGHTNESS, rgb_colors[i].blue*WEAK_BRIGHTNESS};
 				break;
 			case FLASH:
 				rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*flash_on, rgb_colors[i].green*flash_on, rgb_colors[i].blue*flash_on};
@@ -181,7 +195,9 @@ void tinyLED_update(void)
 					tinyLED_flash_once_time[i]--;
 				}
 				else{
-					tinyLED_colors[i].color = OFF;
+					// Here we return to the previous color and mode
+					tinyLED_settings[i].color = tinyLED_old_settings[i].color;
+					tinyLED_settings[i].mode = tinyLED_old_settings[i].mode;
 				}
 				break;
 			default:
@@ -201,8 +217,8 @@ void tinyLED_update(void)
 			tinyLED_SPIWriteByte(rgb_colors[i].blue);
 			tinyLED_old_colors[i] = rgb_colors[i];
 		}
-		tinyDebugger_send_uint8("LED1 color", tinyLED_colors[0].color);
-		tinyDebugger_send_uint8("LED2 color", tinyLED_colors[1].color);
+		tinyDebugger_send_uint8("LED1 color", tinyLED_settings[0].color);
+		tinyDebugger_send_uint8("LED2 color", tinyLED_settings[1].color);
 	}
 }
 

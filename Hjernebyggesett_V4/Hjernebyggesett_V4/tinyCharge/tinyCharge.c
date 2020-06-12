@@ -12,6 +12,7 @@
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyAxon/tinyAxon.h"
 #include "tinyDendrite/tinyDendrite.h"
+#include "tinyPulse/tinyPulse.h"
 
 _Bool connected_to_charger;
 
@@ -50,6 +51,48 @@ void tinyCharge_DAC_enable(){
 	DAC_0_enable();
 }
 
+
+void tinyCharge_switch_mode(){
+	
+	if(connected_to_charger){
+		// Switch from main to charging mode
+		
+		// Set LED
+		tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
+		tinyLED_set_color(INN_LED, LED_OFF);
+
+
+		// Stop axon from firing
+		// (There is a small chance that the neuron is put into charging mode as it is firing. The axon is then never told to stop firing)
+		tinyAxon_stop_sending_pulse();
+
+		// disable DAC
+		tinyCharge_DAC_dissable();
+		
+		// We also turn off pulse mode, because it's confusing if it suddenly comes on
+		// after it has been charging
+		tinyPulse_set_pulse_mode(false);
+		
+	}
+	else{
+		// Switch from charge to main mode
+		
+		// Set LED
+		tinyLED_set_color(OUT_LED, LED_OFF);
+		tinyLED_set_color(INN_LED, LED_OFF);
+		
+		// enable DAC
+		tinyCharge_DAC_enable();
+	}
+}
+
+void tinyCharge_set_charging_mode(_Bool charging_status){
+	if(charging_status != connected_to_charger){
+		connected_to_charger = charging_status;
+		tinyCharge_switch_mode();
+	}
+}
+
 /*
 Checks if the levels of the dendrites and axon are at charging levels
 and updates the mode accordingly
@@ -77,43 +120,6 @@ void tinyCharge_update_charging_mode(){
 	}
 }
 
-
-void tinyCharge_switch_mode(){
-	
-	if(connected_to_charger){
-		// Switch from main to charging mode
-		
-		// Set LED
-		tinyLED_set_color_mode(OUT_LED, CHARGING_COLOR, SWING);
-		tinyLED_set_color(INN_LED, OFF);
-
-
-		// Stop axon from firing
-		// (There is a small chance that the neuron is put into charging mode as it is firing. The axon is then never told to stop firing)
-		tinyAxon_stop_sending_pulse();
-
-		// disable DAC
-		tinyCharge_DAC_dissable();
-		
-	}
-	else{
-		// Switch from charge to main mode
-		
-		// Set LED
-		tinyLED_set_color(OUT_LED, OFF);
-		tinyLED_set_color(INN_LED, OFF);
-		
-		// enable DAC
-		tinyCharge_DAC_enable();
-	}
-}
-
-void tinyCharge_set_charging_mode(_Bool charging_status){
-	if(charging_status != connected_to_charger){
-		connected_to_charger = charging_status;
-		tinyCharge_switch_mode();
-	}
-}
 
 
 void tinyCharge_set_transistors(){

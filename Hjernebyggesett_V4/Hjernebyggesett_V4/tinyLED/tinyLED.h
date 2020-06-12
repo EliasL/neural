@@ -11,12 +11,12 @@
 
 
 enum Colors{
-	OFF, RED, BLUE, GREEN, YELLOW, WHITE
+	LED_OFF, RED, BLUE, GREEN, YELLOW, WHITE
 };
 
 enum ColorModes
 {
-	STABLE, FLASH, SWING, PING, FLASH_ONCE
+	STABLE, WEAK, FLASH, SWING, PING, FLASH_ONCE
 };
 
 void tinyLED_update(void);
