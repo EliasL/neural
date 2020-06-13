@@ -200,6 +200,18 @@ void system_init()
 {
 	mcu_init();
 
+	/* PORT setting on PB1 */
+
+	// Set pin direction to output
+	BATTERY_ISOLATION_PIN_set_dir(PORT_DIR_OUT);
+
+	BATTERY_ISOLATION_PIN_set_level(
+	    // <y> Initial level
+	    // <id> pad_initial_level
+	    // <false"> Low
+	    // <true"> High
+	    false);
+
 	/* PORT setting on PB6 */
 
 	// Set pin direction to input

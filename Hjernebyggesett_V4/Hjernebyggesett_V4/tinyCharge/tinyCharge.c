@@ -126,9 +126,11 @@ void tinyCharge_set_transistors(){
 	if(connected_to_charger){
 		// ChargeMode is the pin that goes to the two large transistors on the neuron.
 		CHARGING_SWITCHES_PIN_set_level(false); // We want the pin low for charging
+		BATTERY_ISOLATION_PIN_set_level(true);
 	}
 	else {
 		CHARGING_SWITCHES_PIN_set_level(true);
+		BATTERY_ISOLATION_PIN_set_level(false);
 	}
 }
 
