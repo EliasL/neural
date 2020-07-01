@@ -1,12 +1,15 @@
 tinyTester/tinyTester.d tinyTester/tinyTester.o: \
  ../tinyTester/tinyTester.c \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- ../atmel_start.h ../include/driver_init.h ../utils/compiler.h \
- d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
- d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../atmel_start.h ../include/driver_init.h ../utils/compiler.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
+ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  D:\Software\Atmel\ Studio\ 7\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include/avr/iotn3217.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\portpins.h \
  d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\common.h \
@@ -34,6 +37,18 @@ tinyTester/tinyTester.d tinyTester/tinyTester.o: \
 
 d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h:
+
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
+
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
 ../atmel_start.h:
 
 ../include/driver_init.h:
@@ -43,12 +58,6 @@ d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5
 d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
 d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h:
-
-d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h:
-
-d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
-
-d:\software\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
 D:\Software\Atmel\ Studio\ 7\7.0\Packs\Atmel\ATtiny_DFP\1.3.229\include/avr/iotn3217.h:
 

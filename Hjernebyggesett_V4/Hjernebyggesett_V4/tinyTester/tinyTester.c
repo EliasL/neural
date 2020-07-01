@@ -11,6 +11,7 @@
 
 
 #include <stdbool.h>
+#include <util/delay.h>
 #include <atmel_start.h>
 #include <stdint.h>
 #include <string.h>
@@ -25,7 +26,7 @@
 
 // how far away from the sent signal, the received signal can deviate without
 // triggering a fail
-#define ACCEPTABLE_NOISE 5
+#define ACCEPTABLE_NOISE 10
 #define NUMBER_OF_TEST_FUNCTIONS 1
 
 /*
@@ -91,6 +92,7 @@ void tinyTester_test(){
 			tinyLED_set_color(OUT_LED, RED);
 			number_of_failed_tests++;
 		}
+		
 		else{
 			tinyLED_set_color(OUT_LED, GREEN);
 		}

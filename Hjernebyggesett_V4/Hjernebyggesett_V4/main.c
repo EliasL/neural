@@ -42,7 +42,7 @@ int main(void)
 	
 	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
 	
-	tinyTester_test();
+	//tinyTester_test();
 	
 	while (1)
 	{

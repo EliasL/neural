@@ -265,6 +265,8 @@ Discarded input sections
  .text          0x00000000        0x0 tinyDendrite/tinyDendrite.o
  .data          0x00000000        0x0 tinyDendrite/tinyDendrite.o
  .bss           0x00000000        0x0 tinyDendrite/tinyDendrite.o
+ .text.tinyDendrite_get_value
+                0x00000000        0xc tinyDendrite/tinyDendrite.o
  .text          0x00000000        0x0 tinyISR/tinyISR.o
  .data          0x00000000        0x0 tinyISR/tinyISR.o
  .bss           0x00000000        0x0 tinyISR/tinyISR.o
@@ -300,6 +302,23 @@ Discarded input sections
  .text          0x00000000        0x0 tinyTester/tinyTester.o
  .data          0x00000000        0x0 tinyTester/tinyTester.o
  .bss           0x00000000        0x0 tinyTester/tinyTester.o
+ .rodata.str1.1
+                0x00000000       0x97 tinyTester/tinyTester.o
+ .rodata        0x00000000        0xa tinyTester/tinyTester.o
+ .text.tinyTester_check_signals
+                0x00000000       0xfa tinyTester/tinyTester.o
+ .text.tinyTester_test
+                0x00000000       0x58 tinyTester/tinyTester.o
+ .debug_info    0x00000000      0x383 tinyTester/tinyTester.o
+ .debug_abbrev  0x00000000      0x174 tinyTester/tinyTester.o
+ .debug_loc     0x00000000      0x212 tinyTester/tinyTester.o
+ .debug_aranges
+                0x00000000       0x28 tinyTester/tinyTester.o
+ .debug_ranges  0x00000000       0x60 tinyTester/tinyTester.o
+ .debug_line    0x00000000      0x1cf tinyTester/tinyTester.o
+ .debug_str     0x00000000      0x2ec tinyTester/tinyTester.o
+ .comment       0x00000000       0x31 tinyTester/tinyTester.o
+ .debug_frame   0x00000000       0x88 tinyTester/tinyTester.o
  .text          0x00000000        0x0 tinyTime/tinyTime.o
  .data          0x00000000        0x0 tinyTime/tinyTime.o
  .bss           0x00000000        0x0 tinyTime/tinyTime.o
@@ -677,7 +696,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2754
+.text           0x00000000     0x25f2
  *(.vectors)
  .vectors       0x00000000       0x7c D:/Software/Atmel Studio 7/7.0/Packs/Atmel/ATtiny_DFP/1.3.229/gcc/dev/attiny3217/avrxmega3/crtattiny3217.o
                 0x00000000                __vector_default
@@ -776,366 +795,357 @@ END GROUP
  .text.atmel_start_init
                 0x000001fa        0x6 atmel_start.o
                 0x000001fa                atmel_start_init
- .text.main     0x00000200       0x86 main.o
+ .text.main     0x00000200       0x82 main.o
                 0x00000200                main
  .text.ADC_0_init
-                0x00000286       0x10 src/adc_basic.o
-                0x00000286                ADC_0_init
+                0x00000282       0x10 src/adc_basic.o
+                0x00000282                ADC_0_init
  .text.ADC_0_is_conversion_done
-                0x00000296        0x8 src/adc_basic.o
-                0x00000296                ADC_0_is_conversion_done
+                0x00000292        0x8 src/adc_basic.o
+                0x00000292                ADC_0_is_conversion_done
  .text.ADC_0_get_conversion
-                0x0000029e       0x24 src/adc_basic.o
-                0x0000029e                ADC_0_get_conversion
+                0x0000029a       0x24 src/adc_basic.o
+                0x0000029a                ADC_0_get_conversion
  .text.BOD_init
-                0x000002c2        0x4 src/bod.o
-                0x000002c2                BOD_init
+                0x000002be        0x4 src/bod.o
+                0x000002be                BOD_init
  .text.DIGITAL_GLUE_LOGIC_0_init
-                0x000002c6       0x22 src/ccl.o
-                0x000002c6                DIGITAL_GLUE_LOGIC_0_init
+                0x000002c2       0x22 src/ccl.o
+                0x000002c2                DIGITAL_GLUE_LOGIC_0_init
  .text.CLKCTRL_init
-                0x000002e8       0x1c src/clkctrl.o
-                0x000002e8                CLKCTRL_init
+                0x000002e4       0x1c src/clkctrl.o
+                0x000002e4                CLKCTRL_init
  .text.CPUINT_init
-                0x00000304        0x6 src/cpuint.o
-                0x00000304                CPUINT_init
+                0x00000300        0x6 src/cpuint.o
+                0x00000300                CPUINT_init
  .text.DAC_0_init
-                0x0000030a        0xa src/dac_basic.o
-                0x0000030a                DAC_0_init
+                0x00000306        0xa src/dac_basic.o
+                0x00000306                DAC_0_init
  .text.DAC_0_uninit
-                0x00000314        0xa src/dac_basic.o
-                0x00000314                DAC_0_uninit
+                0x00000310        0xa src/dac_basic.o
+                0x00000310                DAC_0_uninit
  .text.DAC_0_enable
-                0x0000031e        0xc src/dac_basic.o
-                0x0000031e                DAC_0_enable
+                0x0000031a        0xc src/dac_basic.o
+                0x0000031a                DAC_0_enable
  .text.DAC_0_disable
-                0x0000032a        0xc src/dac_basic.o
-                0x0000032a                DAC_0_disable
+                0x00000326        0xc src/dac_basic.o
+                0x00000326                DAC_0_disable
  .text.DAC_0_set_output
-                0x00000336        0x6 src/dac_basic.o
-                0x00000336                DAC_0_set_output
+                0x00000332        0x6 src/dac_basic.o
+                0x00000332                DAC_0_set_output
  .text.mcu_init
-                0x0000033c       0x38 src/driver_init.o
-                0x0000033c                mcu_init
+                0x00000338       0x38 src/driver_init.o
+                0x00000338                mcu_init
  .text.ADC_0_initialization
-                0x00000374       0x60 src/driver_init.o
-                0x00000374                ADC_0_initialization
+                0x00000370       0x60 src/driver_init.o
+                0x00000370                ADC_0_initialization
  .text.USART_0_initialization
-                0x000003d4       0x16 src/driver_init.o
-                0x000003d4                USART_0_initialization
+                0x000003d0       0x16 src/driver_init.o
+                0x000003d0                USART_0_initialization
  .text.TIMER_0_initialization
-                0x000003ea       0x14 src/driver_init.o
-                0x000003ea                TIMER_0_initialization
+                0x000003e6       0x14 src/driver_init.o
+                0x000003e6                TIMER_0_initialization
  .text.DIGITAL_GLUE_LOGIC_0_initialization
-                0x000003fe       0x14 src/driver_init.o
-                0x000003fe                DIGITAL_GLUE_LOGIC_0_initialization
+                0x000003fa       0x14 src/driver_init.o
+                0x000003fa                DIGITAL_GLUE_LOGIC_0_initialization
  .text.SPI_0_initialization
-                0x00000412       0x1e src/driver_init.o
-                0x00000412                SPI_0_initialization
+                0x0000040e       0x1e src/driver_init.o
+                0x0000040e                SPI_0_initialization
  .text.DAC_0_initialization
-                0x00000430       0x18 src/driver_init.o
-                0x00000430                DAC_0_initialization
+                0x0000042c       0x18 src/driver_init.o
+                0x0000042c                DAC_0_initialization
  .text.system_init
-                0x00000448       0x5e src/driver_init.o
-                0x00000448                system_init
+                0x00000444       0x5e src/driver_init.o
+                0x00000444                system_init
  .text.protected_write_io
-                0x000004a6        0x8 src/protected_io.o
-                0x000004a6                protected_write_io
+                0x000004a2        0x8 src/protected_io.o
+                0x000004a2                protected_write_io
  .text.RTC_0_init
-                0x000004ae       0x38 src/rtc.o
-                0x000004ae                RTC_0_init
+                0x000004aa       0x38 src/rtc.o
+                0x000004aa                RTC_0_init
  .text.SLPCTRL_init
-                0x000004e6        0x4 src/slpctrl.o
-                0x000004e6                SLPCTRL_init
+                0x000004e2        0x4 src/slpctrl.o
+                0x000004e2                SLPCTRL_init
  .text.SPI_0_init
-                0x000004ea       0x10 src/spi.o
-                0x000004ea                SPI_0_init
+                0x000004e6       0x10 src/spi.o
+                0x000004e6                SPI_0_init
  .text.TIMER_0_init
-                0x000004fa       0x20 src/tca.o
-                0x000004fa                TIMER_0_init
+                0x000004f6       0x20 src/tca.o
+                0x000004f6                TIMER_0_init
  .text.USART_0_init
-                0x0000051a       0x20 src/usart_basic.o
-                0x0000051a                USART_0_init
+                0x00000516       0x20 src/usart_basic.o
+                0x00000516                USART_0_init
  .text.USART_0_write
-                0x0000053a       0x10 src/usart_basic.o
-                0x0000053a                USART_0_write
+                0x00000536       0x10 src/usart_basic.o
+                0x00000536                USART_0_write
  .text.USART_0_printCHAR
-                0x0000054a        0xa src/usart_basic.o
-                0x0000054a                USART_0_printCHAR
+                0x00000546        0xa src/usart_basic.o
+                0x00000546                USART_0_printCHAR
  .text.tinyAxon_add_pulse
-                0x00000554       0x4a tinyAxon/tinyAxon.o
+                0x00000550       0x4a tinyAxon/tinyAxon.o
  .text.tinyAxon_is_firing
-                0x0000059e        0xe tinyAxon/tinyAxon.o
-                0x0000059e                tinyAxon_is_firing
+                0x0000059a        0xe tinyAxon/tinyAxon.o
+                0x0000059a                tinyAxon_is_firing
  .text.find_newest_pulse
-                0x000005ac       0x26 tinyAxon/tinyAxon.o
-                0x000005ac                find_newest_pulse
+                0x000005a8       0x26 tinyAxon/tinyAxon.o
+                0x000005a8                find_newest_pulse
  .text.tinyAxon_stop_sending_pulse
-                0x000005d2        0xe tinyAxon/tinyAxon.o
-                0x000005d2                tinyAxon_stop_sending_pulse
+                0x000005ce        0xe tinyAxon/tinyAxon.o
+                0x000005ce                tinyAxon_stop_sending_pulse
  .text.tinyAxon_remove_pulse
-                0x000005e0       0x46 tinyAxon/tinyAxon.o
-                0x000005e0                tinyAxon_remove_pulse
+                0x000005dc       0x46 tinyAxon/tinyAxon.o
+                0x000005dc                tinyAxon_remove_pulse
  .text.tinyAxon_update_potential
-                0x00000626      0x168 tinyAxon/tinyAxon.o
-                0x00000626                tinyAxon_update_potential
+                0x00000622      0x168 tinyAxon/tinyAxon.o
+                0x00000622                tinyAxon_update_potential
  .text.tinyAxon_check_charge_level
-                0x0000078e       0x26 tinyAxon/tinyAxon.o
-                0x0000078e                tinyAxon_check_charge_level
+                0x0000078a       0x26 tinyAxon/tinyAxon.o
+                0x0000078a                tinyAxon_check_charge_level
  .text.tinyButton_update
-                0x000007b4       0xbc tinyButton/tinyButton.o
-                0x000007b4                tinyButton_update
+                0x000007b0       0xbc tinyButton/tinyButton.o
+                0x000007b0                tinyButton_update
  .text.tinyButton_update_potential
-                0x00000870       0x16 tinyButton/tinyButton.o
-                0x00000870                tinyButton_update_potential
+                0x0000086c       0x16 tinyButton/tinyButton.o
+                0x0000086c                tinyButton_update_potential
  .text.tinyCharge_is_connected_to_charger
-                0x00000886        0x6 tinyCharge/tinyCharge.o
-                0x00000886                tinyCharge_is_connected_to_charger
+                0x00000882        0x6 tinyCharge/tinyCharge.o
+                0x00000882                tinyCharge_is_connected_to_charger
  .text.tinyCharge_is_fully_charged
-                0x0000088c        0xa tinyCharge/tinyCharge.o
-                0x0000088c                tinyCharge_is_fully_charged
+                0x00000888        0xa tinyCharge/tinyCharge.o
+                0x00000888                tinyCharge_is_fully_charged
  .text.tinyCharge_DAC_dissable
-                0x00000896        0xa tinyCharge/tinyCharge.o
-                0x00000896                tinyCharge_DAC_dissable
+                0x00000892        0xa tinyCharge/tinyCharge.o
+                0x00000892                tinyCharge_DAC_dissable
  .text.tinyCharge_DAC_enable
-                0x000008a0        0xa tinyCharge/tinyCharge.o
-                0x000008a0                tinyCharge_DAC_enable
+                0x0000089c        0xa tinyCharge/tinyCharge.o
+                0x0000089c                tinyCharge_DAC_enable
  .text.tinyCharge_switch_mode
-                0x000008aa       0x40 tinyCharge/tinyCharge.o
-                0x000008aa                tinyCharge_switch_mode
+                0x000008a6       0x40 tinyCharge/tinyCharge.o
+                0x000008a6                tinyCharge_switch_mode
  .text.tinyCharge_set_charging_mode
-                0x000008ea       0x12 tinyCharge/tinyCharge.o
-                0x000008ea                tinyCharge_set_charging_mode
+                0x000008e6       0x12 tinyCharge/tinyCharge.o
+                0x000008e6                tinyCharge_set_charging_mode
  .text.tinyCharge_update_charging_mode
-                0x000008fc       0x50 tinyCharge/tinyCharge.o
-                0x000008fc                tinyCharge_update_charging_mode
+                0x000008f8       0x50 tinyCharge/tinyCharge.o
+                0x000008f8                tinyCharge_update_charging_mode
  .text.tinyCharge_set_transistors
-                0x0000094c       0x14 tinyCharge/tinyCharge.o
-                0x0000094c                tinyCharge_set_transistors
+                0x00000948       0x14 tinyCharge/tinyCharge.o
+                0x00000948                tinyCharge_set_transistors
  .text.tinyDebugger_send_uint32
-                0x00000960       0x24 tinyDebugger/tinyDebugger.o
-                0x00000960                tinyDebugger_send_uint32
+                0x0000095c       0x24 tinyDebugger/tinyDebugger.o
+                0x0000095c                tinyDebugger_send_uint32
  .text.tinyDebugger_send_uint8
-                0x00000984       0x22 tinyDebugger/tinyDebugger.o
-                0x00000984                tinyDebugger_send_uint8
+                0x00000980       0x22 tinyDebugger/tinyDebugger.o
+                0x00000980                tinyDebugger_send_uint8
  .text.tinyDebugger_send_double
-                0x000009a6       0x6c tinyDebugger/tinyDebugger.o
-                0x000009a6                tinyDebugger_send_double
+                0x000009a2       0x6c tinyDebugger/tinyDebugger.o
+                0x000009a2                tinyDebugger_send_double
  .text.tinyDebugger_end_line
-                0x00000a12        0xa tinyDebugger/tinyDebugger.o
-                0x00000a12                tinyDebugger_end_line
+                0x00000a0e        0xa tinyDebugger/tinyDebugger.o
+                0x00000a0e                tinyDebugger_end_line
  .text.tinyDendrite_read_signals
-                0x00000a1c       0x40 tinyDendrite/tinyDendrite.o
-                0x00000a1c                tinyDendrite_read_signals
- .text.tinyDendrite_get_value
-                0x00000a5c        0xc tinyDendrite/tinyDendrite.o
-                0x00000a5c                tinyDendrite_get_value
+                0x00000a18       0x40 tinyDendrite/tinyDendrite.o
+                0x00000a18                tinyDendrite_read_signals
  .text.tinyDendrite_check_charge_level
-                0x00000a68       0x38 tinyDendrite/tinyDendrite.o
-                0x00000a68                tinyDendrite_check_charge_level
+                0x00000a58       0x38 tinyDendrite/tinyDendrite.o
+                0x00000a58                tinyDendrite_check_charge_level
  .text.tinyDendrite_update_signals
-                0x00000aa0       0xda tinyDendrite/tinyDendrite.o
-                0x00000aa0                tinyDendrite_update_signals
+                0x00000a90       0xda tinyDendrite/tinyDendrite.o
+                0x00000a90                tinyDendrite_update_signals
  .text.tinyDendrite_get_potential
-                0x00000b7a       0xba tinyDendrite/tinyDendrite.o
-                0x00000b7a                tinyDendrite_get_potential
+                0x00000b6a       0xba tinyDendrite/tinyDendrite.o
+                0x00000b6a                tinyDendrite_get_potential
  .text.tinyDendrite_update_potential
-                0x00000c34       0x2e tinyDendrite/tinyDendrite.o
-                0x00000c34                tinyDendrite_update_potential
+                0x00000c24       0x2e tinyDendrite/tinyDendrite.o
+                0x00000c24                tinyDendrite_update_potential
  .text.__vector_6
-                0x00000c62       0x56 tinyISR/tinyISR.o
-                0x00000c62                __vector_6
+                0x00000c52       0x56 tinyISR/tinyISR.o
+                0x00000c52                __vector_6
  .text.tinyISR_setflag
-                0x00000cb8        0x6 tinyISR/tinyISR.o
-                0x00000cb8                tinyISR_setflag
+                0x00000ca8        0x6 tinyISR/tinyISR.o
+                0x00000ca8                tinyISR_setflag
  .text.tinyISR_getflag
-                0x00000cbe        0x6 tinyISR/tinyISR.o
-                0x00000cbe                tinyISR_getflag
+                0x00000cae        0x6 tinyISR/tinyISR.o
+                0x00000cae                tinyISR_getflag
  .text.tinyLED_SPIWriteByte
-                0x00000cc4       0x28 tinyLED/tinyLED.o
+                0x00000cb4       0x28 tinyLED/tinyLED.o
  .text.tinyLED_get_color
-                0x00000cec       0x10 tinyLED/tinyLED.o
-                0x00000cec                tinyLED_get_color
+                0x00000cdc       0x10 tinyLED/tinyLED.o
+                0x00000cdc                tinyLED_get_color
  .text.tinyLED_set_color_mode
-                0x00000cfc       0x48 tinyLED/tinyLED.o
-                0x00000cfc                tinyLED_set_color_mode
+                0x00000cec       0x48 tinyLED/tinyLED.o
+                0x00000cec                tinyLED_set_color_mode
  .text.tinyLED_set_color
-                0x00000d44        0x8 tinyLED/tinyLED.o
-                0x00000d44                tinyLED_set_color
+                0x00000d34        0x8 tinyLED/tinyLED.o
+                0x00000d34                tinyLED_set_color
  .text.tinyLED_RGB_Color_Compare
-                0x00000d4c       0x60 tinyLED/tinyLED.o
-                0x00000d4c                tinyLED_RGB_Color_Compare
+                0x00000d3c       0x60 tinyLED/tinyLED.o
+                0x00000d3c                tinyLED_RGB_Color_Compare
  .text.tinyLED_update
-                0x00000dac      0x42c tinyLED/tinyLED.o
-                0x00000dac                tinyLED_update
+                0x00000d9c      0x42c tinyLED/tinyLED.o
+                0x00000d9c                tinyLED_update
  .text.tinyPotential_update
-                0x000011d8      0x114 tinyPotential/tinyPotential.o
-                0x000011d8                tinyPotential_update
+                0x000011c8      0x114 tinyPotential/tinyPotential.o
+                0x000011c8                tinyPotential_update
  .text.tinyPulse_toggle_pulse_mode
-                0x000012ec       0x38 tinyPulse/tinyPulse.o
-                0x000012ec                tinyPulse_toggle_pulse_mode
+                0x000012dc       0x38 tinyPulse/tinyPulse.o
+                0x000012dc                tinyPulse_toggle_pulse_mode
  .text.tinyPulse_set_pulse_mode
-                0x00001324        0xc tinyPulse/tinyPulse.o
-                0x00001324                tinyPulse_set_pulse_mode
+                0x00001314        0xc tinyPulse/tinyPulse.o
+                0x00001314                tinyPulse_set_pulse_mode
  .text.tinyPulse_update_potential
-                0x00001330       0x70 tinyPulse/tinyPulse.o
-                0x00001330                tinyPulse_update_potential
- .text.tinyTester_check_signals
-                0x000013a0       0xfa tinyTester/tinyTester.o
-                0x000013a0                tinyTester_check_signals
- .text.tinyTester_test
-                0x0000149a       0x58 tinyTester/tinyTester.o
-                0x0000149a                tinyTester_test
+                0x00001320       0x70 tinyPulse/tinyPulse.o
+                0x00001320                tinyPulse_update_potential
  .text.tinyTime_counter_increment
-                0x000014f2       0x28 tinyTime/tinyTime.o
-                0x000014f2                tinyTime_counter_increment
+                0x00001390       0x28 tinyTime/tinyTime.o
+                0x00001390                tinyTime_counter_increment
  .text.tinyTime_now
-                0x0000151a       0x12 tinyTime/tinyTime.o
-                0x0000151a                tinyTime_now
+                0x000013b8       0x12 tinyTime/tinyTime.o
+                0x000013b8                tinyTime_now
  .text.avr-libc.fplib
-                0x0000152c        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(addsf3.o)
-                0x0000152c                __subsf3
-                0x0000152e                __addsf3
+                0x000013ca        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(addsf3.o)
+                0x000013ca                __subsf3
+                0x000013cc                __addsf3
  .text.avr-libc.fplib
-                0x0000153a       0xcc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(addsf3x.o)
-                0x0000155c                __addsf3x
+                0x000013d8       0xcc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(addsf3x.o)
+                0x000013fa                __addsf3x
  .text.avr-libc.fplib
-                0x00001606        0xa d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(cmpsf2.o)
-                0x00001606                __nesf2
-                0x00001606                __eqsf2
-                0x00001606                __cmpsf2
-                0x00001606                __ltsf2
-                0x00001606                __lesf2
+                0x000014a4        0xa d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(cmpsf2.o)
+                0x000014a4                __nesf2
+                0x000014a4                __eqsf2
+                0x000014a4                __cmpsf2
+                0x000014a4                __ltsf2
+                0x000014a4                __lesf2
  .text.avr-libc.fplib
-                0x00001610        0x8 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(divsf3.o)
-                0x00001610                __divsf3
+                0x000014ae        0x8 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(divsf3.o)
+                0x000014ae                __divsf3
  .text.avr-libc.fplib
-                0x00001618       0xdc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(divsf3x.o)
-                0x00001638                __divsf3x
-                0x0000163e                __divsf3_pse
+                0x000014b6       0xdc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(divsf3x.o)
+                0x000014d6                __divsf3x
+                0x000014dc                __divsf3_pse
  .text.avr-libc.fplib
-                0x000016f4       0x74 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(exp.o)
-                0x00001704                exp
+                0x00001592       0x74 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(exp.o)
+                0x000015a2                exp
  .text.avr-libc.fplib
-                0x00001768       0x5e d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fixunssfsi.o)
-                0x00001768                __fixunssfsi
+                0x00001606       0x5e d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fixunssfsi.o)
+                0x00001606                __fixunssfsi
  .text.avr-libc.fplib
-                0x000017c6       0x7a d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(floatsisf.o)
-                0x000017c6                __floatunsisf
-                0x000017ca                __floatsisf
+                0x00001664       0x7a d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(floatsisf.o)
+                0x00001664                __floatunsisf
+                0x00001668                __floatsisf
  .text.avr-libc.fplib
-                0x00001840       0x3e d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fmin.o)
-                0x00001840                fmin
+                0x000016de       0x3e d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fmin.o)
+                0x000016de                fmin
  .text.avr-libc.fplib
-                0x0000187e       0x48 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_cmp.o)
-                0x0000187e                __fp_cmp
+                0x0000171c       0x48 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_cmp.o)
+                0x0000171c                __fp_cmp
  .text.avr-libc.fplib
-                0x000018c6        0xc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_inf.o)
-                0x000018c6                __fp_inf
+                0x00001764        0xc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_inf.o)
+                0x00001764                __fp_inf
  .text.avr-libc.fplib
-                0x000018d2        0x6 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_nan.o)
-                0x000018d2                __fp_nan
+                0x00001770        0x6 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_nan.o)
+                0x00001770                __fp_nan
  .text.avr-libc.fplib
-                0x000018d8       0x4e d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_powser.o)
-                0x000018d8                __fp_powser
+                0x00001776       0x4e d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_powser.o)
+                0x00001776                __fp_powser
  .text.avr-libc.fplib
-                0x00001926        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_pscA.o)
-                0x00001926                __fp_pscA
+                0x000017c4        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_pscA.o)
+                0x000017c4                __fp_pscA
  .text.avr-libc.fplib
-                0x00001934        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_pscB.o)
-                0x00001934                __fp_pscB
+                0x000017d2        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_pscB.o)
+                0x000017d2                __fp_pscB
  .text.avr-libc.fplib
-                0x00001942       0x22 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_round.o)
-                0x00001942                __fp_round
+                0x000017e0       0x22 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_round.o)
+                0x000017e0                __fp_round
  .text.avr-libc.fplib
-                0x00001964       0x44 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_split3.o)
-                0x00001964                __fp_split3
-                0x00001974                __fp_splitA
+                0x00001802       0x44 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_split3.o)
+                0x00001802                __fp_split3
+                0x00001812                __fp_splitA
  .text.avr-libc.fplib
-                0x000019a8        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_zero.o)
-                0x000019a8                __fp_zero
-                0x000019aa                __fp_szero
+                0x00001846        0xe d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_zero.o)
+                0x00001846                __fp_zero
+                0x00001848                __fp_szero
  .text.avr-libc.fplib
-                0x000019b6        0xa d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(gesf2.o)
-                0x000019b6                __gesf2
-                0x000019b6                __gtsf2
+                0x00001854        0xa d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(gesf2.o)
+                0x00001854                __gesf2
+                0x00001854                __gtsf2
  .text.avr-libc.fplib
-                0x000019c0       0x10 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(inverse.o)
-                0x000019c0                inverse
+                0x0000185e       0x10 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(inverse.o)
+                0x0000185e                inverse
  .text.avr-libc.fplib
-                0x000019d0       0x74 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(ldexp.o)
-                0x000019d8                ldexp
+                0x0000186e       0x74 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(ldexp.o)
+                0x00001876                ldexp
  .text.avr-libc.fplib
-                0x00001a44       0x68 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(modf.o)
-                0x00001a44                modf
-                0x00001a44                modff
+                0x000018e2       0x68 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(modf.o)
+                0x000018e2                modf
+                0x000018e2                modff
  .text.avr-libc.fplib
-                0x00001aac        0x8 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(mulsf3.o)
-                0x00001aac                __mulsf3
+                0x0000194a        0x8 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(mulsf3.o)
+                0x0000194a                __mulsf3
  .text.avr-libc.fplib
-                0x00001ab4       0xd2 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(mulsf3x.o)
-                0x00001ad2                __mulsf3x
-                0x00001ad8                __mulsf3_pse
+                0x00001952       0xd2 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(mulsf3x.o)
+                0x00001970                __mulsf3x
+                0x00001976                __mulsf3_pse
  .text.avr-libc.fplib
-                0x00001b86       0x10 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(sin.o)
-                0x00001b86                sin
+                0x00001a24       0x10 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(sin.o)
+                0x00001a24                sin
  .text.avr-libc.fplib
-                0x00001b96       0x1c d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_mpack.o)
-                0x00001b96                __fp_mpack
-                0x00001b9a                __fp_mpack_finite
+                0x00001a34       0x1c d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_mpack.o)
+                0x00001a34                __fp_mpack
+                0x00001a38                __fp_mpack_finite
  .text.avr-libc.fplib
-                0x00001bb2       0x56 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_rempio2.o)
-                0x00001bb6                __fp_rempio2
+                0x00001a50       0x56 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_rempio2.o)
+                0x00001a54                __fp_rempio2
  .text.avr-libc.fplib
-                0x00001c08       0x28 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_sinus.o)
-                0x00001c08                __fp_sinus
+                0x00001aa6       0x28 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_sinus.o)
+                0x00001aa6                __fp_sinus
  .text.avr-libc.fplib
-                0x00001c30       0x28 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_powsodd.o)
-                0x00001c30                __fp_powsodd
+                0x00001ace       0x28 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a(fp_powsodd.o)
+                0x00001ace                __fp_powsodd
  .text.libgcc.div
-                0x00001c58       0x44 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_udivmodsi4.o)
-                0x00001c58                __udivmodsi4
+                0x00001af6       0x44 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_udivmodsi4.o)
+                0x00001af6                __udivmodsi4
  .text.avr-libc
-                0x00001c9c       0x40 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(dtostrf.o)
-                0x00001c9c                dtostrf
+                0x00001b3a       0x40 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(dtostrf.o)
+                0x00001b3a                dtostrf
  .text.avr-libc
-                0x00001cdc       0x2c d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(printf.o)
-                0x00001cdc                printf
+                0x00001b7a       0x2c d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(printf.o)
+                0x00001b7a                printf
  .text.avr-libc
-                0x00001d08       0x60 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(puts.o)
-                0x00001d08                puts
+                0x00001ba6       0x60 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(puts.o)
+                0x00001ba6                puts
  .text.avr-libc
-                0x00001d68      0x3c2 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(vfprintf_std.o)
-                0x00001d68                vfprintf
+                0x00001c06      0x3c2 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(vfprintf_std.o)
+                0x00001c06                vfprintf
  .text.avr-libc
-                0x0000212a      0x2b4 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(dtoa_prf.o)
-                0x0000212a                dtoa_prf
+                0x00001fc8      0x2b4 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(dtoa_prf.o)
+                0x00001fc8                dtoa_prf
  .text.avr-libc
-                0x000023de      0x1b0 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(ftoa_engine.o)
-                0x000023de                __ftoa_engine
+                0x0000227c      0x1b0 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(ftoa_engine.o)
+                0x0000227c                __ftoa_engine
  .text.avr-libc
-                0x0000258e       0x16 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(strnlen_P.o)
-                0x0000258e                strnlen_P
+                0x0000242c       0x16 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(strnlen_P.o)
+                0x0000242c                strnlen_P
  .text.avr-libc
-                0x000025a4       0x16 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(strnlen.o)
-                0x000025a4                strnlen
+                0x00002442       0x16 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(strnlen.o)
+                0x00002442                strnlen
  .text.avr-libc
-                0x000025ba       0x78 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(fputc.o)
-                0x000025ba                fputc
+                0x00002458       0x78 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(fputc.o)
+                0x00002458                fputc
  .text.avr-libc
-                0x00002632       0xbc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(ultoa_invert.o)
-                0x00002632                __ultoa_invert
+                0x000024d0       0xbc d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(ultoa_invert.o)
+                0x000024d0                __ultoa_invert
  .text.libgcc.prologue
-                0x000026ee       0x32 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_prologue.o)
-                0x000026ee                __prologue_saves__
+                0x0000258c       0x32 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_prologue.o)
+                0x0000258c                __prologue_saves__
  .text.libgcc.prologue
-                0x00002720       0x30 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_epilogue.o)
-                0x00002720                __epilogue_restores__
-                0x00002750                . = ALIGN (0x2)
+                0x000025be       0x30 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_epilogue.o)
+                0x000025be                __epilogue_restores__
+                0x000025ee                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002750        0x0 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
-                0x00002750                _exit
-                0x00002750                exit
+ .fini9         0x000025ee        0x0 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+                0x000025ee                _exit
+                0x000025ee                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1154,30 +1164,26 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002750        0x4 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .fini0         0x000025ee        0x4 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002754                _etext = .
+                0x000025f2                _etext = .
 
-.rodata         0x0000a754       0xf3 load address 0x00002754
+.rodata         0x0000a5f2       0x54 load address 0x000025f2
  *(.rodata)
- .rodata        0x0000a754        0xa tinyTester/tinyTester.o
  *(.rodata*)
  .rodata.str1.1
-                0x0000a75e        0x5 main.o
+                0x0000a5f2        0x5 main.o
  .rodata.str1.1
-                0x0000a763        0xc tinyAxon/tinyAxon.o
+                0x0000a5f7        0xc tinyAxon/tinyAxon.o
  .rodata.str1.1
-                0x0000a76f       0x28 tinyDebugger/tinyDebugger.o
-                                 0x2a (size before relaxing)
+                0x0000a603       0x2a tinyDebugger/tinyDebugger.o
  .rodata.str1.1
-                0x0000a797        0xf tinyDendrite/tinyDendrite.o
+                0x0000a62d        0xf tinyDendrite/tinyDendrite.o
  .rodata.str1.1
-                0x0000a7a6        0xa tinyPotential/tinyPotential.o
- .rodata.str1.1
-                0x0000a7b0       0x97 tinyTester/tinyTester.o
+                0x0000a63c        0xa tinyPotential/tinyPotential.o
  *(.gnu.linkonce.r*)
 
-.data           0x00803800       0x16 load address 0x00002847
+.data           0x00803800       0x16 load address 0x00002646
                 0x00803800                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1266,8 +1272,8 @@ END GROUP
  COMMON         0x0080386a        0x6 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(iob.o)
                 0x0080386a                __iob
                 0x00803870                PROVIDE (__bss_end, .)
-                0x00002847                __data_load_start = LOADADDR (.data)
-                0x0000285d                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00002646                __data_load_start = LOADADDR (.data)
+                0x0000265c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00803870        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -1339,7 +1345,6 @@ END GROUP
  .comment       0x00000030       0x31 tinyLED/tinyLED.o
  .comment       0x00000030       0x31 tinyPotential/tinyPotential.o
  .comment       0x00000030       0x31 tinyPulse/tinyPulse.o
- .comment       0x00000030       0x31 tinyTester/tinyTester.o
  .comment       0x00000030       0x31 tinyTime/tinyTime.o
  .comment       0x00000030       0x31 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(dtostrf.o)
  .comment       0x00000030       0x31 d:/software/atmel studio 7/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a(iob.o)
@@ -1370,7 +1375,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x550
+.debug_aranges  0x00000000      0x528
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 atmel_start.o
@@ -1421,44 +1426,41 @@ END GROUP
  .debug_aranges
                 0x000004c8       0x38 tinyPulse/tinyPulse.o
  .debug_aranges
-                0x00000500       0x28 tinyTester/tinyTester.o
- .debug_aranges
-                0x00000528       0x28 tinyTime/tinyTime.o
+                0x00000500       0x28 tinyTime/tinyTime.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x8f92
+.debug_info     0x00000000     0x8bf9
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x1c4d D:/Software/Atmel Studio 7/7.0/Packs/Atmel/ATtiny_DFP/1.3.229/gcc/dev/attiny3217/avrxmega3/crtattiny3217.o
  .debug_info    0x00001c4d       0x9a atmel_start.o
- .debug_info    0x00001ce7      0x384 main.o
- .debug_info    0x0000206b      0x4ee src/adc_basic.o
- .debug_info    0x00002559       0x8d src/bod.o
- .debug_info    0x000025e6      0x5cd src/ccl.o
- .debug_info    0x00002bb3      0x3fe src/clkctrl.o
- .debug_info    0x00002fb1       0x8d src/cpuint.o
- .debug_info    0x0000303e      0x19d src/dac_basic.o
- .debug_info    0x000031db     0x176d src/driver_init.o
- .debug_info    0x00004948       0xc4 src/protected_io.o
- .debug_info    0x00004a0c      0x422 src/rtc.o
- .debug_info    0x00004e2e       0x8d src/slpctrl.o
- .debug_info    0x00004ebb      0x18f src/spi.o
- .debug_info    0x0000504a      0xa74 src/tca.o
- .debug_info    0x00005abe      0x47d src/usart_basic.o
- .debug_info    0x00005f3b      0x549 tinyAxon/tinyAxon.o
- .debug_info    0x00006484      0x234 tinyButton/tinyButton.o
- .debug_info    0x000066b8      0x5b0 tinyCharge/tinyCharge.o
- .debug_info    0x00006c68      0x2cf tinyDebugger/tinyDebugger.o
- .debug_info    0x00006f37      0x4a5 tinyDendrite/tinyDendrite.o
- .debug_info    0x000073dc      0x3d8 tinyISR/tinyISR.o
- .debug_info    0x000077b4      0xf7d tinyLED/tinyLED.o
- .debug_info    0x00008731      0x1b7 tinyPotential/tinyPotential.o
- .debug_info    0x000088e8      0x271 tinyPulse/tinyPulse.o
- .debug_info    0x00008b59      0x383 tinyTester/tinyTester.o
- .debug_info    0x00008edc       0xb6 tinyTime/tinyTime.o
+ .debug_info    0x00001ce7      0x36e main.o
+ .debug_info    0x00002055      0x4ee src/adc_basic.o
+ .debug_info    0x00002543       0x8d src/bod.o
+ .debug_info    0x000025d0      0x5cd src/ccl.o
+ .debug_info    0x00002b9d      0x3fe src/clkctrl.o
+ .debug_info    0x00002f9b       0x8d src/cpuint.o
+ .debug_info    0x00003028      0x19d src/dac_basic.o
+ .debug_info    0x000031c5     0x176d src/driver_init.o
+ .debug_info    0x00004932       0xc4 src/protected_io.o
+ .debug_info    0x000049f6      0x422 src/rtc.o
+ .debug_info    0x00004e18       0x8d src/slpctrl.o
+ .debug_info    0x00004ea5      0x18f src/spi.o
+ .debug_info    0x00005034      0xa74 src/tca.o
+ .debug_info    0x00005aa8      0x47d src/usart_basic.o
+ .debug_info    0x00005f25      0x549 tinyAxon/tinyAxon.o
+ .debug_info    0x0000646e      0x234 tinyButton/tinyButton.o
+ .debug_info    0x000066a2      0x5b0 tinyCharge/tinyCharge.o
+ .debug_info    0x00006c52      0x2cf tinyDebugger/tinyDebugger.o
+ .debug_info    0x00006f21      0x4a5 tinyDendrite/tinyDendrite.o
+ .debug_info    0x000073c6      0x3d8 tinyISR/tinyISR.o
+ .debug_info    0x0000779e      0xf7d tinyLED/tinyLED.o
+ .debug_info    0x0000871b      0x1b7 tinyPotential/tinyPotential.o
+ .debug_info    0x000088d2      0x271 tinyPulse/tinyPulse.o
+ .debug_info    0x00008b43       0xb6 tinyTime/tinyTime.o
 
-.debug_abbrev   0x00000000     0x38ab
+.debug_abbrev   0x00000000     0x3737
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x1ac8 D:/Software/Atmel Studio 7/7.0/Packs/Atmel/ATtiny_DFP/1.3.229/gcc/dev/attiny3217/avrxmega3/crtattiny3217.o
  .debug_abbrev  0x00001ac8       0x63 atmel_start.o
@@ -1485,40 +1487,38 @@ END GROUP
  .debug_abbrev  0x000031b6      0x2f2 tinyLED/tinyLED.o
  .debug_abbrev  0x000034a8       0xe7 tinyPotential/tinyPotential.o
  .debug_abbrev  0x0000358f      0x12c tinyPulse/tinyPulse.o
- .debug_abbrev  0x000036bb      0x174 tinyTester/tinyTester.o
- .debug_abbrev  0x0000382f       0x7c tinyTime/tinyTime.o
+ .debug_abbrev  0x000036bb       0x7c tinyTime/tinyTime.o
 
-.debug_line     0x00000000     0x2c9d
+.debug_line     0x00000000     0x2aa8
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x151 D:/Software/Atmel Studio 7/7.0/Packs/Atmel/ATtiny_DFP/1.3.229/gcc/dev/attiny3217/avrxmega3/crtattiny3217.o
  .debug_line    0x00000151       0x60 atmel_start.o
- .debug_line    0x000001b1      0x26a main.o
- .debug_line    0x0000041b      0x1f8 src/adc_basic.o
- .debug_line    0x00000613       0x99 src/bod.o
- .debug_line    0x000006ac      0x121 src/ccl.o
- .debug_line    0x000007cd      0x125 src/clkctrl.o
- .debug_line    0x000008f2       0xa2 src/cpuint.o
- .debug_line    0x00000994      0x190 src/dac_basic.o
- .debug_line    0x00000b24      0x407 src/driver_init.o
- .debug_line    0x00000f2b       0x55 src/protected_io.o
- .debug_line    0x00000f80      0x131 src/rtc.o
- .debug_line    0x000010b1       0x9d src/slpctrl.o
- .debug_line    0x0000114e       0xfd src/spi.o
- .debug_line    0x0000124b      0x109 src/tca.o
- .debug_line    0x00001354      0x25b src/usart_basic.o
- .debug_line    0x000015af      0x382 tinyAxon/tinyAxon.o
- .debug_line    0x00001931      0x1fa tinyButton/tinyButton.o
- .debug_line    0x00001b2b      0x316 tinyCharge/tinyCharge.o
- .debug_line    0x00001e41      0x162 tinyDebugger/tinyDebugger.o
- .debug_line    0x00001fa3      0x32a tinyDendrite/tinyDendrite.o
- .debug_line    0x000022cd      0x151 tinyISR/tinyISR.o
- .debug_line    0x0000241e      0x2eb tinyLED/tinyLED.o
- .debug_line    0x00002709      0x1ab tinyPotential/tinyPotential.o
- .debug_line    0x000028b4      0x15b tinyPulse/tinyPulse.o
- .debug_line    0x00002a0f      0x1cf tinyTester/tinyTester.o
- .debug_line    0x00002bde       0xbf tinyTime/tinyTime.o
+ .debug_line    0x000001b1      0x244 main.o
+ .debug_line    0x000003f5      0x1f8 src/adc_basic.o
+ .debug_line    0x000005ed       0x99 src/bod.o
+ .debug_line    0x00000686      0x121 src/ccl.o
+ .debug_line    0x000007a7      0x125 src/clkctrl.o
+ .debug_line    0x000008cc       0xa2 src/cpuint.o
+ .debug_line    0x0000096e      0x190 src/dac_basic.o
+ .debug_line    0x00000afe      0x407 src/driver_init.o
+ .debug_line    0x00000f05       0x55 src/protected_io.o
+ .debug_line    0x00000f5a      0x131 src/rtc.o
+ .debug_line    0x0000108b       0x9d src/slpctrl.o
+ .debug_line    0x00001128       0xfd src/spi.o
+ .debug_line    0x00001225      0x109 src/tca.o
+ .debug_line    0x0000132e      0x25b src/usart_basic.o
+ .debug_line    0x00001589      0x382 tinyAxon/tinyAxon.o
+ .debug_line    0x0000190b      0x1fa tinyButton/tinyButton.o
+ .debug_line    0x00001b05      0x316 tinyCharge/tinyCharge.o
+ .debug_line    0x00001e1b      0x162 tinyDebugger/tinyDebugger.o
+ .debug_line    0x00001f7d      0x32a tinyDendrite/tinyDendrite.o
+ .debug_line    0x000022a7      0x151 tinyISR/tinyISR.o
+ .debug_line    0x000023f8      0x2eb tinyLED/tinyLED.o
+ .debug_line    0x000026e3      0x1ab tinyPotential/tinyPotential.o
+ .debug_line    0x0000288e      0x15b tinyPulse/tinyPulse.o
+ .debug_line    0x000029e9       0xbf tinyTime/tinyTime.o
 
-.debug_frame    0x00000000      0xa20
+.debug_frame    0x00000000      0x998
  *(.debug_frame)
  .debug_frame   0x00000000       0x24 atmel_start.o
  .debug_frame   0x00000024       0x24 main.o
@@ -1543,64 +1543,61 @@ END GROUP
  .debug_frame   0x000007f0       0xd4 tinyLED/tinyLED.o
  .debug_frame   0x000008c4       0x38 tinyPotential/tinyPotential.o
  .debug_frame   0x000008fc       0x68 tinyPulse/tinyPulse.o
- .debug_frame   0x00000964       0x88 tinyTester/tinyTester.o
- .debug_frame   0x000009ec       0x34 tinyTime/tinyTime.o
+ .debug_frame   0x00000964       0x34 tinyTime/tinyTime.o
 
-.debug_str      0x00000000     0x36db
+.debug_str      0x00000000     0x364f
  *(.debug_str)
  .debug_str     0x00000000      0xc0f D:/Software/Atmel Studio 7/7.0/Packs/Atmel/ATtiny_DFP/1.3.229/gcc/dev/attiny3217/avrxmega3/crtattiny3217.o
  .debug_str     0x00000c0f      0x1a4 atmel_start.o
                                 0x1d8 (size before relaxing)
- .debug_str     0x00000db3      0x279 main.o
-                                0x444 (size before relaxing)
- .debug_str     0x0000102c      0x42d src/adc_basic.o
+ .debug_str     0x00000db3      0x269 main.o
+                                0x434 (size before relaxing)
+ .debug_str     0x0000101c      0x42d src/adc_basic.o
                                 0x621 (size before relaxing)
- .debug_str     0x00001459       0x16 src/bod.o
+ .debug_str     0x00001449       0x16 src/bod.o
                                 0x1c5 (size before relaxing)
- .debug_str     0x0000146f      0x6ba src/ccl.o
+ .debug_str     0x0000145f      0x6ba src/ccl.o
                                 0x8ad (size before relaxing)
- .debug_str     0x00001b29      0x285 src/clkctrl.o
+ .debug_str     0x00001b19      0x285 src/clkctrl.o
                                 0x53a (size before relaxing)
- .debug_str     0x00001dae       0x1c src/cpuint.o
+ .debug_str     0x00001d9e       0x1c src/cpuint.o
                                 0x1cb (size before relaxing)
- .debug_str     0x00001dca       0x93 src/dac_basic.o
+ .debug_str     0x00001dba       0x93 src/dac_basic.o
                                 0x287 (size before relaxing)
- .debug_str     0x00001e5d      0x654 src/driver_init.o
+ .debug_str     0x00001e4d      0x654 src/driver_init.o
                                 0x9d0 (size before relaxing)
- .debug_str     0x000024b1      0x351 src/rtc.o
+ .debug_str     0x000024a1      0x351 src/rtc.o
                                 0x624 (size before relaxing)
- .debug_str     0x00002802       0x11 src/slpctrl.o
+ .debug_str     0x000027f2       0x11 src/slpctrl.o
                                 0x1cd (size before relaxing)
- .debug_str     0x00002813       0xbf src/spi.o
+ .debug_str     0x00002803       0xbf src/spi.o
                                 0x2d9 (size before relaxing)
- .debug_str     0x000028d2      0x20d src/tca.o
+ .debug_str     0x000028c2      0x20d src/tca.o
                                 0x6c9 (size before relaxing)
- .debug_str     0x00002adf      0x1da src/usart_basic.o
+ .debug_str     0x00002acf      0x1da src/usart_basic.o
                                 0x41b (size before relaxing)
- .debug_str     0x00002cb9      0x208 tinyAxon/tinyAxon.o
+ .debug_str     0x00002ca9      0x208 tinyAxon/tinyAxon.o
                                 0x491 (size before relaxing)
- .debug_str     0x00002ec1       0xe7 tinyButton/tinyButton.o
+ .debug_str     0x00002eb1       0xe7 tinyButton/tinyButton.o
                                 0x304 (size before relaxing)
- .debug_str     0x00002fa8       0xfc tinyCharge/tinyCharge.o
+ .debug_str     0x00002f98       0xfc tinyCharge/tinyCharge.o
                                 0x4db (size before relaxing)
- .debug_str     0x000030a4       0x97 tinyDebugger/tinyDebugger.o
+ .debug_str     0x00003094       0x97 tinyDebugger/tinyDebugger.o
                                 0x2bb (size before relaxing)
- .debug_str     0x0000313b      0x1a2 tinyDendrite/tinyDendrite.o
+ .debug_str     0x0000312b      0x1a2 tinyDendrite/tinyDendrite.o
                                 0x456 (size before relaxing)
- .debug_str     0x000032dd       0x5f tinyISR/tinyISR.o
+ .debug_str     0x000032cd       0x5f tinyISR/tinyISR.o
                                 0x3b1 (size before relaxing)
- .debug_str     0x0000333c      0x1f4 tinyLED/tinyLED.o
+ .debug_str     0x0000332c      0x1f4 tinyLED/tinyLED.o
                                 0x8e5 (size before relaxing)
- .debug_str     0x00003530       0x94 tinyPotential/tinyPotential.o
+ .debug_str     0x00003520       0x94 tinyPotential/tinyPotential.o
                                 0x2e3 (size before relaxing)
- .debug_str     0x000035c4       0x77 tinyPulse/tinyPulse.o
+ .debug_str     0x000035b4       0x77 tinyPulse/tinyPulse.o
                                 0x32f (size before relaxing)
- .debug_str     0x0000363b       0x7c tinyTester/tinyTester.o
-                                0x2ec (size before relaxing)
- .debug_str     0x000036b7       0x24 tinyTime/tinyTime.o
+ .debug_str     0x0000362b       0x24 tinyTime/tinyTime.o
                                 0x1fd (size before relaxing)
 
-.debug_loc      0x00000000     0x1bae
+.debug_loc      0x00000000     0x199c
  *(.debug_loc)
  .debug_loc     0x00000000       0x87 src/adc_basic.o
  .debug_loc     0x00000087       0x52 src/clkctrl.o
@@ -1615,7 +1612,6 @@ END GROUP
  .debug_loc     0x0000151a      0x35d tinyLED/tinyLED.o
  .debug_loc     0x00001877       0x71 tinyPotential/tinyPotential.o
  .debug_loc     0x000018e8       0xb4 tinyPulse/tinyPulse.o
- .debug_loc     0x0000199c      0x212 tinyTester/tinyTester.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1635,7 +1631,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x400
+.debug_ranges   0x00000000      0x3a0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x10 atmel_start.o
  .debug_ranges  0x00000010       0x10 main.o
@@ -1660,8 +1656,7 @@ END GROUP
  .debug_ranges  0x00000318       0x38 tinyLED/tinyLED.o
  .debug_ranges  0x00000350       0x10 tinyPotential/tinyPotential.o
  .debug_ranges  0x00000360       0x28 tinyPulse/tinyPulse.o
- .debug_ranges  0x00000388       0x60 tinyTester/tinyTester.o
- .debug_ranges  0x000003e8       0x18 tinyTime/tinyTime.o
+ .debug_ranges  0x00000388       0x18 tinyTime/tinyTime.o
 
 .debug_macro
  *(.debug_macro)
