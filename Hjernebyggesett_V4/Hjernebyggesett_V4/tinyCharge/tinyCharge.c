@@ -118,6 +118,12 @@ void tinyCharge_update_charging_mode(){
 	else{
 		tinyCharge_set_charging_mode(charging);
 	}
+	
+	// We have to prevent charge_counters from accumulating over time
+	if(!charging && charge_counter>0){
+		charge_counter = 0;
+	}
+	
 }
 
 

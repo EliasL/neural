@@ -195,7 +195,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 
 // Due to various complications, we resort to finding values that work by trail an error
-#define EXCITATORY_NEURON_OUTPUT 128//230
+#define EXCITATORY_NEURON_OUTPUT 230
 #define INHIBITORY_NEURON_OUTPUT 128
 
 
