@@ -29,7 +29,7 @@ static void tinyPotential_decay()
 		
 	uint8_t time_since_last_update = tinyTime_now() - previous_update_time;
 	tinyPotential_potential *= (exp(-((float)time_since_last_update/(float)TINYPOTENTIAL_TIME_CONST)));
-	if(fabs(tinyPotential_potential)<0.1){
+	if(fabs(tinyPotential_potential)<POLARIZATION_OFFSET){
 		tinyPotential_potential=0;
 	}
 	previous_update_time = tinyTime_now();

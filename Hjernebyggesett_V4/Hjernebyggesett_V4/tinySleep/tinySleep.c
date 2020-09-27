@@ -9,8 +9,8 @@
 #include <avr/io.h>
 #include "avr/interrupt.h"
 #include "avr/wdt.h"
-#include "avr/sleep.h"
 
+#include <avr/sleep.h>
 #include <avr/power.h>
 #include <avr/interrupt.h>
 
@@ -35,7 +35,12 @@ void tinySleep_prepare_sleep(){
 }
 
 void tinySleep_enter_sleep(){
+
+	
+  //sleep_bod_disable();
   cli();
   sei();
   sleep_cpu();
+  sleep_disable();
+  
 }

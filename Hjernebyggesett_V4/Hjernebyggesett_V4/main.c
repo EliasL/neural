@@ -13,6 +13,7 @@
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"
 #include "tinyTester/tinyTester.h"
+#include "tinySleep/tinySleep.h"
 
 /*
 Notes for future development
@@ -39,16 +40,21 @@ int main(void)
 	A plausible explanation is that the microchip does not up the voltage, so that if the microchip is only ever 
 	supplied with 3.3v, it will output 3.3v as the max.
 	*/
-	
 	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
 	
 	//tinyTester_test();
+	
+	tinySleep_prepare_sleep();
+	
+	tinySleep_enter_sleep();
 	
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
 		if(tinyISR_getflag())
 		{
+			//Testing sleep mode
+			//tinySleep_enter_sleep();
 			tinyCharge_update_charging_mode();
 			
 			if(tinyCharge_is_connected_to_charger()){
@@ -82,6 +88,7 @@ int main(void)
 				// Update the potential (This is where most of the important stuff happens)
 				tinyPotential_update();
 			}
+			
 			// Update LED
 			tinyLED_update();
 				

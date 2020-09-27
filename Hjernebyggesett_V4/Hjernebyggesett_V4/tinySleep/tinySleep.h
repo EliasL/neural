@@ -12,5 +12,8 @@
 
 
 
+void tinySleep_prepare_sleep();
+
+void tinySleep_enter_sleep();
 
 #endif /* TINYSLEEP_H_ */

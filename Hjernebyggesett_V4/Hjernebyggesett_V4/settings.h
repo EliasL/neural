@@ -15,7 +15,7 @@
 
 
 // Choose whether the neuron is a EXCITATORY_NEURON or a INHIBITORY_NEURON
-#define NEURONTYPE EXCITATORY_NEURON
+#define NEURONTYPE INHIBITORY_NEURON
 
 
 // The neuron only keeps track of a certain number of pulses (When a pulse is queued, it is stored in an array of this length.)
@@ -32,14 +32,14 @@
 // the period is halved, and everything runs twice as quickly. Likewise, we can set the TIMESCALE to 0.5, and make everything run
 // slower. Note that some settings are effected by the timescale value. Counterintuitively, this means that they will NOT change 
 // when the timescale is adjusted. See PULSEMODE_BUTTON_PRESS_TIME for an example.
-#define TIMESCALE 0.05
+#define TIMESCALE 1
 
 
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Debugging in high timescales (above 0.1), often leads to strange behavior
 // Set 1 for true and 0 for false
-#define DEBUGGING 1
+#define DEBUGGING 0
 
 
 // A value of n will result in n pulses every second when the neuron is in pulse mode. (max 500)
@@ -110,9 +110,11 @@
 #define PING_RATE 0.1 * TIMESCALE
 
 
-// How long various flashes last (max 0.255, can be changed to a higher max if needed by changing uint8 to unit16) 
+// How long flashes last
 #define FLASH_TIME 0.2 * TIMESCALE
 
+// How long queued up flashes last
+#define QUEUE_FLASH_TIME 0.1 * TIMESCALE
 
 /*
 			POTENTIAL SETTINGS
@@ -130,6 +132,10 @@
 // After the axon has fired, the potential changes by this amount
 // I want to test reducing the potential by -30 instead of -25 to simulate the hyperpolarization
 #define POSTFIRE_POTENTIAL_REACTION -25
+
+// To avoid having the neuron potential very close to zero, but not exactly zero, we set the potential 
+// equal to zero when the absolute value of the potential is less than this variable
+#define POLARIZATION_OFFSET 0.1
 
 
 // Time for pulse to travel from Dendrites to axon

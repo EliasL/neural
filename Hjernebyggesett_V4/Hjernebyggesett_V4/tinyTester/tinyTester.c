@@ -57,7 +57,7 @@ int tinyTester_check_signals(){
 			int difference = test_values[i] - tinyDendrite_get_value(j);
 			if(abs(difference) > ACCEPTABLE_NOISE){
 				number_of_failed_checks++;
-				int measurement = tinyDendrite_get_value(j);
+				//int measurement = tinyDendrite_get_value(j);
 				printf("Signal test failed! Axon sent %3u but dendrite %1u received %3u.\r\n", test_values[i], j, tinyDendrite_get_value(j));
 			}
 		}
