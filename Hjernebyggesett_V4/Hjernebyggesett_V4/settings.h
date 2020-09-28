@@ -15,7 +15,7 @@
 
 
 // Choose whether the neuron is a EXCITATORY_NEURON or a INHIBITORY_NEURON
-#define NEURONTYPE INHIBITORY_NEURON
+#define NEURONTYPE EXCITATORY_NEURON
 
 
 // The neuron only keeps track of a certain number of pulses (When a pulse is queued, it is stored in an array of this length.)
@@ -116,6 +116,10 @@
 // How long queued up flashes last
 #define QUEUE_FLASH_TIME 0.1 * TIMESCALE
 
+// In order to distinguish between two subsequent flashes, we include a "off time" inside the flash time
+// resulting in the LED being turned off in the first part of the flash period. 
+#define FLASH_OFF_TIME 0.01 * TIMESCALE
+
 /*
 			POTENTIAL SETTINGS
 */
@@ -123,6 +127,9 @@
 
 // If the potential is above this value, the neuron fires
 #define THRESHOLD_POTENTIAL 25
+
+// If the potential is below this value, the neuron attempts to remove a queued pulse
+#define REMOVE_PULSE_THRESHOLD -20
 
 
 // This is how much the potential changes when we press the button
@@ -150,7 +157,7 @@
 // we want to remove the pulse. However, if the potential has already traveled most of the distance to the axon, we
 // want to let the pulse reach the axon anyway (fire). If a pulse is less than the PULSE_NO_RETURN_TIME ms away from 
 // firing, the pulse will not be removed.
-#define PULSE_NO_RETURN_TIME 60
+#define PULSE_NO_RETURN_TIME 0
 
 
 /*
@@ -169,17 +176,18 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 // This drastically reduces our viable signal space. One option is to run a calibration run where
 // one could measure how much each denrite responds to firing, and deducting that amount from the signal input when a signal
 // is read at the same time that the axon fires.
-#define CHARGING_THRESHOLD 232
-#define NORMAL_EXCITE_THRESHOLD 199
-#define HIGH_EXCITE_THRESHOLD 166
-#define LOW_EXCITE_THRESHOLD 132
-#define NORMAL_INHIB_THRESHOLD 99
-#define HIGH_INHIB_THRESHOLD 66
-#define LOW_INHIB_THRESHOLD 33
+#define CHARGING_THRESHOLD 254
+#define NORMAL_EXCITE_THRESHOLD 218
+#define HIGH_EXCITE_THRESHOLD 181
+#define LOW_EXCITE_THRESHOLD 145
+#define NORMAL_INHIB_THRESHOLD 109
+#define HIGH_INHIB_THRESHOLD 73
+#define LOW_INHIB_THRESHOLD 36
 
 /*
 Signal reaction definitions
 When a Dendrite receives a signal, these values describe how the potential in the neuron changes.
+See Signalområder doc in drive
 */
 
 #define NO_SIGNAL_REACTION 0
@@ -201,8 +209,8 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 
 // Due to various complications, we resort to finding values that work by trail an error
-#define EXCITATORY_NEURON_OUTPUT 230
-#define INHIBITORY_NEURON_OUTPUT 128
+#define EXCITATORY_NEURON_OUTPUT 236
+#define INHIBITORY_NEURON_OUTPUT 127
 
 
 /*

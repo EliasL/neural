@@ -196,7 +196,7 @@ void tinyLED_update(void)
 	// This is where we store all the actual color values we want to send to the LED
 	struct RGB_Color rgb_colors[NUMBER_OF_LEDS];
 	
-		
+	
 	for (uint8_t i = 0; i < NUMBER_OF_LEDS; i++)
 	{		
 		// Convert enum to RGB_Color
@@ -234,7 +234,15 @@ void tinyLED_update(void)
 				break;
 			case FLASH_ONCE:
 				if(tinyLED_flash_once_time[i]>0){
-					rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red, rgb_colors[i].green, rgb_colors[i].blue};
+					
+					// Check if flash is inside off period
+					if(tinyLED_flash_once_time[i]>1000*(FLASH_TIME - FLASH_OFF_TIME)){
+						// This is used to seperate flashes
+						rgb_colors[i] = (struct RGB_Color){0, 0, 0};
+					} else {
+						rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red, rgb_colors[i].green, rgb_colors[i].blue};
+					}
+					
 					tinyLED_flash_once_time[i]--;
 				}
 				else{

@@ -207,9 +207,9 @@ double tinyAxon_update_potential(double potential)
 	}
 	
 	// If the neuron has a very low potential, we want to remove a pulse from the queue (if there is one)
-	if(potential < -THRESHOLD_POTENTIAL)
+	if(potential < REMOVE_PULSE_THRESHOLD) // REMOVE_PULSE_THRESHOLD is a negative number
 	{
-		if(pulses_in_queue > 0) // Perhaps this should be a separate variable? For now, we will just simply use -THRESHOLD_POTENTIAL
+		if(pulses_in_queue > 0)
 		{
 			// The neurons potential is low enough to attempt to remove a queued fire (Fire less)
 			if(tinyAxon_remove_pulse())
@@ -252,7 +252,5 @@ double tinyAxon_update_potential(double potential)
 _Bool tinyAxon_check_charge_level(void)
 {
 	// We check the AXON_CHECK_PIN. If it is hight while the axon is not firing, it must be connected to a charger
-	
-	tinyDebugger_send_uint8("Pulses", AXON_CHECK_PIN_get_level());
 	return (AXON_CHECK_PIN_get_level() && !tinyAxon_has_just_fired);
 }
