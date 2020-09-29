@@ -11,6 +11,8 @@
 
 
 
+double tinyPotential_get_potential();
 void tinyPotential_update();
+
 
 #endif /* TINY_POTENTIAL_H_ */

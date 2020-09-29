@@ -36,6 +36,15 @@ static void tinyPotential_decay()
 }
 
 /*
+Sends the potential
+*/
+double tinyPotential_get_potential()
+{
+	return tinyPotential_potential;
+}
+
+
+/*
 Update the potential
 */
 void tinyPotential_update()

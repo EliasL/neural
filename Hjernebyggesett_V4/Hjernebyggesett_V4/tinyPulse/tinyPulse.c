@@ -36,11 +36,11 @@ void tinyPulse_toggle_pulse_mode(){
 	
 	if(tinyPulse_is_in_pulse_mode()){
 		tinyLED_set_color_mode(OUT_LED, PULSEMODE_COLOR, WEAK);
-		tinyLED_set_color_mode(INN_LED, PULSEMODE_COLOR, WEAK);
+		//tinyLED_set_color_mode(INN_LED, PULSEMODE_COLOR, WEAK);
 	}
 	else{
 		tinyLED_set_color(OUT_LED, LED_OFF);
-		tinyLED_set_color(INN_LED, LED_OFF);
+		//tinyLED_set_color(INN_LED, LED_OFF);
 	}
 }
 

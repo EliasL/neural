@@ -80,7 +80,11 @@ int main(void)
 				// we turn on ping mode
 				if(tinyLED_get_color(OUT_LED) == LED_OFF && PING_COLOR != LED_OFF){
 					tinyLED_set_color_mode(OUT_LED, PING_COLOR, PING);
-				}				
+				}
+				if(tinyLED_get_color(INN_LED) == LED_OFF){
+					// Display potential level with LED
+					tinyLED_set_color_mode(INN_LED, CHANGING_COLOR, POTENTIAL);
+				}
 				
 				// Update button	
 				tinyButton_update();

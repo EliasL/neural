@@ -23,4 +23,6 @@ _Bool tinyAxon_check_charge_level(void);
 
 void tinyAxon_stop_sending_pulse();
 
+uint8_t tinyAxon_get_pulses_in_queue();
+
 #endif /* tinyAxon_H_ */

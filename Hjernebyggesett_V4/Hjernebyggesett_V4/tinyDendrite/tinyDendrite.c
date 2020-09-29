@@ -146,27 +146,27 @@ int16_t tinyDendrite_get_potential()
 				break;
 			case HIGH_EXCITE:
 				return_potential_val += HIGH_EXCITE_REACTION;
-				tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
+				//tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 				break;
 			case NORMAL_EXCITE:
 				return_potential_val += NORMAL_EXCITE_REACTION;
-				tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
+				//tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 				break;
 			case LOW_EXCITE:
 				return_potential_val += LOW_EXCITE_REACTION;
-				tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
+				//tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 				break;
 			case HIGH_INHIB:
 				return_potential_val += HIGH_INHIB_REACTION;
-				tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
+				//tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
 				break;
 			case NORMAL_INHIB:
 				return_potential_val += NORMAL_INHIB_REACTION;
-				tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
+				//tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
 				break;
 			case LOW_INHIB:
 				return_potential_val += LOW_INHIB_REACTION;
-				tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
+				//tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
 				break;
 			case CHARGING:
 				// Nothing happens
@@ -187,5 +187,11 @@ double tinyDendrite_update_potential(double potential){
 	
 	int16_t potential_change = tinyDendrite_get_potential();
 	potential += potential_change;
+	
+	/*
+	We DON'T want to signal that we have recived a signal, we want to signal that the potential has changed!
+	We could send flashes from here, but instead, I'll try to implement a light mode that is constantly communicating the value of the potential.
+	*/
+	
 	return potential;
 }

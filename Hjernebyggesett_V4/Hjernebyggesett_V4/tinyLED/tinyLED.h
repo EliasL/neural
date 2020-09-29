@@ -11,20 +11,18 @@
 
 
 enum Colors{
-	LED_OFF, RED, BLUE, GREEN, YELLOW, WHITE
+	LED_OFF, CHANGING_COLOR, RED, BLUE, GREEN, YELLOW, WHITE
 };
 
 enum ColorModes
 {
-	STABLE, WEAK, FLASH, SWING, PING, FLASH_ONCE
+	STABLE, WEAK, FLASH, SWING, PING, FLASH_ONCE, POTENTIAL
 };
 
 void tinyLED_update(void);
 void tinyLED_set_color(uint8_t LED_id, enum Colors color);
 enum Colors tinyLED_get_color(uint8_t LED_id);
 void tinyLED_set_color_mode(uint8_t LED_id, enum Colors color, enum ColorModes mode);
-void tinyLED_queue_flash(uint8_t LED_id, enum Colors color);
-	
 
 
 #endif /* RGBLIB_H_ */

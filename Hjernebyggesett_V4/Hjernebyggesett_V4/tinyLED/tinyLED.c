@@ -13,6 +13,8 @@
 #include "settings.h"
 #include "tinyTime/tinyTime.h"
 #include "tinyDebugger/tinyDebugger.h"
+#include "tinyPotential/tinyPotential.h"
+#include "tinyAxon/tinyAxon.h"
 
 /*
 
@@ -46,29 +48,6 @@ struct RGB_Color tinyLED_old_colors[NUMBER_OF_LEDS];
 uint16_t tinyLED_flash_once_time[NUMBER_OF_LEDS];
 
 
-// Sometimes, if the neuron receives multiple signals on the same update,
-// the neuron might receive 5 inhibitory signals, but then one exitory signal at the end.
-// That will cause the neuron to signal that it received an exitory signal, but not fire.
-// This can be confusing, and should be avoided.
-
-// In order to avoid this, FLASH_ONCE lights will be queued rather than set, thus giving each light signal a minimum time to be displayed.
-uint8_t flash_queue[16];      // a list of colors that should be flashed
-uint8_t flash_queue_ids[16];  // we also need to keep track of what LED should flash
-uint8_t flashes_in_queue = 0; // variable to determine how many flashes are in queue.
-
-/*
-adds a color to the flash queue
-*/
-void tinyLED_queue_flash(uint8_t LED_id, enum Colors color)
-{
-	// We ignore a request to queue a flash if the queue is full
-	if(flashes_in_queue < 16){
-		flash_queue[flashes_in_queue] = color;
-		flash_queue_ids[flashes_in_queue] = LED_id;
-		flashes_in_queue++;
-	}
-}
-
 /*
 changes the values in the variables stored in the LED-array.
 */
@@ -101,13 +80,7 @@ void tinyLED_set_color_mode(uint8_t LED_id, enum Colors color, enum ColorModes m
 	tinyLED_settings[LED_id] = new_setting;
 	if (mode == FLASH_ONCE)
 	{
-		// If there is only one flash in the queue, we can let it flash longer
-		if(flashes_in_queue>1){
-			tinyLED_flash_once_time[LED_id] = 1000*QUEUE_FLASH_TIME;
-		}
-		else{
-			tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
-		}
+		tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
 	}
 }
 
@@ -181,7 +154,9 @@ effectively update the values stored in the LEDs to the values stored in the MCU
 void tinyLED_update(void)
 {
 			
-	uint32_t now = tinyTime_now();	
+	uint32_t now = tinyTime_now();
+	uint8_t red = 0;
+	uint8_t green = 0;
 	
 	// This is a sin curve, but between 0 and 1 instead of -1 and 1
 	double sinValue = 0.5+sin((double)now/(100*M_PI/SWING_RATE))/2;
@@ -193,6 +168,10 @@ void tinyLED_update(void)
 	// the left side will usually be larger than the right
 	_Bool ping_on =  now%(uint32_t)(1000/PING_RATE)   <   1000*FLASH_TIME;
 	
+	// Find potential 
+	double tinyPotential_potental = tinyPotential_get_potential();
+	uint16_t tinyAxon_pulses_in_queue = tinyAxon_get_pulses_in_queue();
+	
 	// This is where we store all the actual color values we want to send to the LED
 	struct RGB_Color rgb_colors[NUMBER_OF_LEDS];
 	
@@ -202,36 +181,29 @@ void tinyLED_update(void)
 		// Convert enum to RGB_Color
 		rgb_colors[i] = tinyLED_enum_to_RGB_Color(tinyLED_settings[i].color);
 		
-		// Check if there is a flash that can be queued
-		// Complicated code (bad code): The best implementation would be to have a separate flash queue for each
-		// LED, but I can't be bothered to deal with nested arrays. So we check a couple of things
-		// It should work well so long as two LEDs aren't being queued to at the same time. If that does happen, 
-		// nothing should break, but it will be slower to get the flashes out.
-		if (flashes_in_queue>0 && tinyLED_settings[i].mode !=FLASH_ONCE && flash_queue_ids[flashes_in_queue] == i)
-		{
-			// This implementation is easier, but it means that the last flash into the queue is the first out.
-			tinyLED_set_color_mode(flash_queue_ids[flashes_in_queue], flash_queue[flashes_in_queue], FLASH_ONCE);
-			flashes_in_queue--;
-		}
-		
 		// Adjust colors according to mode
 		switch(tinyLED_settings[i].mode)
 		{
 			case STABLE:
 				break;
+				
 			case WEAK:
 				rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*WEAK_BRIGHTNESS, rgb_colors[i].green*WEAK_BRIGHTNESS, rgb_colors[i].blue*WEAK_BRIGHTNESS};
 				break;
+				
 			case FLASH:
 				rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*flash_on, rgb_colors[i].green*flash_on, rgb_colors[i].blue*flash_on};
 				break;
+				
 			case SWING:
 				rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red*sinValue, rgb_colors[i].green*sinValue, rgb_colors[i].blue*sinValue};
 				break;
+				
 			case PING:
 				// in the line below, fmin will either return 1 or 0, so each rgb color is either 0 or 255*PING_BRIGHTNESS
 				rgb_colors[i] = (struct RGB_Color){255*PING_BRIGHTNESS*fmin(1,rgb_colors[i].red)*ping_on, 255*PING_BRIGHTNESS*fmin(1,rgb_colors[i].green)*ping_on, 255*PING_BRIGHTNESS*fmin(1,rgb_colors[i].blue)*ping_on};
 				break;
+				
 			case FLASH_ONCE:
 				if(tinyLED_flash_once_time[i]>0){
 					
@@ -251,6 +223,19 @@ void tinyLED_update(void)
 					tinyLED_settings[i].mode = tinyLED_old_settings[i].mode;
 				}
 				break;
+			
+			case POTENTIAL:
+				// In this mode, we try to communicate the level of the potential with color and brightness
+				
+				if(tinyPotential_potental > 0 || tinyAxon_pulses_in_queue > 0){
+					green = fmin(255*LED_BRIGHTNESS * (tinyPotential_potental+tinyAxon_pulses_in_queue*THRESHOLD_POTENTIAL)/FULL_BRIGHTNESS_POTENTIAL, 255);
+				}
+				else{
+					red = fmin(255*LED_BRIGHTNESS * abs(tinyPotential_potental)/FULL_BRIGHTNESS_POTENTIAL, 255);
+				}
+				
+				rgb_colors[i] = (struct RGB_Color){red, green, 0};
+			
 			default:
 				break;
 		}

@@ -34,7 +34,6 @@
 // when the timescale is adjusted. See PULSEMODE_BUTTON_PRESS_TIME for an example.
 #define TIMESCALE 1
 
-
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Debugging in high timescales (above 0.1), often leads to strange behavior
@@ -68,9 +67,11 @@
 #define INN_LED 0
 
 
-// Brightness as a value between 0 and 1
+// Brightness as a value between 0 and 1 (Should be lower than 1 since some lights go above this LED brightness)
 #define LED_BRIGHTNESS 0.1
 
+// When the potential is at this value, the LED should light up with LED_BRIGHTNESS strength
+#define FULL_BRIGHTNESS_POTENTIAL 25
 
 // When setting colors, make sure the color is defined in tinyLED.h
 

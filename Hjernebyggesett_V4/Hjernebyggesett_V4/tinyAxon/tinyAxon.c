@@ -32,6 +32,12 @@ _Bool tinyAxon_is_firing(){
 
 uint8_t pulses_in_queue = 0; //variable to determine how many pulses are in queue.
 
+uint8_t tinyAxon_get_pulses_in_queue()
+{
+	return pulses_in_queue;
+}
+
+
 /*
 When there are 0 pulses queued, all of the numbers in this list should be 0.
 When we queue a pulse, we store the number of cycles until we fire.
@@ -203,7 +209,8 @@ double tinyAxon_update_potential(double potential)
 		
 		potential += POSTFIRE_POTENTIAL_REACTION; // This is usually defined as a negative value, don't be confused by the +=
 		
-		tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
+		// Why the hell is this line here? It shoudln't i think...
+		//tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
 	}
 	
 	// If the neuron has a very low potential, we want to remove a pulse from the queue (if there is one)
