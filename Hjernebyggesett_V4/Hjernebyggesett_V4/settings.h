@@ -170,18 +170,21 @@
 Signal threshold definitions
 When a Dendrite reads the ADC, these values (between 0 and 255) decide what correspond to the different signals.
 
+These values work ok for amplifying resistance of 2.2kohm, and reductive resistance of 5kohm
+
 See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Software
+
+But then also see "Signal vekting" in Hjernebyggesett V4/Teknisk/Hardware/Kretskort
+and realsize that it's not a simple linear realationship between signal and resistance,
+so these thresholds are found by trail and error.
 */
 
-// MAJOR PROBLEM sending signals evoke a readout on some of the dendrites of about 125
-// This drastically reduces our viable signal space. One option is to run a calibration run where
-// one could measure how much each denrite responds to firing, and deducting that amount from the signal input when a signal
-// is read at the same time that the axon fires.
+
 #define CHARGING_THRESHOLD 254
 #define NORMAL_EXCITE_THRESHOLD 218
 #define HIGH_EXCITE_THRESHOLD 181
 #define LOW_EXCITE_THRESHOLD 145
-#define NORMAL_INHIB_THRESHOLD 109
+#define NORMAL_INHIB_THRESHOLD 100
 #define HIGH_INHIB_THRESHOLD 73
 #define LOW_INHIB_THRESHOLD 36
 
@@ -211,7 +214,7 @@ See "Signalområder" in the Google Drive project Hjernebyggesett V4/Teknisk/Softw
 
 // Due to various complications, we resort to finding values that work by trail an error
 #define EXCITATORY_NEURON_OUTPUT 236
-#define INHIBITORY_NEURON_OUTPUT 127
+#define INHIBITORY_NEURON_OUTPUT 110
 
 
 /*

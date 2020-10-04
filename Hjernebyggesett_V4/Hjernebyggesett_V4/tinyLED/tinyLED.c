@@ -80,7 +80,12 @@ void tinyLED_set_color_mode(uint8_t LED_id, enum Colors color, enum ColorModes m
 	tinyLED_settings[LED_id] = new_setting;
 	if (mode == FLASH_ONCE)
 	{
-		tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
+		if (tinyAxon_time_until_next_pulse()<1000*FLASH_OFF_TIME)
+		{
+			tinyLED_flash_once_time[LED_id] = 1000*(FLASH_TIME-FLASH_OFF_TIME);
+		} else{
+			tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
+		}
 	}
 }
 
