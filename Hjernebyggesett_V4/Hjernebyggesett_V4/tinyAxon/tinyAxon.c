@@ -64,26 +64,18 @@ uint8_t find_newest_pulse() {
 }
 
 
-uint8_t find_oldest_pulse() {
-	uint16_t min;
-	uint8_t current_index = 0;
-	uint8_t return_index = 0;
+// This function will be used with in the tinyLED to determine how long the light should flash
+uint16_t tinyAxon_time_until_next_pulse(){
+	uint16_t min_pulse = 65530;
 	
-	min = pulse_queue[current_index];
-	
-	for (current_index = 1; current_index < MAX_NUMBER_OF_PULSES; current_index++) {
+	for (uint8_t current_index = 0; current_index < MAX_NUMBER_OF_PULSES; current_index++) {
 		// We don't count pluses with time=0, they have already bee fired.
-		if (pulse_queue[current_index] < min && pulse_queue[current_index] > 0) {
-			return_index = current_index;
-			min = pulse_queue[current_index];
+		if (pulse_queue[current_index] < min_pulse && pulse_queue[current_index] > 0) {
+			min_pulse = pulse_queue[current_index];
 		}
 	}
-	return return_index;
-}
-
-// This function will be used with in the tinyLED to determine how long the light should flash
-uint8_t tinyAxon_time_until_next_pulse(){
-	return pulse_queue[find_oldest_pulse()];
+	tinyDebugger_send_uint32("Next Pulse", min_pulse);
+	return min_pulse;
 }
 
 /*

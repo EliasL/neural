@@ -147,7 +147,8 @@ int16_t tinyDendrite_get_potential()
 			case HIGH_EXCITE:
 				return_potential_val += HIGH_EXCITE_REACTION;
 				//tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
-				tinyLED_set_color_mode(OUT_LED, BLUE, FLASH_ONCE);
+				// Used for signaling modified signals
+				//tinyLED_set_color_mode(OUT_LED, BLUE, FLASH_ONCE);
 				break;
 			case NORMAL_EXCITE:
 				return_potential_val += NORMAL_EXCITE_REACTION;
@@ -156,12 +157,12 @@ int16_t tinyDendrite_get_potential()
 			case LOW_EXCITE:
 				return_potential_val += LOW_EXCITE_REACTION;
 				//tinyLED_set_color_mode(INN_LED, GREEN, FLASH_ONCE);
-				tinyLED_set_color_mode(OUT_LED, YELLOW, FLASH_ONCE);
+				//tinyLED_set_color_mode(OUT_LED, YELLOW, FLASH_ONCE);
 				break;
 			case HIGH_INHIB:
 				return_potential_val += HIGH_INHIB_REACTION;
 				//tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
-				tinyLED_set_color_mode(OUT_LED, BLUE, FLASH_ONCE);
+				//tinyLED_set_color_mode(OUT_LED, BLUE, FLASH_ONCE);
 				break;
 			case NORMAL_INHIB:
 				return_potential_val += NORMAL_INHIB_REACTION;
@@ -170,7 +171,7 @@ int16_t tinyDendrite_get_potential()
 			case LOW_INHIB:
 				return_potential_val += LOW_INHIB_REACTION;
 				//tinyLED_set_color_mode(INN_LED, RED, FLASH_ONCE);
-				tinyLED_set_color_mode(OUT_LED, YELLOW, FLASH_ONCE);
+				//tinyLED_set_color_mode(OUT_LED, YELLOW, FLASH_ONCE);
 				break;
 			case CHARGING:
 				// Nothing happens

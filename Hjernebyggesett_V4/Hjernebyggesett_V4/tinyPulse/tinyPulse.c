@@ -24,7 +24,7 @@ send a pulse more often, if the frequency is higher.
 _Bool pulse_mode = false;
 uint32_t time_of_last_pulse = 0;
 uint16_t time_since_last_pulse = 0;
-uint16_t ideal_time_between_pulses = 1000/PULSEMODE_FREQUENCY;
+uint16_t ideal_time_between_pulses = TIMESCALE*1000/PULSEMODE_FREQUENCY;
 
 
 _Bool tinyPulse_is_in_pulse_mode(){

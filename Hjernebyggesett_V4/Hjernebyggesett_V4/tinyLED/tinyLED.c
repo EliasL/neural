@@ -42,9 +42,9 @@ struct ColorSetting
 };
 
 // list containing the current values for each led
-struct ColorSetting tinyLED_settings[NUMBER_OF_LEDS];
-struct ColorSetting tinyLED_old_settings[NUMBER_OF_LEDS];
-struct RGB_Color tinyLED_old_colors[NUMBER_OF_LEDS];
+struct ColorSetting tinyLED_settings[NUMBER_OF_LEDS] = {STABLE};
+struct ColorSetting tinyLED_old_settings[NUMBER_OF_LEDS] = {STABLE};
+struct RGB_Color tinyLED_old_colors[NUMBER_OF_LEDS] = {LED_OFF};
 uint16_t tinyLED_flash_once_time[NUMBER_OF_LEDS];
 
 
@@ -80,12 +80,7 @@ void tinyLED_set_color_mode(uint8_t LED_id, enum Colors color, enum ColorModes m
 	tinyLED_settings[LED_id] = new_setting;
 	if (mode == FLASH_ONCE)
 	{
-		if (tinyAxon_time_until_next_pulse()<1000*FLASH_OFF_TIME)
-		{
-			tinyLED_flash_once_time[LED_id] = 1000*(FLASH_TIME-FLASH_OFF_TIME);
-		} else{
-			tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
-		}
+		tinyLED_flash_once_time[LED_id] = 1000*FLASH_TIME;
 	}
 }
 
@@ -175,7 +170,8 @@ void tinyLED_update(void)
 	
 	// Find potential 
 	double tinyPotential_potental = tinyPotential_get_potential();
-	uint16_t tinyAxon_pulses_in_queue = tinyAxon_get_pulses_in_queue();
+	uint8_t tinyAxon_pulses_in_queue = tinyAxon_get_pulses_in_queue();
+	uint16_t time_until_next_pulse = tinyAxon_time_until_next_pulse();
 	
 	// This is where we store all the actual color values we want to send to the LED
 	struct RGB_Color rgb_colors[NUMBER_OF_LEDS];
@@ -211,15 +207,11 @@ void tinyLED_update(void)
 				
 			case FLASH_ONCE:
 				if(tinyLED_flash_once_time[i]>0){
-					
 					// Check if flash is inside off period
-					if(tinyLED_flash_once_time[i]>1000*(FLASH_TIME - FLASH_OFF_TIME)){
-						// This is used to seperate flashes
+					if(time_until_next_pulse < FLASH_OFF_TIME*1000){
+						// This is used to separate flashes
 						rgb_colors[i] = (struct RGB_Color){0, 0, 0};
-					} else {
-						rgb_colors[i] = (struct RGB_Color){rgb_colors[i].red, rgb_colors[i].green, rgb_colors[i].blue};
 					}
-					
 					tinyLED_flash_once_time[i]--;
 				}
 				else{

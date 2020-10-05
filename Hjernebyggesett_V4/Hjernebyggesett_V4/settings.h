@@ -15,7 +15,7 @@
 
 
 // Choose whether the neuron is a EXCITATORY_NEURON or a INHIBITORY_NEURON
-#define NEURONTYPE EXCITATORY_NEURON
+#define NEURONTYPE INHIBITORY_NEURON
 
 
 // The neuron only keeps track of a certain number of pulses (When a pulse is queued, it is stored in an array of this length.)
@@ -33,7 +33,6 @@
 // slower. Note that some settings are effected by the timescale value. Counterintuitively, this means that they will NOT change 
 // when the timescale is adjusted. See PULSEMODE_BUTTON_PRESS_TIME for an example.
 #define TIMESCALE 1
-
 // Sending data over USART requires a lot of time, so in order for the program to run quickly, we need to turn off sending 
 // debugging messages when we want the neuron to run quickly
 // Debugging in high timescales (above 0.1), often leads to strange behavior
@@ -42,7 +41,7 @@
 
 
 // A value of n will result in n pulses every second when the neuron is in pulse mode. (max 500)
-#define PULSEMODE_FREQUENCY 2
+#define PULSEMODE_FREQUENCY 2 
 
 
 // Amount of time in ms the button needs to be held down before switching to or from pulse mode.
@@ -112,14 +111,12 @@
 
 
 // How long flashes last
-#define FLASH_TIME 0.2 * TIMESCALE
+#define FLASH_TIME 0.1 * TIMESCALE
 
-// How long queued up flashes last
-#define QUEUE_FLASH_TIME 0.1 * TIMESCALE
-
-// In order to distinguish between two subsequent flashes, we include a "off time" inside the flash time
-// resulting in the LED being turned off in the first part of the flash period. 
-#define FLASH_OFF_TIME 0.01 * TIMESCALE
+// In order to distinguish between two subsequent flashes, we include a "off time"
+// If the LED is trying to flash, but the next pulse is within FLASH_OFF_TIME seconds of 
+// firing, the LED is turned off instead.
+#define FLASH_OFF_TIME 0.012 * TIMESCALE
 
 /*
 			POTENTIAL SETTINGS
@@ -151,7 +148,7 @@
 
 
 // Minimum time between pulses
-#define FIRE_DELAY 10
+#define FIRE_DELAY 15
 
 
 // If a pulse has been queued, and the neurons potential drops significantly shortly after the pulse has been queued

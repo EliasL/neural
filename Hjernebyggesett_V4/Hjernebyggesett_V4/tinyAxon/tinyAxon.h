@@ -25,6 +25,6 @@ void tinyAxon_stop_sending_pulse();
 
 uint8_t tinyAxon_get_pulses_in_queue();
 
-uint8_t tinyAxon_time_until_next_pulse();
+uint16_t tinyAxon_time_until_next_pulse();
 
 #endif /* tinyAxon_H_ */
