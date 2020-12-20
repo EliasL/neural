@@ -16,6 +16,7 @@
 #include "tinyButton/tinyButton.h"
 #include "tinyPulse/tinyPulse.h"
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyDebugger/tinyDebugger.h"
 
 static double tinyPotential_potential = 0;
@@ -29,6 +30,7 @@ static void tinyPotential_decay()
 		
 	uint8_t time_since_last_update = tinyTime_now() - previous_update_time;
 	tinyPotential_potential *= (exp(-((float)time_since_last_update/(float)TINYPOTENTIAL_TIME_CONST)));
+	// If the potential is very close to 0, we set it to 0
 	if(fabs(tinyPotential_potential)<POLARIZATION_OFFSET){
 		tinyPotential_potential=0;
 	}

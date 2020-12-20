@@ -11,6 +11,7 @@
 #include "tinyTime/tinyTime.h"
 #include "tinyPulse/tinyPulse.h"
 #include "settings.h"
+#include "common_settings.h"
 
 
 static _Bool button_was_pushed_down = false;

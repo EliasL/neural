@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <atmel_start.h>
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyLED/tinyLED.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyAxon/tinyAxon.h"

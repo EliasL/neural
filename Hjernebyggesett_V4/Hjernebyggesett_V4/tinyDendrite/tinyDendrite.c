@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "tinyDendrite/tinyDendrite.h"
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyCharge/tinyCharge.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"

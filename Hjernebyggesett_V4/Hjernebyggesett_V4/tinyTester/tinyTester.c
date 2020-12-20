@@ -21,6 +21,7 @@
 #include "tinyAxon/tinyAxon.h"
 #include "tinyTime/tinyTime.h"
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"
 

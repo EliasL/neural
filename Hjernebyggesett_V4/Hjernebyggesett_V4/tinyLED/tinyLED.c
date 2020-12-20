@@ -11,6 +11,7 @@
 #include <math.h>
 #include "tinyLED.h"
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyTime/tinyTime.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyPotential/tinyPotential.h"

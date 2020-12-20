@@ -1710,18 +1710,21 @@ static void tinyAxon_update_pulse_transmitter(void)
 	{
 		tinyAxon_should_fire = false;
      664:	10 92 2c 38 	sts	0x382C, r1	; 0x80382c <tinyAxon_should_fire>
-		DAC_0_set_output(EXCITATORY_NEURON_OUTPUT);
-		axonOutputValue=EXCITATORY_NEURON_OUTPUT;
-	}
-	else if(NEURONTYPE == INHIBITORY_NEURON)
+*/
+static void tinyAxon_start_sending_pulse()
+{
+	if (NEURONTYPE == EXCITATORY_NEURON)
 	{
-		DAC_0_set_output(INHIBITORY_NEURON_OUTPUT);
-     668:	8e e6       	ldi	r24, 0x6E	; 110
+		DAC_0_set_output(EXCITATORY_NEURON_OUTPUT);
+     668:	8c ee       	ldi	r24, 0xEC	; 236
      66a:	90 e0       	ldi	r25, 0x00	; 0
      66c:	0e 94 29 01 	call	0x252	; 0x252 <DAC_0_set_output>
-		axonOutputValue=INHIBITORY_NEURON_OUTPUT;
-     670:	8e e6       	ldi	r24, 0x6E	; 110
+		axonOutputValue=EXCITATORY_NEURON_OUTPUT;
+     670:	8c ee       	ldi	r24, 0xEC	; 236
      672:	80 93 2b 38 	sts	0x382B, r24	; 0x80382b <axonOutputValue>
+	{
+		DAC_0_set_output(INHIBITORY_NEURON_OUTPUT);
+		axonOutputValue=INHIBITORY_NEURON_OUTPUT;
 	}
 	
 	tinyLED_set_color_mode(OUT_LED, WHITE, FLASH_ONCE);
@@ -3928,7 +3931,7 @@ void tinyPulse_toggle_pulse_mode(){
     1278:	31 f0       	breq	.+12     	; 0x1286 <tinyPulse_toggle_pulse_mode+0x1c>
 		tinyLED_set_color_mode(OUT_LED, PULSEMODE_COLOR, WEAK);
     127a:	41 e0       	ldi	r20, 0x01	; 1
-    127c:	63 e0       	ldi	r22, 0x03	; 3
+    127c:	60 e0       	ldi	r22, 0x00	; 0
     127e:	81 e0       	ldi	r24, 0x01	; 1
     1280:	0e 94 a1 05 	call	0xb42	; 0xb42 <tinyLED_set_color_mode>
     1284:	08 95       	ret

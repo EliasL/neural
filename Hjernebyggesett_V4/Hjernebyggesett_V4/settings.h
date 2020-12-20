@@ -15,7 +15,7 @@
 
 
 // Choose whether the neuron is a EXCITATORY_NEURON or a INHIBITORY_NEURON
-#define NEURONTYPE INHIBITORY_NEURON
+//#define NEURONTYPE EXCITATORY_NEURON
 
 
 // The neuron only keeps track of a certain number of pulses (When a pulse is queued, it is stored in an array of this length.)
@@ -92,7 +92,7 @@
 
 
 // Choose what color to display when the neuron is in puse mode
-#define PULSEMODE_COLOR BLUE
+#define PULSEMODE_COLOR LED_OFF
 
 // Choose how bright the weak light mode should be
 #define WEAK_BRIGHTNESS 0.1

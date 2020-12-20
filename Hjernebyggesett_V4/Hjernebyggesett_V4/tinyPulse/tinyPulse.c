@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include "tinyTime/tinyTime.h"
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyLED/tinyLED.h"
 
 /*

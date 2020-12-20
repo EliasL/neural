@@ -288,6 +288,9 @@
     <Compile Include="atmel_start.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="common_settings.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Config\clock_config.h">
       <SubType>compile</SubType>
     </Compile>

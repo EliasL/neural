@@ -10,6 +10,7 @@
 #include "tinyCharge/tinyCharge.h"
 #include "tinyPulse/tinyPulse.h"
 #include "settings.h"
+#include "common_settings.h"
 #include "tinyDebugger/tinyDebugger.h"
 #include "tinyLED/tinyLED.h"
 #include "tinyTester/tinyTester.h"
@@ -22,7 +23,7 @@ If you ever need to re-create or re-configure the project with the atmel start t
 you need to comment out, or remove the code in driver_isr.c in order to avoid creating multiple definitions of __vector_6
 
 The user labels for the dendrites (DENn_PIN) are shortened from DENDRITEn_PIN. Having the longer name resulted in a segmentation error,
-probably due to a lac of memory in the MC (Micro Chip). Keep this in mind if you get a segmentation error. 
+probably due to a lac of memory in the MC (Micro Controller). Keep this in mind if you get a segmentation error. 
 
 */
 
@@ -42,22 +43,16 @@ int main(void)
 	*/
 	VREF.CTRLA |= VREF_DAC0REFSEL_4V34_gc;
 	
-	//tinyTester_test();
-	
-	tinySleep_prepare_sleep();
-	
-	tinySleep_enter_sleep();
-	
 	while (1)
 	{
 		// We don't want to update the neuron too often because of various reasons. The tinyISR_getflag is set every ms, and so the loop is only run once every ms.  
 		if(tinyISR_getflag())
 		{
-			//Testing sleep mode
-			//tinySleep_enter_sleep();
+			// Check if the neuron is connected to a charger (High potential on dendrites or axon)
 			tinyCharge_update_charging_mode();
 			
 			if(tinyCharge_is_connected_to_charger()){
+				
 				// Charge loop
 				
 				if(tinyCharge_is_fully_charged()){

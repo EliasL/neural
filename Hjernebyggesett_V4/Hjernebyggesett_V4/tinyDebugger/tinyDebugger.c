@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include "tinyDebugger.h"
 #include "settings.h"
+#include "common_settings.h"
 
 /*
 The idea is that throughout the project, we can prepare to send various variables, and label them appropriately.

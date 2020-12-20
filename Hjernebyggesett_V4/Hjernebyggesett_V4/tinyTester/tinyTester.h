@@ -3,6 +3,9 @@
  *
  * Created: 12.06.2020 13:49:25
  *  Author: Elias Lundheim
+ *
+ * The testing ended up not being used much at all. This code is not necessary.
+ *
  */ 
 
 
