@@ -9,7 +9,7 @@ tinyDebugger/tinyDebugger.d tinyDebugger/tinyDebugger.o: \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- ../tinyDebugger/tinyDebugger.h ../settings.h
+ ../tinyDebugger/tinyDebugger.h ../settings.h ../common_settings.h
 
 d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
 
@@ -32,3 +32,5 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\a
 ../tinyDebugger/tinyDebugger.h:
 
 ../settings.h:
+
+../common_settings.h:

@@ -6,8 +6,8 @@
  */ 
 
 
-#ifndef COMMON SETTINGS_H_
-#define COMMON SETTINGS_H_
+#ifndef COMMON_SETTINGS_H_
+#define COMMON_SETTINGS_H_
 
 
 /*

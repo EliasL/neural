@@ -29,9 +29,9 @@ tinyLED/tinyLED.d tinyLED/tinyLED.o: ../tinyLED/tinyLED.c \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- ../tinyLED/tinyLED.h ../settings.h ../tinyTime/tinyTime.h \
- ../tinyDebugger/tinyDebugger.h ../tinyPotential/tinyPotential.h \
- ../tinyAxon/tinyAxon.h
+ ../tinyLED/tinyLED.h ../settings.h ../common_settings.h \
+ ../tinyTime/tinyTime.h ../tinyDebugger/tinyDebugger.h \
+ ../tinyPotential/tinyPotential.h ../tinyAxon/tinyAxon.h
 
 ../atmel_start.h:
 
@@ -120,6 +120,8 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\a
 ../tinyLED/tinyLED.h:
 
 ../settings.h:
+
+../common_settings.h:
 
 ../tinyTime/tinyTime.h:
 

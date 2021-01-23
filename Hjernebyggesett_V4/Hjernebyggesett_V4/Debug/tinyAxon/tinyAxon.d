@@ -26,7 +26,7 @@ tinyAxon/tinyAxon.d tinyAxon/tinyAxon.o: ../tinyAxon/tinyAxon.c \
  ../include/atmel_start_pins.h \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../tinyTime/tinyTime.h ../tinyAxon/tinyAxon.h ../settings.h \
- ../tinyDebugger/tinyDebugger.h ../tinyLED/tinyLED.h
+ ../common_settings.h ../tinyDebugger/tinyDebugger.h ../tinyLED/tinyLED.h
 
 ../atmel_start.h:
 
@@ -109,6 +109,8 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 ../tinyAxon/tinyAxon.h:
 
 ../settings.h:
+
+../common_settings.h:
 
 ../tinyDebugger/tinyDebugger.h:
 

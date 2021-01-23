@@ -32,8 +32,8 @@ tinyTester/tinyTester.d tinyTester/tinyTester.o: \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
  ../tinyDendrite/tinyDendrite.h ../tinyAxon/tinyAxon.h \
- ../tinyTime/tinyTime.h ../settings.h ../tinyDebugger/tinyDebugger.h \
- ../tinyLED/tinyLED.h
+ ../tinyTime/tinyTime.h ../settings.h ../common_settings.h \
+ ../tinyDebugger/tinyDebugger.h ../tinyLED/tinyLED.h
 
 d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
@@ -128,6 +128,8 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\a
 ../tinyTime/tinyTime.h:
 
 ../settings.h:
+
+../common_settings.h:
 
 ../tinyDebugger/tinyDebugger.h:
 

@@ -24,9 +24,10 @@ tinyCharge/tinyCharge.d tinyCharge/tinyCharge.o: \
  ../include/adc_basic.h ../include/usart_basic.h ../include/tca.h \
  ../include/ccl.h ../include/spi.h ../include/dac_basic.h \
  ../include/cpuint.h ../include/slpctrl.h ../include/bod.h \
- ../include/atmel_start_pins.h ../settings.h ../tinyLED/tinyLED.h \
- ../tinyDebugger/tinyDebugger.h ../tinyAxon/tinyAxon.h \
- ../tinyDendrite/tinyDendrite.h ../tinyPulse/tinyPulse.h
+ ../include/atmel_start_pins.h ../settings.h ../common_settings.h \
+ ../tinyLED/tinyLED.h ../tinyDebugger/tinyDebugger.h \
+ ../tinyAxon/tinyAxon.h ../tinyDendrite/tinyDendrite.h \
+ ../tinyPulse/tinyPulse.h
 
 d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
 
@@ -103,6 +104,8 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 ../include/atmel_start_pins.h:
 
 ../settings.h:
+
+../common_settings.h:
 
 ../tinyLED/tinyLED.h:
 

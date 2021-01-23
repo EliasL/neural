@@ -29,8 +29,9 @@ main.d main.o: .././main.c ../atmel_start.h ../include/driver_init.h \
  .././tinyPotential/tinyPotential.h .././tinyISR/tinyISR.h \
  .././tinyTime/tinyTime.h .././tinyButton/tinyButton.h \
  .././tinyCharge/tinyCharge.h .././tinyPulse/tinyPulse.h .././settings.h \
- .././tinyDebugger/tinyDebugger.h .././tinyLED/tinyLED.h \
- .././tinyTester/tinyTester.h .././tinySleep/tinySleep.h
+ .././common_settings.h .././tinyDebugger/tinyDebugger.h \
+ .././tinyLED/tinyLED.h .././tinyTester/tinyTester.h \
+ .././tinySleep/tinySleep.h
 
 ../atmel_start.h:
 
@@ -125,6 +126,8 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 .././tinyPulse/tinyPulse.h:
 
 .././settings.h:
+
+.././common_settings.h:
 
 .././tinyDebugger/tinyDebugger.h:
 

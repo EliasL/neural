@@ -28,7 +28,8 @@ tinyPotential/tinyPotential.d tinyPotential/tinyPotential.o: \
  d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../tinyPotential/tinyPotential.h ../tinyDendrite/tinyDendrite.h \
  ../tinyAxon/tinyAxon.h ../tinyTime/tinyTime.h ../tinyButton/tinyButton.h \
- ../tinyPulse/tinyPulse.h ../settings.h ../tinyDebugger/tinyDebugger.h
+ ../tinyPulse/tinyPulse.h ../settings.h ../common_settings.h \
+ ../tinyDebugger/tinyDebugger.h
 
 ../atmel_start.h:
 
@@ -119,5 +120,7 @@ d:\various\ programs\atmelstudio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\inclu
 ../tinyPulse/tinyPulse.h:
 
 ../settings.h:
+
+../common_settings.h:
 
 ../tinyDebugger/tinyDebugger.h:
